@@ -135,26 +135,20 @@
             </div>
             <div class="form-group">
                 <label for="history_of_emboli">
-                    <input id="history_of_emboli" type="checkbox"
+                    <input id="msm" type="checkbox"
                            data-concept="160581^HEART^99DCT"
                            value="160578^RHEUMATIC^99DCT"/>
+                    Men who have sex with men
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="history_of_emboli">
+                    <input id="history_of_emboli" type="checkbox"
+                           data-concept="160581^HEART^99DCT"
+                           value="160579^RHEUMATIC^99DCT"/>
                     Female sex Worker
                 </label>
             </div>
-        </div>
-    </div>
-    <div class="section">
-        <h4>HIV Test History</h4>
-        <div class="form-group">
-            <label for="obs.hiv_infected">
-                Patient ever been tested for HIV? <span class="required">*</span></label>
-            <select class="form-control negativeSelect" id="hive_tested" name="obs.hive_tested" required="required"
-                    data-concept="164401^HIV INFECTED^99DCT">
-                <option value="">...</option>
-                <option value="1066^No^99DCT">No</option>
-                <option value="1065^Yes^99DCT">Yes</option>
-
-            </select>
         </div>
     </div>
 
@@ -193,10 +187,25 @@
                     <option value="120291^Yes^99DCT">Deaf</option>
                     <option value="147215^Yes^99DCT">Blind</option>
                     <option value="151342^Yes^99DCT">Mentally Challenged</option>
-                    <option value="1164538^Yes^99DCT">Physically Challenged</option>
+                    <option value="164538^Yes^99DCT">Physically Challenged</option>
                     <option value="5622^Yes^99DCT">Other</option>
                 </select>
             </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>HIV Test History</h4>
+        <div class="form-group">
+            <label for="obs.hiv_infected">
+                Patient ever been tested for HIV? <span class="required">*</span></label>
+            <select class="form-control negativeSelect" id="hive_tested" name="obs.hive_tested" required="required"
+                    data-concept="164401^HIV INFECTED^99DCT">
+                <option value="">...</option>
+                <option value="1066^No^99DCT">No</option>
+                <option value="1065^Yes^99DCT">Yes</option>
+
+            </select>
         </div>
     </div>
 
@@ -241,7 +250,7 @@
                 <option value="">...</option>
                 <option value="164163^No^99DCT">Provider Initiated Testing(PITC)</option>
                 <option value="161557^Yes^99DCT">Non Provider Initiated Testing</option>
-                <option value="1160539^Yes^99DCT">Integrated VCT Center</option>
+                <option value="160539^Yes^99DCT">Integrated VCT Center</option>
                 <option value="163121^Yes^99DCT">Stand Alone VCT Center</option>
                 <option value="159938^Yes^99DCT">Home Based Testing</option>
                 <option value="159939^Yes^99DCT">Mobile Outreach HTS</option>
@@ -330,17 +339,17 @@
                     <option value="...">...</option>
                     <option value="703^No^99DCT">Positive</option>
                     <option value="664^Yes^99DCT">Negative</option>
-                    <option value="163611^Yes^99DCT">Invalid</option>
+                    <option value="1138^Yes^99DCT">Inconclusive</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="obs.hiv_infected">Results given to Client?<span class="required">*</span></label>
                 <select class="form-control" id="hiv_infected_4" name="obs.hiv_infected" required="required"
-                        data-concept="1040^HIV INFECTED^99DCT">
+                        data-concept="164848^HIV INFECTED^99DCT">
                     <option value="...">...</option>
-                    <option value="703^No^99DCT">Yes</option>
-                    <option value="664^Yes^99DCT">No</option>
+                    <option value="1065^Yes^99DCT">Yes</option>
+                    <option value="1066^No^99DCT">No</option>
                 </select>
             </div>
 
@@ -382,23 +391,6 @@
         </div>
     </div>
 
-    <div class="section">
-        <h4>TB Screening</h4>
-        <div class="form-group">
-            <label for="obs.hiv_infected">Tb Screening results:<span class="required">*</span></label>
-            <select class="form-control" id="tbs" name="tbs" required="required"
-                    data-concept="1659^HIV INFECTED^99DCT">
-                <option value="...">...</option>
-                <option value="1660^No^99DCT">No TB Signs</option>
-                <option value="142177^Yes^99DCT">Presumed TB</option>
-                <option value="1662^Yes^99DCT">TB Confirmed</option>
-                <option value="160737^Yes^99DCT">Not Done</option>
-                <option value="1110^Yes^99DCT">On TB Treatment</option>
-            </select>
-        </div>
-
-    </div>
-
 
     <div class="section">
         <h4>Linked to Care?</h4>
@@ -409,7 +401,7 @@
                 <option value="...">...</option>
                 <option value="1065^YES^99DCT">Yes</option>
                 <option value="1066^Yes^99DCT">No</option>
-                <option value="1175^Yes^99DCT">NA</option>
+                <option value="1175^Yes^99DCT">N/A</option>
             </select>
         </div>
 
@@ -421,7 +413,22 @@
 
     </div>
 
+        <div class="section">
+            <h4>TB Screening</h4>
+            <div class="form-group">
+                <label for="obs.hiv_infected">Tb Screening results:<span class="required">*</span></label>
+                <select class="form-control" id="tbs" name="tbs" required="required"
+                        data-concept="1659^HIV INFECTED^99DCT">
+                    <option value="...">...</option>
+                    <option value="1660^No^99DCT">No TB Signs</option>
+                    <option value="142177^Yes^99DCT">Presumed TB</option>
+                    <option value="1662^Yes^99DCT">TB Confirmed</option>
+                    <option value="160737^Yes^99DCT">Not Done</option>
+                    <option value="1110^Yes^99DCT">On TB Treatment</option>
+                </select>
+            </div>
 
+        </div>
 
     <div class="section" >
         <h4>HIV Self Test</h4>
@@ -451,7 +458,7 @@
 
 
     <div class="section form-group">
-        <label for="freetext_general_2">General Comments</label>
+        <label for="freetext_general_2">Remarks</label>
         <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
                   data-concept="163761^FREETEXT GENERAL^99DCT"
                   placeholder="Provider notes/comments."></textarea>
