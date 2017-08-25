@@ -28,7 +28,7 @@
                    name="patient.uuid" type="hidden" readonly="readonly">
         </div>
         <div class="form-group">
-            <label for="patient.medical_record_number">AMRS ID Number:</label>
+            <label for="patient.medical_record_number">National ID:</label>
             <input class="form-control" id="patient.medical_record_number"
                    name="patient.medical_record_number" type="text" readonly="readonly">
         </div>
@@ -337,6 +337,29 @@
 
     </div>
 
+    <div class="section">
+        <h4>Type of Test</h4>
+
+        <fieldset name="162084^HIV INFECTED^99DCT">
+            <div class="form-group">
+                <label class="font-normal">
+                    <input name="initial_test"  id="initial" type="radio"
+                           data-concept="162084^HIV INFECTED^99DCT"
+                           value="162080^Yes^99DCT">
+                    Initial
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input name="confirmation_test" id="confirmation" type="radio"
+                           data-concept="162084^HIV INFECTED^99DCT"
+                           value="162082^No^99DCT">
+                    Confirmation
+                </label>
+            </div>
+
+        </fieldset>
+    </div>
     <div class="section" data-concept="164410^PATIENT REPORTED CURRENT OTHER TREATMENT^99DCT^2">
         <h4>HIV Test 1</h4>
 
@@ -368,20 +391,24 @@
             </div>
 
         <div>
-            <div class="testResultSectionToShow">
-                <div class="form-group">
-                    <label for="hiv_1_kit">Kit Name<span class="required">*</span></label>
-                    <input class="form-control" id="hiv_1_kit" name="hiv_1_kit" type="text"
-                           data-concept="164422^Expectedy^99DCT" required="required">
-                </div>
 
-                <div class="form-group">
-                    <label for="lot_nu">Lot Number<span class="required">*</span></label>
-                    <input class="form-control" id="lot_nu" name="lot_nu" type="number"
-                           data-concept="164409^Expected^99DCT" required="required">
-                </div>
+        <div class="form-group">
+            <label>Kit Name<span class="required">*</span></label>
+            <select class="form-control" id="hiv_1_kit" name="hiv_1_kit" required="required"
+                    data-concept="164422^HIV INFECTED^99DCT">
+                <option value="">...</option>
+                <option value="Determine">Determine</option>
+                <option value="Unigold">Unigold</option>
+            </select>
+        </div>
 
-            </div>
+        <div class="form-group">
+            <label for="lot_nu">Lot Number<span class="required">*</span></label>
+            <input class="form-control" id="lot_nu" name="lot_nu" type="number"
+                   data-concept="164409^Expected^99DCT" required="required">
+        </div>
+
+        </div>
             <div class="form-group">
                 <label for="expiry_date_1">Expiry Date <span class="required">*</span></label>
                 <input class="form-control datepicker kit-expiry-date" readonly="readonly" id="expiry_date_1"
@@ -389,8 +416,6 @@
 
                 <label class="date_alert" style="color: red;display:none">Please note that the test kit used has expired</label>
             </div>
-
-        </div>
 
         </fieldset>
 
@@ -436,14 +461,19 @@
 
             <div>
                 <div class="testResultSectionToShow">
+
                     <div class="form-group">
-                        <label for="hiv_2_kit">Kit Name<span class="required">*</span></label>
-                        <input class="form-control" id="hiv_2_kit" name="hiv_2_kit" type="text"
-                               data-concept="164422^Expectedy^99DCT" required="required">
+                        <label>Kit Name<span class="required">*</span></label>
+                        <select class="form-control" id="hiv_2_kit" name="hiv_1_kit" required="required"
+                                data-concept="164422^HIV INFECTED^99DCT">
+                            <option value="">...</option>
+                            <option value="Determine">Determine</option>
+                            <option value="Unigold">Unigold</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="hiv_2_kit">Lot Number<span class="required">*</span></label>
+                        <label>Lot Number<span class="required">*</span></label>
                         <input class="form-control" id="hiv_2_lot" name="hiv_2_kit" type="number"
                                data-concept="164409^Expected^99DCT" required="required">
                     </div>
@@ -460,7 +490,6 @@
 
     <div class="section">
         <h4>Final Results</h4>
-
         <div>
 
             <div class="form-group">
@@ -553,47 +582,6 @@
                 </div>
             </fieldset>
         </div>
-    </div>
-
-
-    <div class="section">
-        <h4>Linkage to Care</h4>
-        <div class="form-group">
-            <label>in-care:<span class="required">*</span></label>
-            <fieldset name="159811^FAMILY PLANNING COUNSELING PERFORMED^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="linked" id="linked_yes" type="radio"
-                               data-concept="159811^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
-                               value="1065^YES^99DCT">
-                        Yes
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="linked"  id="linked_no" type="radio"
-                               data-concept="159811^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
-                               value="1066^NO^99DCT">
-                        No
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="linked"  id="linked_na" type="radio"
-                               data-concept="159811^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
-                               value="1175^NO^99DCT">
-                        N/A
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-
-        <div class="form-group" id="ccc_no_div" style="display:none">
-            <label for="ccc_no">CCC No.<span class="required">*</span></label>
-            <input class="form-control" id="ccc_no" name="acc" type="text"
-                   data-concept="162053^Expected^99DCT" required="required">
-        </div>
-
     </div>
 
         <div class="section">
@@ -863,8 +851,7 @@
             }
 
 
-            var $dateSelected = $('.kit-expiry-date');
-            $dateSelected.change(function () {
+            $('.kit-expiry-date').change(function () {
                 var $date = $(this).val();
                 if ($date < currentDate) {
 
