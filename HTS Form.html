@@ -19,7 +19,7 @@
 <div id="result"></div>
 <form id="motorbike_accidents_form" name="motorbike_accidents_form">
 
-    <h2 class="text-center">HTS Register</h2>
+    <h2 class="text-center">HTS Form </h2>
 
     <div class="section">
         <h3>Demographics</h3>
@@ -104,20 +104,20 @@
         <h4>Population Type</h4>
         <div class="form-group">
             <h5><strong>Patient population type</strong></h5>
-            <fieldset name="160581^FAMILY PLANNING COUNSELING PERFORMED^99DCT">
+            <fieldset name="164930^POPULATION TYPE^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="pt" id="general_p" type="radio"
-                               data-concept="160581^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
-                               value="1066^NO^99DCT">
+                               data-concept="164930^POPULATION TYPE^99DCT"
+                               value="164928^GENERAL POPULATION^99DCT">
                         General Population
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="pt"  id="key_p" type="radio"
-                               data-concept="160581^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
-                               value="1065^YES^99DCT">
+                               data-concept="164930^POPULATION TYPE^99DCT"
+                               value="164929^KEY POPULATION^99DCT">
                         Key Population
                     </label>
                 </div>
@@ -128,24 +128,24 @@
             <div class="form-group">
                 <label for="drug_injection">
                     <input id="drug_injection" type="checkbox"
-                           data-concept="160581^HEART^99DCT"
-                           value="105^HEART^99DCT"/>
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="105^INTRAVENOUS DRUG USE^99DCT"/>
                     People who inject drugs
                 </label>
             </div>
             <div class="form-group men_relevant">
                 <label for="msm">
                     <input id="msm" type="checkbox"
-                           data-concept="160581^HEART^99DCT"
-                           value="160578^RHEUMATIC^99DCT"/>
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="160578^MEN WHO HAVE SEX WITH MEN^99DCT"/>
                     Men who have sex with men
                 </label>
             </div>
             <div class="form-group women_relevant">
                 <label for="fsw">
                     <input id="fsw" type="checkbox"
-                           data-concept="160581^HEART^99DCT"
-                           value="160579^RHEUMATIC^99DCT"/>
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="160579^FEMALE SEX WORKER^99DCT"/>
                     Female sex Worker
                 </label>
             </div>
@@ -156,11 +156,11 @@
         <h4>Disability</h4>
         <div class="form-group">
             <h5><strong>Patient has any disability? </strong></h5>
-            <fieldset name="162558^FAMILY PLANNING COUNSELING PERFORMED^99DCT">
+            <fieldset name="164951^PATIENT DISABLED^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="disability" id="disability_yes" type="radio"
-                               data-concept="162558^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
+                               data-concept="164951^PATIENT DISABLED^99DCT"
                                value="1065^YES^99DCT">
                         Yes
                     </label>
@@ -168,7 +168,7 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="disability"  id="disability_no" type="radio"
-                               data-concept="162558^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
+                               data-concept="164951^PATIENT DISABLED^99DCT"
                                value="1066^NO^99DCT">
                         No
                     </label>
@@ -181,14 +181,13 @@
                 <label>
                     Please indicated the type of disability<span class="required">*</span></label>
                 <select class="form-control negativeSelect" id="spd" name="spd" required="required"
-                        data-concept="162558^HIV INFECTED^99DCT">
+                        data-concept="162558^DISABILITY^99DCT">
                     <option value="">...</option>
-                    <option value="1175^No^99DCT">Not applicable</option>
-                    <option value="120291^Yes^99DCT">Deaf</option>
-                    <option value="147215^Yes^99DCT">Blind</option>
-                    <option value="151342^Yes^99DCT">Mentally Challenged</option>
-                    <option value="164538^Yes^99DCT">Physically Challenged</option>
-                    <option value="5622^Yes^99DCT">Other</option>
+                    <option value="120291^DEAF^99DCT">Deaf</option>
+                    <option value="147215^BLIND^99DCT">Blind</option>
+                    <option value="151342^MENTALLY CHALLENGED^99DCT">Mentally Challenged</option>
+                    <option value="164538^PHYSICALLY CHALLENGED^99DCT">Physically Challenged</option>
+                    <option value="5622^OTHER^99DCT">Other</option>
                 </select>
             </div>
         </div>
@@ -199,11 +198,11 @@
         <div class="form-group">
             <label>
                 Patient ever been tested for HIV? <span class="required">*</span></label>
-            <fieldset name="164401^HIV INFECTED^99DCT">
+            <fieldset name="164401^HIV TEST PERFORMED^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="ever_tested"  id="Hiv_test_yes" type="radio"
-                               data-concept="164401^HIV INFECTED^99DCT"
+                               data-concept="164401^HIV TEST PERFORMED^99DCT"
                                value="1065^Yes^99DCT">
                         Yes
                     </label>
@@ -211,7 +210,7 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="ever_tested" id="hiv_test_no" type="radio"
-                               data-concept="164401^HIV INFECTED^99DCT"
+                               data-concept="164401^HIV TEST PERFORMED^99DCT"
                                value="1066^No^99DCT">
                         No
                     </label>
@@ -227,11 +226,11 @@
             <label>
                 Patient has informed consent  <span class="required">*</span></label>
 
-            <fieldset name="1710^CONSENT^99DCT">
+            <fieldset name="1710^INFORMED CONSENT^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="client_consent"  id="consent_yes" type="radio"
-                               data-concept="1710^CONSENT^99DCT"
+                               data-concept="1710^INFORMED CONSENT^99DCT"
                                value="1065^Yes^99DCT">
                         Yes
                     </label>
@@ -239,7 +238,7 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="client_consent" id="consent_no" type="radio"
-                               data-concept="1710^CONSENT^99DCT"
+                               data-concept="1710^INFORMED CONSENT^99DCT"
                                value="1066^No^99DCT">
                         No
                     </label>
@@ -255,20 +254,20 @@
         <div class="form-group">
             <label>
                 Client tested as?  <span class="required">*</span></label>
-            <fieldset name="161557^HIV INFECTED^99DCT">
+            <fieldset name="164959^PATIENT TESTED AS^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="couple_testing"  id="couple" type="radio"
-                               data-concept="161557^HIV INFECTED^99DCT"
-                               value="1065^Yes^99DCT">
+                               data-concept="164959^PATIENT TESTED AS^99DCT"
+                               value="164958^COUPLE TESTING^99DCT">
                         Couple
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="couple_testing" id="individual" type="radio"
-                               data-concept="161557^HIV INFECTED^99DCT"
-                               value="1066^No^99DCT">
+                               data-concept="164959^PATIENT TESTED AS^99DCT"
+                               value="164957^INDIVIDUAL TESTING^99DCT">
                         Individual
                     </label>
                 </div>
@@ -281,20 +280,20 @@
     <div class="section">
         <h4>HTS Strategy</h4>
 
-        <fieldset name="160540^HIV INFECTED^99DCT">
+        <fieldset name="164956^HIV TESTING SERVICES STRATEGY^99DCT">
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy"  id="strategy_pitc" type="radio"
-                           data-concept="160540^HIV INFECTED^99DCT"
-                           value="164163^Yes^99DCT">
+                           data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                           value="164163^PITC^99DCT">
                     Provider Initiated Testing(PITC)
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy" id="strategy_npi" type="radio"
-                           data-concept="160540^HIV INFECTED^99DCT"
-                           value="161557^No^99DCT">
+                           data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                           value="164953^NON-PROVIDER-INITIATED HIV TESTING AND COUNSELING^99DCT">
                     Non Provider Initiated Testing
                 </label>
             </div>
@@ -302,16 +301,16 @@
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy"  id="strategy_ivct" type="radio"
-                           data-concept="160540^HIV INFECTED^99DCT"
-                           value="160539^Yes^99DCT">
+                           data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                           value="164954^INTEGRATED VCT^99DCT">
                     Integrated VCT Center
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy" id="strategy_svct" type="radio"
-                           data-concept="160540^HIV INFECTED^99DCT"
-                           value="163121^No^99DCT">
+                           data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                           value="164955^STANDALONE VCT CENTER^99DCT">
                     Stand Alone VCT Center
                 </label>
             </div>
@@ -319,16 +318,16 @@
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy"  id="strategy_hbt" type="radio"
-                           data-concept="160540^HIV INFECTED^99DCT"
-                           value="159938^Yes^99DCT">
+                           data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                           value="159938^HOME BASES HIV TESTING PROGRAM^99DCT">
                     Home Based Testing
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy" id="strategy_mor" type="radio"
-                           data-concept="160540^HIV INFECTED^99DCT"
-                           value="159939^No^99DCT">
+                           data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                           value="159939^MOBILE VCT PROGRAM^99DCT">
                     Mobile Outreach HTS
                 </label>
             </div>
@@ -340,43 +339,43 @@
     <div class="section">
         <h4>Type of Test</h4>
 
-        <fieldset name="162084^HIV INFECTED^99DCT">
+        <fieldset name="162084^TYPE OF TEST^99DCT">
             <div class="form-group">
                 <label class="font-normal">
                     <input name="initial_test"  id="initial" type="radio"
-                           data-concept="162084^HIV INFECTED^99DCT"
-                           value="162080^Yes^99DCT">
+                           data-concept="162084^TYPE OF TEST^99DCT"
+                           value="162080^INITIAL^99DCT">
                     Initial
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="confirmation_test" id="confirmation" type="radio"
-                           data-concept="162084^HIV INFECTED^99DCT"
-                           value="162082^No^99DCT">
+                           data-concept="162084^TYPE OF TEST^99DCT"
+                           value="162082^CONFIRMATION^99DCT">
                     Confirmation
                 </label>
             </div>
 
         </fieldset>
     </div>
-    <div class="section" data-concept="164410^PATIENT REPORTED CURRENT OTHER TREATMENT^99DCT^2">
+    <div class="section" data-concept="164410^TEST LABORATORY NUMBER CONSTRUCT^99DCT">
         <h4>HIV Test 1</h4>
 
-        <fieldset name="1040^HIV INFECTED^99DCT">
+        <fieldset name="1040^HIV RAPID TEST 1^99DCT">
             <div class="form-group">
                 <label class="font-normal">
                     <input name="hiv_test_one"  id="hiv_1_p" type="radio"
-                           data-concept="1040^HIV INFECTED^99DCT"
-                           value="703^Yes^99DCT">
+                           data-concept="1040^HIV RAPID TEST 1^99DCT"
+                           value="703^POSITIVE^99DCT">
                     Positive
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="hiv_test_one" id="hiv_1_n" type="radio"
-                           data-concept="1040^HIV INFECTED^99DCT"
-                           value="664^No^99DCT">
+                           data-concept="1040^HIV RAPID TEST 1^99DCT"
+                           value="664^NEGATIVE^99DCT">
                     Negative
                 </label>
             </div>
@@ -384,8 +383,8 @@
             <div class="form-group">
                 <label class="font-normal">
                     <input name="hiv_test_one"  id="hiv_1_i" type="radio"
-                           data-concept="1040^HIV INFECTED^99DCT"
-                           value="163611^Yes^99DCT">
+                           data-concept="1040^HIV RAPID TEST 1^99DCT"
+                           value="163611^INVALID^99DCT">
                     Invalid
                 </label>
             </div>
@@ -395,24 +394,24 @@
         <div class="form-group">
             <label>Kit Name<span class="required">*</span></label>
             <select class="form-control" id="hiv_1_kit" name="hiv_1_kit" required="required"
-                    data-concept="164422^HIV INFECTED^99DCT">
+                    data-concept="164962^HIV TEST KIT USED^99DCT">
                 <option value="">...</option>
-                <option value="Determine">Determine</option>
-                <option value="Unigold">Unigold</option>
+                <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
+                <option value="164961^UNI-GOLD TEST KIT^99DCT">Uni-Gold</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="lot_nu">Lot Number<span class="required">*</span></label>
             <input class="form-control" id="lot_nu" name="lot_nu" type="number"
-                   data-concept="164409^Expected^99DCT" required="required">
+                   data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
         </div>
 
         </div>
             <div class="form-group">
                 <label for="expiry_date_1">Expiry Date <span class="required">*</span></label>
                 <input class="form-control datepicker kit-expiry-date" readonly="readonly" id="expiry_date_1"
-                       data-concept="162502^Expectedy^99DCT" name="expiry_date_1" type="text" required="required">
+                       data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text" required="required">
 
                 <label class="date_alert" style="color: red;display:none">Please note that the test kit used has expired</label>
             </div>
@@ -422,22 +421,22 @@
     </div>
 
 
-    <div class="section" data-concept="164410^PATIENT REPORTED CURRENT OTHER TREATMENT^99DCT^2">
+    <div class="section" data-concept="164410^TEST LABORATORY NUMBER CONSTRUCT^99DCT^2">
         <h4>HIV Test 2</h4>
-        <fieldset name="1040^HIV INFECTED^99DCT">
+        <fieldset name="1326^HIV RAPID TEST 2^99DCT">
             <div class="form-group">
                 <label class="font-normal">
                     <input name="hiv_test_two"  id="hiv_2_p" type="radio"
-                           data-concept="1326^HIV INFECTED^99DCT"
-                           value="703^Yes^99DCT">
+                           data-concept="1326^HIV RAPID TEST 2^99DCT"
+                           value="703^POSITIVE^99DCT">
                     Positive
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="hiv_test_two" id="hiv_2_n" type="radio"
-                           data-concept="1326^HIV INFECTED^99DCT"
-                           value="664^No^99DCT">
+                           data-concept="1326^HIV RAPID TEST 2^99DCT"
+                           value="664^NEGATIVE^99DCT">
                     Negative
                 </label>
             </div>
@@ -445,16 +444,16 @@
             <div class="form-group">
                 <label class="font-normal">
                     <input name="hiv_test_two"  id="hiv_2_i" type="radio"
-                           data-concept="1326^HIV INFECTED^99DCT"
-                           value="163611^Yes^99DCT">
+                           data-concept="1326^HIV RAPID TEST 2^99DCT"
+                           value="163611^INVALID^99DCT">
                     Invalid
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="hiv_test_two"  id="hiv_2_na" type="radio"
-                           data-concept="1326^HIV INFECTED^99DCT"
-                           value="1175^Yes^99DCT">
+                           data-concept="1326^HIV RAPID TEST 2^99DCT"
+                           value="1175^NOT APPLICABLE^99DCT">
                     Not Applicable
                 </label>
             </div>
@@ -464,24 +463,24 @@
 
                     <div class="form-group">
                         <label>Kit Name<span class="required">*</span></label>
-                        <select class="form-control" id="hiv_2_kit" name="hiv_1_kit" required="required"
-                                data-concept="164422^HIV INFECTED^99DCT">
+                        <select class="form-control" id="hiv_2_kit" name="hiv_2_kit" required="required"
+                                data-concept="164962^HIV TEST KIT USED^99DCT">
                             <option value="">...</option>
-                            <option value="Determine">Determine</option>
-                            <option value="Unigold">Unigold</option>
+                            <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
+                            <option value="164961^UNI-GOLD TEST KIT^99DCT">Uni-Gold</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Lot Number<span class="required">*</span></label>
                         <input class="form-control" id="hiv_2_lot" name="hiv_2_kit" type="number"
-                               data-concept="164409^Expected^99DCT" required="required">
+                               data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="expiry_date_2">Expiry Date <span class="required">*</span></label>
                     <input class="form-control kit-expiry-date  datepicker" readonly="readonly" id="expiry_date_2"
-                           data-concept="162502^Expectedy^99DCT" name="expiry_date_1" type="text" required="required">
+                           data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text" required="required">
                     <label class="date_alert" style="color: red;display:none">Please note that the test kit used has expired</label>
                 </div>
             </div>
@@ -494,20 +493,20 @@
 
             <div class="form-group">
                 <label>Final Results: <span class="required">*</span></label>
-                <fieldset name="159427^HIV INFECTED^99DCT">
+                <fieldset name="159427^FINAL HIV RESULTS^99DCT">
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="final_result"  id="hiv_final_p" type="radio"
-                                   data-concept="159427^HIV INFECTED^99DCT"
-                                   value="703^Yes^99DCT">
+                                   data-concept="159427^FINAL HIV RESULTS^99DCT"
+                                   value="703^POSITIVE^99DCT">
                             Positive
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="final_result" id="hiv_final_n" type="radio"
-                                   data-concept="159427^HIV INFECTED^99DCT"
-                                   value="664^No^99DCT">
+                                   data-concept="159427^FINAL HIV RESULTS^99DCT"
+                                   value="664^NEGATIVE^99DCT">
                             Negative
                         </label>
                     </div>
@@ -515,8 +514,8 @@
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="final_result"  id="hiv_final_i" type="radio"
-                                   data-concept="159427^HIV INFECTED^99DCT"
-                                   value="1138^Yes^99DCT">
+                                   data-concept="159427^FINAL HIV RESULTS^99DCT"
+                                   value="1138^INCONCLUSIVE^99DCT">
                             Inconclusive
                         </label>
                     </div>
@@ -526,20 +525,20 @@
 
             <div class="form-group">
                 <label>Results given to Client?<span class="required">*</span></label>
-                <fieldset name="164848^HIV INFECTED^99DCT">
+                <fieldset name="164848^HIV RESULTS GIVEN TO CLIENT^99DCT">
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="final_result_given"  id="hiv_final_given_y" type="radio"
-                                   data-concept="164848^HIV INFECTED^99DCT"
-                                   value="1065^Yes^99DCT">
+                                   data-concept="164848^HIV RESULTS GIVEN TO CLIENT^99DCT"
+                                   value="1065^YES^99DCT">
                             Yes
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="final_result_given" id="hiv_final_given_n" type="radio"
-                                   data-concept="164848^HIV INFECTED^99DCT"
-                                   value="1066^No^99DCT">
+                                   data-concept="164848^HIV RESULTS GIVEN TO CLIENT^99DCT"
+                                   value="1066^NO^99DCT">
                             No
                         </label>
                     </div>
@@ -555,11 +554,11 @@
         <h4>Discordance</h4>
         <div class="form-group">
             <h5><strong>Couple is discordant:</strong></h5>
-            <fieldset name="6096^FAMILY PLANNING COUNSELING PERFORMED^99DCT">
+            <fieldset name="6096^DISCORDANT COUPLE^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="discordant" id="discordant_a" type="radio"
-                               data-concept="6096^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
+                               data-concept="6096^DISCORDANT COUPLE^99DCT"
                                value="1065^YES^99DCT">
                         Yes
                     </label>
@@ -567,7 +566,7 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="discordant"  id="discordant_b" type="radio"
-                               data-concept="6096^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
+                               data-concept="6096^DISCORDANT COUPLE^99DCT"
                                value="1066^NO^99DCT">
                         No
                     </label>
@@ -575,8 +574,8 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="discordant"  id="discordant_c" type="radio"
-                               data-concept="6096^FAMILY PLANNING COUNSELING PERFORMED^99DCT"
-                               value="1175^NO^99DCT">
+                               data-concept="6096^DISCORDANT COUPLE^99DCT"
+                               value="1175^NOT APPLICABLE^99DCT">
                         N/A
                     </label>
                 </div>
@@ -589,20 +588,20 @@
             <div class="form-group">
                 <label>Tb Screening results:<span class="required">*</span></label>
 
-                <fieldset name="1659^HIV INFECTED^99DCT">
+                <fieldset name="1659^TB DISEASE STATUS^99DCT">
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="tb_screening"  id="tb_screening_no_signs" type="radio"
-                                   data-concept="1659^HIV INFECTED^99DCT"
-                                   value="1660^Yes^99DCT">
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="1660^NO SIGNS OR SYMPTOMS^99DCT">
                             No TB Signs
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="tb_screening" id="tb_screening_presumed" type="radio"
-                                   data-concept="1659^HIV INFECTED^99DCT"
-                                   value="142177^No^99DCT">
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="142177^TB SUSPECTED^99DCT">
                             Presumed TB
                         </label>
                     </div>
@@ -610,16 +609,16 @@
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="tb_screening"  id="tb_screening_confirmed" type="radio"
-                                   data-concept="1659^HIV INFECTED^99DCT"
-                                   value="1662^Yes^99DCT">
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="1662^TB CONFIRMED^99DCT">
                             TB Confirmed
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="tb_screening" id="tb_screening_not_done" type="radio"
-                                   data-concept="1659^HIV INFECTED^99DCT"
-                                   value="160737^No^99DCT">
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="160737^NOT SCREENED^99DCT">
                             Not Done
                         </label>
                     </div>
@@ -627,8 +626,8 @@
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="tb_screening"  id="tb_screening_on_treatment" type="radio"
-                                   data-concept="1659^HIV INFECTED^99DCT"
-                                   value="1110^Yes^99DCT">
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="1111^ON TB TREATMENT^99DCT">
                             On TB Treatment
                         </label>
                     </div>
@@ -642,11 +641,11 @@
         <h4>HIV Self Test</h4>
         <div class="form-group">
             <h5><strong>Has the client done HIV self test in the last 12 months? </strong></h5>
-            <fieldset name="1492^FAMILY PLANNING COUNSELING PERFORMED^99DCT">
+            <fieldset name="164952^PATIENT HAD HIV SELF TEST^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="self_test" id="self_test_yes" type="radio"
-                               data-concept="1492^FAMILY^99DCT"
+                               data-concept="164952^PATIENT HAD HIV SELF TEST^99DCT"
                                value="1065^YES^99DCT">
                         Yes
                     </label>
@@ -654,7 +653,7 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="self_test"  id="self_test_no" type="radio"
-                               data-concept="1492^FAMILY^99DCT"
+                               data-concept="164952^PATIENT HAD HIV SELF TEST^99DCT"
                                value="1066^NO^99DCT">
                         No
                     </label>
