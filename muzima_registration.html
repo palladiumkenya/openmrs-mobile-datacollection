@@ -47,12 +47,12 @@
     <div class="section">
         <h3>Identifiers</h3>
         <div class="form-group">
-            <label for="patient.medical_record_number">National ID<span
+            <label for="patient.national_id">National ID<span
                     class="required">*</span></label>
 
             <div class="form-horizontal">
-                <input class="form-control" id="patient.medical_record_number"
-                       name="patient.medical_record_number" type="text" required="required">
+                <input class="form-control" id="patient.national_id"
+                       name="patient.national_id" type="text" required="required">
 
             </div>
 
@@ -104,6 +104,14 @@
             <input class="form-control" id="patient.county" name="patient.county" type="text">
         </div>
         <div class="form-group">
+            <label for="patient.sub_county">Sub County: </label>
+            <input class="form-control" id="patient.sub_county" name="patient.sub_county" type="text">
+        </div>
+        <div class="form-group">
+            <label for="patient.ward">Ward: </label>
+            <input class="form-control" id="patient.ward" name="patient.ward" type="text">
+        </div>
+        <div class="form-group">
             <label for="patient.location">Location: </label>
             <input class="form-control" id="patient.location" name="patient.location" type="text">
         </div>
@@ -123,25 +131,33 @@
             <label for="patient.phone_number">Phone Number: </label>
             <input class="form-control phoneNumber" id="patient.phone_number" name="patient.phone_number" type="tel">
         </div>
+        <div class="form-group">
+            <label for="patient.alternate_phone_contact">Alternate Phone Number: </label>
+            <input class="form-control phoneNumber" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="tel">
+        </div>
+        <div class="form-group">
+            <label for="patient.postal_address">Postal Address: </label>
+            <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="tel">
+        </div>
     </div>
 <br/>
     <div class="section">
-        <fieldset name="1054^HIV INFECTED^99DCT">
+        <fieldset name="1054^CIVIL STATUS^99DCT">
         <div class="form-group">
             <label>Marital Status:<span class="required">*</span></label>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy"  id="married_polygamous" type="radio"
-                           data-concept="1054^HIV INFECTED^99DCT"
-                           value="159715^Yes^99DCT">
+                           data-concept="1054^CIVIL STATUS^99DCT"
+                           value="159715^Married polygamous^99DCT">
                     Married Polygamous
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy" id="married_monogamous" type="radio"
-                           data-concept="1054^HIV INFECTED^99DCT"
-                           value="5555^No^99DCT">
+                           data-concept="1054^CIVIL STATUS^99DCT"
+                           value="5555^Married monogamous^99DCT">
                     Married Monogamous
                 </label>
             </div>
@@ -149,16 +165,16 @@
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy"  id="divorced" type="radio"
-                           data-concept="1054^HIV INFECTED^99DCT"
-                           value="1058^Yes^99DCT">
+                           data-concept="1054^CIVIL STATUS^99DCT"
+                           value="1058^Divorced^99DCT">
                     Divorced
                 </label>
             </div>
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy" id="widowed" type="radio"
-                           data-concept="1054^HIV INFECTED^99DCT"
-                           value="1059^No^99DCT">
+                           data-concept="1054^CIVIL STATUS^99DCT"
+                           value="1059^Widowed^99DCT">
                     Widowed
                 </label>
             </div>
@@ -166,8 +182,8 @@
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy"  id="living_with_partner" type="radio"
-                           data-concept="1054^HIV INFECTED^99DCT"
-                           value="1060^Yes^99DCT">
+                           data-concept="1054^CIVIL STATUS^99DCT"
+                           value="1060^Living with Partner^99DCT">
                     Living with Partner
                 </label>
             </div>
@@ -175,8 +191,8 @@
             <div class="form-group">
                 <label class="font-normal">
                     <input name="strategy"  id="never_married" type="radio"
-                           data-concept="1054^HIV INFECTED^99DCT"
-                           value="1057^Yes^99DCT">
+                           data-concept="1054^CIVIL STATUS^99DCT"
+                           value="1057^Never Married^99DCT">
                     Never Married
                 </label>
             </div>
@@ -184,22 +200,22 @@
         </fieldset>
 
 
-        <fieldset name="1542^HIV INFECTED^99DCT">
+        <fieldset name="1542^OCCUPATION^99DCT">
             <div class="form-group">
                 <label>Occupation:<span class="required">*</span></label>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy"  id="farmer" type="radio"
-                               data-concept="1542^HIV INFECTED^99DCT"
-                               value="1538^Yes^99DCT">
+                               data-concept="1542^OCCUPATION^99DCT"
+                               value="1538^Farmer^99DCT">
                         Farmer
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy" id="trader" type="radio"
-                               data-concept="1542^HIV INFECTED^99DCT"
-                               value="1539^No^99DCT">
+                               data-concept="1542^OCCUPATION^99DCT"
+                               value="1539^Trader^99DCT">
                         Trader
                     </label>
                 </div>
@@ -207,16 +223,16 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy"  id="employee" type="radio"
-                               data-concept="1542^HIV INFECTED^99DCT"
-                               value="1540^Yes^99DCT">
+                               data-concept="1542^OCCUPATION^99DCT"
+                               value="1540^Employee^99DCT">
                         Employee
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy" id="student" type="radio"
-                               data-concept="1542^HIV INFECTED^99DCT"
-                               value="159465^No^99DCT">
+                               data-concept="1542^OCCUPATION^99DCT"
+                               value="159465^Student^99DCT">
                         Student
                     </label>
                 </div>
@@ -224,8 +240,8 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy"  id="driver" type="radio"
-                               data-concept="1542^HIV INFECTED^99DCT"
-                               value="159466^Yes^99DCT">
+                               data-concept="1542^OCCUPATION^99DCT"
+                               value="159466^Driver^99DCT">
                         Driver
                     </label>
                 </div>
@@ -233,30 +249,30 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy"  id="none" type="radio"
-                               data-concept="1542^HIV INFECTED^99DCT"
-                               value="1107^Yes^99DCT">
+                               data-concept="1542^OCCUPATION^99DCT"
+                               value="1107^None^99DCT">
                         None
                     </label>
                 </div>
             </div>
         </fieldset>
 
-        <fieldset name="1712^HIV INFECTED^99DCT">
+        <fieldset name="1712^HIGHEST EDUCATION LEVEL^99DCT">
             <div class="form-group">
                 <label>Education<span class="required">*</span></label>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy"  id="no_education" type="radio"
-                               data-concept="1712^HIV INFECTED^99DCT"
-                               value="1107^Yes^99DCT">
+                               data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
+                               value="1107^None^99DCT">
                         None
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy" id="primary" type="radio"
-                               data-concept="1712^HIV INFECTED^99DCT"
-                               value="1713^No^99DCT">
+                               data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
+                               value="1713^Primary School Education^99DCT">
                         Primary School Education
                     </label>
                 </div>
@@ -264,22 +280,34 @@
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy"  id="secondary" type="radio"
-                               data-concept="1712^HIV INFECTED^99DCT"
-                               value="1714^Yes^99DCT">
+                               data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
+                               value="1714^Secondary School Education^99DCT">
                         Secondary School Education
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
                         <input name="strategy" id="college" type="radio"
-                               data-concept="1712^HIV INFECTED^99DCT"
-                               value="159785^No^99DCT">
+                               data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
+                               value="159785^College, University or Polytechnic^99DCT">
                         College, University or Polytechnic
                     </label>
                 </div>
             </div>
         </fieldset>
 
+    </div>
+
+    <div class="section">
+        <h3>Guardian Details</h3>
+        <div class="form-group">
+            <label for="patient.guardian_first_name">First Name: </label>
+            <input class="form-control" id="patient.guardian_first_name" name="patient.guardian_first_name" type="text">
+        </div>
+        <div class="form-group">
+            <label for="patient.guardian_last_name">Last Name: </label>
+            <input class="form-control" id="patient.guardian_last_name" name="patient.guardian_last_name" type="text">
+        </div>
     </div>
 
     <div class="section">

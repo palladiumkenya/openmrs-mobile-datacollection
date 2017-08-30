@@ -10,7 +10,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
     <script src="js/muzima.js"></script>
-    <title>HTS Register</title>
+    <title>HTS Linkage and Referral Form</title>
     <style>
         h4 {
             text-align: center;
@@ -19,9 +19,9 @@
 </head>
 <body class="col-md-8 col-md-offset-2">
 <div id="result"></div>
-<form id="motorbike_accidents_form" name="motorbike_accidents_form">
+<form id="hts_linkage_and_referral_form" name="hts_linkage_and_referral_form">
 
-    <h2 class="text-center">HIV Confirmation</h2>
+    <h2 class="text-center">HTS Linkage and Referral Form</h2>
 
     <div class="section">
         <h3>Demographics</h3>
@@ -30,9 +30,9 @@
                    name="patient.uuid" type="hidden" readonly="readonly">
         </div>
         <div class="form-group">
-            <label for="patient.medical_record_number">AMRS ID Number:</label>
-            <input class="form-control" id="patient.medical_record_number"
-                   name="patient.medical_record_number" type="text" readonly="readonly">
+            <label for="patient.national_id">National ID:</label>
+            <input class="form-control" id="patient.national_id"
+                   name="patient.national_id" type="text" readonly="readonly">
         </div>
         <div class="form-group">
             <label for="patient.family_name">Family Name:</label>
@@ -60,6 +60,31 @@
         <div class="form-group">
             <label for="patient.birth_date">Date Of Birth:</label>
             <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
+                   readonly="readonly" value="">
+        </div>
+        <div class="form-group">
+            <label for="patient.phone_number">Phone Number:</label>
+            <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
+                   readonly="readonly" value="">
+        </div>
+        <div class="form-group">
+            <label for="patient.alternate_phone_contact">Alternate Phone Number:</label>
+            <input class="form-control" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="text"
+                   readonly="readonly" value="">
+        </div>
+        <div class="form-group">
+            <label for="patient.postal_address">Address:</label>
+            <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="text"
+                   readonly="readonly" value="">
+        </div>
+        <div class="form-group">
+            <label for="patient.landmark">Landmark:</label>
+            <input class="form-control" id="patient.landmark" name="patient.landmark" type="text"
+                   readonly="readonly" value="">
+        </div>
+        <div class="form-group">
+            <label for="patient.nearest_health_center">Nearest Facility:</label>
+            <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
                    readonly="readonly" value="">
         </div>
     </div>
