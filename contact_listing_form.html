@@ -62,31 +62,31 @@
             <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
                    readonly="readonly" value="">
         </div>
-       <!-- <div class="form-group">
-            <label for="patient.phone_number">Phone Number:</label>
-            <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.alternate_phone_contact">Alternate Phone Number:</label>
-            <input class="form-control" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.postal_address">Address:</label>
-            <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.landmark">Landmark:</label>
-            <input class="form-control" id="patient.landmark" name="patient.landmark" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.nearest_health_center">Nearest Facility:</label>
-            <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
-                   readonly="readonly" value="">
-        </div>-->
+        <!-- <div class="form-group">
+             <label for="patient.phone_number">Phone Number:</label>
+             <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.alternate_phone_contact">Alternate Phone Number:</label>
+             <input class="form-control" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.postal_address">Address:</label>
+             <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.landmark">Landmark:</label>
+             <input class="form-control" id="patient.landmark" name="patient.landmark" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.nearest_health_center">Nearest Facility:</label>
+             <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
+                    readonly="readonly" value="">
+         </div>-->
     </div>
 
     <div class="section">
@@ -157,15 +157,15 @@
             <fieldset name="1560^RELATIONSHIP^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship" id="mother" type="radio"
-                               data-concept="1560^RELATIONSHIP^99DCT"
-                               value="970^MOTHER^99DCT">
+                        <input  type="radio" class="repeat_radio_relationship"
+                                data-concept="1560^RELATIONSHIP^99DCT"
+                                value="970^MOTHER^99DCT">
                         Mother
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship" id="father" type="radio"
+                        <input type="radio" class="repeat_radio_relationship"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="971^FATHER^99DCT">
                         Father
@@ -173,7 +173,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship" id="sibling" type="radio"
+                        <input type="radio" class="repeat_radio_relationship"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="972^SIBLING^99DCT">
                         Sibling
@@ -181,7 +181,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship" id="child" type="radio"
+                        <input type="radio" class="repeat_radio_relationship"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="1528^CHILD^99DCT">
                         Child
@@ -189,7 +189,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship" id="spouse" type="radio"
+                        <input type="radio" class="repeat_radio_relationship"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="5617^SPOUSE^99DCT">
                         Spouse
@@ -197,7 +197,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship" id="partner" type="radio"
+                        <input type="radio" class="repeat_radio_relationship"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="163565^PARTNER^99DCT">
                         Partner
@@ -205,7 +205,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship" id="co_wife" type="radio"
+                        <input type="radio" class="repeat_radio_relationship"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="162221^CO-WIFE^99DCT">
                         Co-Wife
@@ -219,7 +219,7 @@
             <fieldset name="163607^RELATIONSHIP STATUS^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship_status" id="current" type="radio"
+                        <input type="radio" class="repeat_r_status"
                                data-concept="163607^RELATIONSHIP STATUS^99DCT"
                                value="159450^CURRENT RELATIONSHIP^99DCT">
                         Current
@@ -227,7 +227,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="relationship_status" id="deceased" type="radio"
+                        <input type="radio" class="repeat_r_status"
                                data-concept="163607^RELATIONSHIP STATUS^99DCT"
                                value="160432^DECEASED^99DCT">
                         Deceased
@@ -238,56 +238,79 @@
 
         <div class="form-group">
             <h5><strong>HIV status:</strong></h5>
-            <fieldset name="163607^RELATIONSHIP STATUS^99DCT">
-            <div class="form-group">
-                <label class="font-normal">
-                    <input name="hiv_status"  id="hiv_positive" type="radio"
-                           data-concept="1040^HIV RAPID TEST 1^99DCT"
-                           value="703^POSITIVE^99DCT">
-                    Positive
-                </label>
-            </div>
-            <div class="form-group">
-                <label class="font-normal">
-                    <input name="hiv_status" id="hiv_negative" type="radio"
-                           data-concept="1040^HIV RAPID TEST 1^99DCT"
-                           value="664^NEGATIVE^99DCT">
-                    Negative
-                </label>
-            </div>
+            <fieldset name="1169^HIV INFECTED^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_hiv_status"
+                               data-concept="1169^HIV INFECTED^99DCT"
+                               value="703^POSITIVE^99DCT">
+                        Positive
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_hiv_status"
+                               data-concept="1169^HIV INFECTED^99DCT"
+                               value="664^NEGATIVE^99DCT">
+                        Negative
+                    </label>
+                </div>
 
-            <div class="form-group">
-                <label class="font-normal">
-                    <input name="hiv_status"  id="hiv_hei" type="radio"
-                           data-concept="1040^HIV RAPID TEST 1^99DCT"
-                           value="163611^INVALID^99DCT">
-                    Exposed Infant
-                </label>
-            </div>
-            <div class="form-group">
-                <label class="font-normal">
-                    <input name="hiv_status"  id="hiv_unknown" type="radio"
-                           data-concept="1405^HIV RAPID TEST 1^99DCT"
-                           value="1067^UNKNOWN^99DCT">
-                    Unknown
-                </label>
-            </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_hiv_status"
+                               data-concept="1169^HIV INFECTED^99DCT"
+                               value="163611^INVALID^99DCT">
+                        Exposed Infant
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_hiv_status"
+                               data-concept="1169^HIV INFECTED^99DCT"
+                               value="1067^UNKNOWN^99DCT">
+                        Unknown
+                    </label>
+                </div>
             </fieldset>
         </div>
 
-        <div class="form-group">
-            <label>Unique Patient Number (UPN):<span class="required">*</span></label>
-            <input class="form-control" id="upn" name="upn" type="text"
-                   data-concept="162053^CCC NUMBER^99DCT" required="required">
+        <div class="form-group show-positive">
+            <h5><strong>Enrolled in Care:</strong></h5>
+            <fieldset name="159811^ENROLLED^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_in_care"
+                               data-concept="159811^ENROLLED^99DCT"
+                               value="1065^Yes^99DCT">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_in_care"
+                               data-concept="159811^ENROLLED^99DCT"
+                               value="1066^No^99DCT">
+                        No
+                    </label>
+                </div>
+            </fieldset>
         </div>
-        <div style="display:none" class="form-group upn">
-            <label><span style="font-size: small; color: red; ">Invalid Unique Patient Number format</span></label>
-        </div>
+        <div id="show-in-care" style="display: none">
+            <div class="form-group">
+                <label>Unique Patient Number (UPN):</label>
+                <input class="form-control" id="ccc_number" name="ccc_number" type="text"
+                       data-concept="162053^CCC NUMBER^99DCT">
+            </div>
+            <div style="display:none" class="form-group upn">
+                <label><span style="font-size: small; color: red; ">Invalid Unique Patient Number format</span></label>
+            </div>
 
-        <div class="form-group">
-            <label>Facility linked to:<span class="required">*</span></label>
-            <input class="form-control" id="facility_name" name="facility_name" type="text"
-                   data-concept="162724^HEALTH FACILITY^99DCT" required="required">
+            <div class="form-group">
+                <label>Facility linked to:</label>
+                <input class="form-control" id="facility_name" name="facility_name" type="text"
+                       data-concept="162724^HEALTH FACILITY^99DCT">
+            </div>
         </div>
 
     </div>
@@ -304,6 +327,21 @@
         if ($(encounterDatetime).val() == "") {
             $(encounterDatetime).val(currentDate);
         }
+
+        $('.repeat_radio_relationship').change(function() {
+            $(this).closest('.section').find('.repeat_radio_relationship').not(this).prop('checked', false);
+        });
+
+        $('.repeat_r_status').change(function() {
+            $(this).closest('.section').find('.repeat_r_status').not(this).prop('checked', false);
+        });
+        $('.repeat_hiv_status').change(function() {
+            $(this).closest('.section').find('.repeat_hiv_status').not(this).prop('checked', false);
+        });
+
+        $('.repeat_in_care').change(function() {
+            $(this).closest('.section').find('.repeat_in_care').not(this).prop('checked', false);
+        });
 
         var currentYear = new Date().getFullYear();
         var birthdate_start_year = currentYear - 140;
@@ -358,6 +396,29 @@
         });
         dobType.trigger('change');
 
+        var $testResults = $('.repeat_hiv_status');
+        $testResults.change(function () {
+            var $testResultSectionToShow = $(".show-positive");
+            var divToShowVal = $(this).val();
+            if (divToShowVal  != '703^POSITIVE^99DCT' ) {
+                $testResultSectionToShow .hide();
+            } else {
+                $testResultSectionToShow .show();
+            }
+        });
+        $testResults.trigger('change');
+
+        var $inCareSelect = $('.repeat_in_care');
+        $inCareSelect.change(function () {
+            var $inCareSelectSectionToShow = $("#show-in-care");
+            var divToShowVal = $(this).val();
+            if (divToShowVal  == '1065^Yes^99DCT' ) {
+                $inCareSelectSectionToShow.show();
+            } else {
+                $inCareSelectSectionToShow.hide();
+            }
+        });
+        $inCareSelect.trigger('change');
 
         jQuery.validator.addClassRules({
             'check-confirm-identifier': {

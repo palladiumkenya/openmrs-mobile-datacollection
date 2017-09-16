@@ -47,12 +47,12 @@
     <div class="section">
         <h3>Identifiers</h3>
         <div class="form-group">
-            <label for="patient.national_id">National ID<span
+            <label>National ID<span
                     class="required">*</span></label>
 
             <div class="form-horizontal">
-                <input class="form-control" id="patient.national_id"
-                       name="patient.national_id" type="text" required="required">
+                <input class="form-control" id="patient.medical_record_number"
+                       name="patient.medical_record_number" type="text" required="required">
 
             </div>
 
@@ -61,7 +61,7 @@
     </div>
     <div class="section">
         <div class="form-group">
-            <label for="patient.sex">Sex: <span class="required">*</span></label>
+            <label>Sex: <span class="required">*</span></label>
             <select class="form-control" id="patient.sex" name="patient.sex" required="required">
                 <option value="">...</option>
                 <option value="M">Male</option>
@@ -69,7 +69,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="tmp.birthdate_type">Record Date of Birth... <span class="required">*</span></label>
+            <label>Record Date of Birth... <span class="required">*</span></label>
             <select class="form-control" name="tmp.birthdate_type" id="tmp.birthdate_type" required="required">
                 <option value="">...</option>
                 <option value="birthdate">By Birth-date</option>
@@ -77,12 +77,12 @@
             </select>
         </div>
         <div class="form-group show_birthdate">
-            <label for="patient.birth_date">Select birthdate <span class="required">*</span></label>
+            <label>Select birthdate <span class="required">*</span></label>
             <input class="form-control birth_date_picker nonFutureDate past-date" id="patient.birth_date" name="patient.birth_date"
                    type="text" required="required" readonly="readonly">
         </div>
         <div class="form-group show_birthdate">
-            <label for="patient.birthdate_estimated">Is this birthdate an estimate? <span
+            <label>Is this birthdate an estimate? <span
                     class="required">*</span></label>
             <select class="form-control" id="patient.birthdate_estimated" name="patient.birthdate_estimated"
                     required="required">
@@ -142,12 +142,13 @@
     </div>
 <br/>
     <div class="section">
+        <h3>Marital Status</h3>
         <fieldset name="1054^CIVIL STATUS^99DCT">
         <div class="form-group">
             <label>Marital Status:<span class="required">*</span></label>
             <div class="form-group">
                 <label class="font-normal">
-                    <input name="strategy"  id="married_polygamous" type="radio"
+                    <input name="marital_status"  id="married_polygamous" type="radio"
                            data-concept="1054^CIVIL STATUS^99DCT"
                            value="159715^Married polygamous^99DCT">
                     Married Polygamous
@@ -155,7 +156,7 @@
             </div>
             <div class="form-group">
                 <label class="font-normal">
-                    <input name="strategy" id="married_monogamous" type="radio"
+                    <input name="marital_status" id="married_monogamous" type="radio"
                            data-concept="1054^CIVIL STATUS^99DCT"
                            value="5555^Married monogamous^99DCT">
                     Married Monogamous
@@ -164,7 +165,7 @@
 
             <div class="form-group">
                 <label class="font-normal">
-                    <input name="strategy"  id="divorced" type="radio"
+                    <input name="marital_status"  id="divorced" type="radio"
                            data-concept="1054^CIVIL STATUS^99DCT"
                            value="1058^Divorced^99DCT">
                     Divorced
@@ -172,7 +173,7 @@
             </div>
             <div class="form-group">
                 <label class="font-normal">
-                    <input name="strategy" id="widowed" type="radio"
+                    <input name="marital_status" id="widowed" type="radio"
                            data-concept="1054^CIVIL STATUS^99DCT"
                            value="1059^Widowed^99DCT">
                     Widowed
@@ -181,7 +182,7 @@
 
             <div class="form-group">
                 <label class="font-normal">
-                    <input name="strategy"  id="living_with_partner" type="radio"
+                    <input name="marital_status"  id="living_with_partner" type="radio"
                            data-concept="1054^CIVIL STATUS^99DCT"
                            value="1060^Living with Partner^99DCT">
                     Living with Partner
@@ -190,7 +191,7 @@
 
             <div class="form-group">
                 <label class="font-normal">
-                    <input name="strategy"  id="never_married" type="radio"
+                    <input name="marital_status"  id="never_married" type="radio"
                            data-concept="1054^CIVIL STATUS^99DCT"
                            value="1057^Never Married^99DCT">
                     Never Married
@@ -198,14 +199,16 @@
             </div>
         </div>
         </fieldset>
+    </div>
 
-
+    <div class="section">
+        <h3>Occupation</h3>
         <fieldset name="1542^OCCUPATION^99DCT">
             <div class="form-group">
                 <label>Occupation:<span class="required">*</span></label>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy"  id="farmer" type="radio"
+                        <input name="occupation"  id="farmer" type="radio"
                                data-concept="1542^OCCUPATION^99DCT"
                                value="1538^Farmer^99DCT">
                         Farmer
@@ -213,7 +216,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="trader" type="radio"
+                        <input name="occupation" id="trader" type="radio"
                                data-concept="1542^OCCUPATION^99DCT"
                                value="1539^Trader^99DCT">
                         Trader
@@ -222,7 +225,7 @@
 
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy"  id="employee" type="radio"
+                        <input name="occupation"  id="employee" type="radio"
                                data-concept="1542^OCCUPATION^99DCT"
                                value="1540^Employee^99DCT">
                         Employee
@@ -230,7 +233,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="student" type="radio"
+                        <input name="occupation" id="student" type="radio"
                                data-concept="1542^OCCUPATION^99DCT"
                                value="159465^Student^99DCT">
                         Student
@@ -239,7 +242,7 @@
 
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy"  id="driver" type="radio"
+                        <input name="occupation"  id="driver" type="radio"
                                data-concept="1542^OCCUPATION^99DCT"
                                value="159466^Driver^99DCT">
                         Driver
@@ -248,7 +251,7 @@
 
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy"  id="none" type="radio"
+                        <input name="occupation"  id="none" type="radio"
                                data-concept="1542^OCCUPATION^99DCT"
                                value="1107^None^99DCT">
                         None
@@ -256,13 +259,16 @@
                 </div>
             </div>
         </fieldset>
+    </div>
+    <div class="section">
+        <h3>Education Level</h3>
 
         <fieldset name="1712^HIGHEST EDUCATION LEVEL^99DCT">
             <div class="form-group">
                 <label>Education<span class="required">*</span></label>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy"  id="no_education" type="radio"
+                        <input name="education"  id="no_education" type="radio"
                                data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
                                value="1107^None^99DCT">
                         None
@@ -270,7 +276,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="primary" type="radio"
+                        <input name="education" id="primary" type="radio"
                                data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
                                value="1713^Primary School Education^99DCT">
                         Primary School Education
@@ -279,7 +285,7 @@
 
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy"  id="secondary" type="radio"
+                        <input name="education"  id="secondary" type="radio"
                                data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
                                value="1714^Secondary School Education^99DCT">
                         Secondary School Education
@@ -287,7 +293,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="college" type="radio"
+                        <input name="education" id="college" type="radio"
                                data-concept="1712^HIGHEST EDUCATION LEVEL^99DCT"
                                value="159785^College, University or Polytechnic^99DCT">
                         College, University or Polytechnic

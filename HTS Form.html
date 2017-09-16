@@ -28,9 +28,9 @@
                    name="patient.uuid" type="hidden" readonly="readonly">
         </div>
         <div class="form-group">
-            <label for="patient.national_id">National ID:</label>
-            <input class="form-control" id="patient.national_id"
-                   name="patient.national_id" type="text" readonly="readonly">
+            <label for="patient.medical_record_number">National ID:</label>
+            <input class="form-control" id="patient.medical_record_number"
+                   name="patient.medical_record_number" type="text" readonly="readonly">
         </div>
         <div class="form-group">
             <label for="patient.family_name">Family Name:</label>
@@ -60,7 +60,7 @@
             <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
                    readonly="readonly" value="">
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
             <label for="patient.phone_number">Phone Number:</label>
             <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
                    readonly="readonly" value="">
@@ -84,7 +84,7 @@
             <label for="patient.nearest_health_center">Nearest Facility:</label>
             <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
                    readonly="readonly" value="">
-        </div>
+        </div>-->
     </div>
 
     <div class="section">
@@ -151,7 +151,7 @@
 
         <div id="key_p_details" style="display:none">
             <div class="form-group">
-                <label for="drug_injection">
+                <label>
                     <input id="drug_injection" type="checkbox"
                            data-concept="160581^HIV RISK FACTOR^99DCT"
                            value="105^INTRAVENOUS DRUG USE^99DCT"/>
@@ -159,7 +159,7 @@
                 </label>
             </div>
             <div class="form-group men_relevant">
-                <label for="msm">
+                <label>
                     <input id="msm" type="checkbox"
                            data-concept="160581^HIV RISK FACTOR^99DCT"
                            value="160578^MEN WHO HAVE SEX WITH MEN^99DCT"/>
@@ -167,7 +167,7 @@
                 </label>
             </div>
             <div class="form-group women_relevant">
-                <label for="fsw">
+                <label>
                     <input id="fsw" type="checkbox"
                            data-concept="160581^HIV RISK FACTOR^99DCT"
                            value="160579^FEMALE SEX WORKER^99DCT"/>
@@ -204,7 +204,7 @@
         <div id="disability_details" style="display:none">
             <div class="form-group">
                 <label>
-                    Please indicated the type of disability<span class="required">*</span></label>
+                    Please indicate the type of disability<span class="required">*</span></label>
                 <select class="form-control negativeSelect" id="spd" name="spd" required="required"
                         data-concept="162558^DISABILITY^99DCT">
                     <option value="">...</option>
@@ -256,7 +256,7 @@
                     <label class="font-normal">
                         <input name="client_consent"  id="consent_yes" type="radio"
                                data-concept="1710^INFORMED CONSENT^99DCT"
-                               value="1065^Yes^99DCT">
+                               value="1^Yes^99DCT">
                         Yes
                     </label>
                 </div>
@@ -264,7 +264,7 @@
                     <label class="font-normal">
                         <input name="client_consent" id="consent_no" type="radio"
                                data-concept="1710^INFORMED CONSENT^99DCT"
-                               value="1066^No^99DCT">
+                               value="0^No^99DCT">
                         No
                     </label>
                 </div>
@@ -375,7 +375,7 @@
             </div>
             <div class="form-group">
                 <label class="font-normal">
-                    <input name="confirmation_test" id="confirmation" type="radio"
+                    <input name="initial_test" id="confirmation" type="radio"
                            data-concept="162084^TYPE OF TEST^99DCT"
                            value="162082^CONFIRMATION^99DCT">
                     Confirmation
@@ -427,14 +427,14 @@
         </div>
 
         <div class="form-group">
-            <label for="lot_nu">Lot Number<span class="required">*</span></label>
+            <label>Lot Number<span class="required">*</span></label>
             <input class="form-control" id="lot_nu" name="lot_nu" type="number"
                    data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
         </div>
 
         </div>
             <div class="form-group">
-                <label for="expiry_date_1">Expiry Date <span class="required">*</span></label>
+                <label>Expiry Date <span class="required">*</span></label>
                 <input class="form-control datepicker kit-expiry-date" readonly="readonly" id="expiry_date_1"
                        data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text" required="required">
 
@@ -503,7 +503,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="expiry_date_2">Expiry Date <span class="required">*</span></label>
+                    <label>Expiry Date <span class="required">*</span></label>
                     <input class="form-control kit-expiry-date  datepicker" readonly="readonly" id="expiry_date_2"
                            data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text" required="required">
                     <label class="date_alert" style="color: red;display:none">Please note that the test kit used has expired</label>
@@ -690,9 +690,9 @@
 
 
     <div class="section form-group">
-        <label for="freetext_general_2">Remarks</label>
+        <label>Remarks</label>
         <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
-                  data-concept="163761^FREETEXT GENERAL^99DCT"
+                  data-concept="163042^FREETEXT GENERAL^99DCT"
                   placeholder="Provider notes/comments."></textarea>
     </div>
 
@@ -850,7 +850,7 @@
 
             $("input[name='pt']:radio")
                 .change(function() {
-                    $("#key_p_details").toggle($(this).val() == "1065^YES^99DCT");
+                    $("#key_p_details").toggle($(this).val() == "164929^KEY POPULATION^99DCT");
 
                 });
             $("input[name='disability']:radio")
