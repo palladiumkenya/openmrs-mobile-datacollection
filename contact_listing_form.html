@@ -296,7 +296,7 @@
                 </div>
             </fieldset>
         </div>
-        <div id="show-in-care" style="display: none">
+        <div class="in_care">
             <div class="form-group">
                 <label>Unique Patient Number (UPN):</label>
                 <input class="form-control" id="ccc_number" name="ccc_number" type="text"
@@ -398,7 +398,7 @@
 
         var $testResults = $('.repeat_hiv_status');
         $testResults.change(function () {
-            var $testResultSectionToShow = $(".show-positive");
+            var $testResultSectionToShow =  $(this).closest('.repeat').find('.show-positive');
             var divToShowVal = $(this).val();
             if (divToShowVal  != '703^POSITIVE^99DCT' ) {
                 $testResultSectionToShow .hide();
@@ -410,7 +410,7 @@
 
         var $inCareSelect = $('.repeat_in_care');
         $inCareSelect.change(function () {
-            var $inCareSelectSectionToShow = $("#show-in-care");
+            var $inCareSelectSectionToShow =  $(this).closest('.repeat').find('.in_care')
             var divToShowVal = $(this).val();
             if (divToShowVal  == '1065^Yes^99DCT' ) {
                 $inCareSelectSectionToShow.show();
