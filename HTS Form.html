@@ -207,19 +207,53 @@
         </div>
 
         <div id="disability_details" style="display:none">
+
+            <label>
+                Please indicate the type of disability<span class="required">*</span>
+            </label>
+
             <div class="form-group">
-                <label>
-                    Please indicate the type of disability<span class="required">*</span></label>
-                <select class="form-control negativeSelect" id="spd" name="spd" required="required"
-                        data-concept="162558^DISABILITY^99DCT">
-                    <option value="">...</option>
-                    <option value="120291^DEAF^99DCT">Deaf</option>
-                    <option value="147215^BLIND^99DCT">Blind</option>
-                    <option value="151342^MENTALLY CHALLENGED^99DCT">Mentally Challenged</option>
-                    <option value="164538^PHYSICALLY CHALLENGED^99DCT">Physically Challenged</option>
-                    <option value="5622^OTHER^99DCT">Other</option>
-                </select>
+
+                <label class="font-normal">
+                    <input id="disability_deaf" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="120291^DEAF^99DCT"/>
+                    Deaf
+                </label>
             </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_blind" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="147215^BLIND^99DCT"/>
+                    Blind
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_mc" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="151342^MENTALLY CHALLENGED^99DCT"/>
+                    Mentally Challenged
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_pc" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="164538^PHYSICALLY CHALLENGED^99DCT"/>
+                    Physically Challenged
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_other" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="5622^OTHER^99DCT"/>
+                    Other
+                </label>
+            </div>
+
         </div>
     </div>
 
