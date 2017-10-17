@@ -486,7 +486,7 @@
     </div>
 
 
-    <div class="section" data-concept="164410^TEST LABORATORY NUMBER CONSTRUCT^99DCT^2">
+    <div class="section other_tests" data-concept="164410^TEST LABORATORY NUMBER CONSTRUCT^99DCT^2">
         <h4>HIV Test 2</h4>
         <fieldset name="1326^HIV RAPID TEST 2^99DCT">
             <div class="form-group">
@@ -564,7 +564,7 @@
                         <label class="font-normal">
                             <input name="final_result" id="hiv_final_p" type="radio"
                                    data-concept="159427^FINAL HIV RESULTS^99DCT"
-                                   value="703^POSITIVE^99DCT">
+                                   value="703^POSITIVE^99DCT" readonly="">
                             Positive
                         </label>
                     </div>
@@ -918,20 +918,31 @@
 
 
         $('.final_auto_check').change(function () {
-            if ($("input:radio[name=hiv_test_one]").is(":checked") && $("input:radio[name=hiv_test_two]").is(":checked")) {
+            if ($("input:radio[name=hiv_test_one]").is(":checked")) {
                 var $test_one = $('input[name=hiv_test_one]:checked').val();
                 var $test_two = $('input[name=hiv_test_two]:checked').val();
-                if ($test_one === $test_two) {
-                    if ($test_one === "703^POSITIVE^99DCT") {
-                        $("#hiv_final_p").prop("checked", true);
-                    } else {
-                        $("#hiv_final_n").prop("checked", true);
+                if ($test_one === "664^NEGATIVE^99DCT") {
+                    $("#hiv_final_n").prop("checked", true);
+                    $('.other_tests').hide();
+                }else {
+                    $('.other_tests').show();
+                    $("#hiv_final_n").prop("checked", false);
+                    if ($("input:radio[name=hiv_test_one]").is(":checked") && $("input:radio[name=hiv_test_two]").is(":checked")) {
+                        if ($test_one === $test_two) {
+                            if ($test_one === "703^POSITIVE^99DCT") {
+                                $("#hiv_final_p").prop("checked", true);
+                            } else {
+                                $("#hiv_final_n").prop("checked", true);
+                            }
+                        } else {
+                            $("#hiv_final_i").prop("checked", true);
+                        }
                     }
-                } else {
-                    $("#hiv_final_i").prop("checked", true);
                 }
             }
         });
+
+
 
         $('.individual_mode').change(function () {
             if ($("input:radio[name=couple_testing]").is(":checked")) {
