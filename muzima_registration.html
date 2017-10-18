@@ -342,9 +342,20 @@
             <label for="patient.next_of_kin_name">Next of kin name: </label>
             <input class="form-control" id="patient.next_of_kin_name" name="patient.next_of_kin_name" type="text">
         </div>
+
         <div class="form-group">
-            <label for="patient.next_of_kin_relationship">Next of kin relationship: </label>
-            <input class="form-control" id="patient.next_of_kin_relationship" name="patient.next_of_kin_relationship" type="text">
+            <label for="patient.sex">Relationship <span class="required">*</span></label>
+            <select class="form-control" id="patient.next_of_kin_relationship"
+                    name="patient.next_of_kin_relationship" required="required">
+                <option value="">...</option>
+                <option value="Mother">Mother</option>
+                <option value="Father">Father</option>
+                <option value="Sibling">Sibling</option>
+                <option value="Child">Child</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Partner">Partner</option>
+                <option value="Co-Wife">Co-Wife</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="patient.next_of_kin_contact">Next of kin contact: </label>
