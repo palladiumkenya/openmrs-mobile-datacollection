@@ -373,6 +373,42 @@
                    type="hidden" required="required">
         </div>
     </div>
+
+
+
+    <div id="location_auto_complete_reffer">
+        <label for="location_freetext_general">Ampath Location to refer</label>
+        <div class="form-group">
+            <label for="county_to_refer">County:<span class="required">*</span></label>
+            <div class="indent">
+                <small><i>( Select a county to narrow down on the preferred sub county )</i></small>
+            </div>
+            <select class="form-control" id="county_to_refer" name="county_to_refer" readonly="readonly">
+                <option value="">...</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sub_county">Sub county:<span class="required">*</span></label>
+            <div class="indent">
+                <small><i>( Select a sub county to narrow down on the preferred facility ) </i></small>
+            </div>
+            <select class="form-control" id="sub_county" name="sub_county" readonly="readonly">
+                <option value="">...</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="county_facility">Facility:<span class="required">*</span></label>
+            <div class="indent">
+                <small><i>( Select on the preferred facility to refer ) </i></small>
+            </div>
+            <select class="form-control" id="county_facility" name="county_facility" readonly="readonly">
+                <option value="">...</option>
+            </select>
+        </div>
+
+    </div>
 </form>
 
 </body>
@@ -456,6 +492,297 @@
                 range: [0, 120]
             }
         }
+        });
+
+
+
+        var counties={
+            "Homa-Bay":
+                {
+                    "Asego":
+                        [
+                            {"facility":"Bokoli Hosp","id":"15808"},
+                            {"facility":"Miendo Dispensary","id":"16015"},
+                            {"facility":"Mihuu Disp","id":"16016"},
+                            {"facility":"Milo HC","id":"16018"},
+                            {"facility":"Sinoko Dispensary (Bungoma East)","id":"16126"},
+                            {"facility":"Webuye District Hospital","id":"16161"},
+                            {"facility":"Webuye Health Centre","id":"16160"}
+                        ],
+                    "Nyarongi":
+                        [
+                            {"facility":"Bokoli Hosp","id":"15808"},
+                            {"facility":"Miendo Dispensary","id":"16015"},
+                            {"facility":"Mihuu Disp","id":"16016"},
+                            {"facility":"Milo HC","id":"16018"},
+                            {"facility":"Sinoko Dispensary (Bungoma East)","id":"16126"},
+                            {"facility":"Webuye District Hospital","id":"16161"},
+                            {"facility":"Webuye Health Centre","id":"16160"}
+                        ],
+                    "Rangwe":
+                        [
+                            {"facility":"Bokoli Hosp","id":"15808"},
+                            {"facility":"Miendo Dispensary","id":"16015"},
+                            {"facility":"Mihuu Disp","id":"16016"},
+                            {"facility":"Milo HC","id":"16018"},
+                            {"facility":"Sinoko Dispensary (Bungoma East)","id":"16126"},
+                            {"facility":"Webuye District Hospital","id":"16161"},
+                            {"facility":"Webuye Health Centre","id":"16160"}
+                        ],
+                    "Riana":
+                        [
+                            {"facility":"Bokoli Hosp","id":"15808"},
+                            {"facility":"Miendo Dispensary","id":"16015"},
+                            {"facility":"Mihuu Disp","id":"16016"},
+                            {"facility":"Milo HC","id":"16018"},
+                            {"facility":"Sinoko Dispensary (Bungoma East)","id":"16126"},
+                            {"facility":"Webuye District Hospital","id":"16161"},
+                            {"facility":"Webuye Health Centre","id":"16160"}
+                        ],
+                    "Ndhiwa":
+                        [{"facility":"Chesinende Disp","id":"18582"},
+                            {"facility":"Kaborom Dispensary","id":"15910"},
+                            {"facility":"Kaboywo Dispensary","id":"15909"},
+                            {"facility":"Kamenjo Dispensary","id":"15917"},
+                            {"facility":"Sinoko Dispensary (Bungoma East)","id":"16126"},
+                            {"facility":"Kaptalelio Dispensary","id":"15924"},
+                            {"facility":"Kaptama (Friends) Disp","id":"15925"},
+                            {"facility":"Mt. Elgon District Hospital","id":"16025"},
+                            {"facility":"Sacha Health Centre","id":"16099"},]
+
+                },
+
+            "Busia":
+                {
+                    "Busia":
+                        [
+                            {"facility":"Budalangi Dispensary","id":"15811"},
+                            {"facility":"Bumala A","id":"15823"},
+                            {"facility":"Bumala B HC","id":"15824"},
+                            {"facility":"Bumutiru Dispensary","id":"15826"},
+                            {"facility":"Busia District Hospital","id":"15834"},
+                            {"facility":"Busibwabo Dispensary","id":"15835"},
+                            {"facility":"Butula Mission Health Centre","id":"15838"},
+                            {"facility":"Bwaliro Dispensary","id":"15840"},
+                            {"facility":"GK Prisons Busia","id":"15891"},
+                            {"facility":"Ikonzo Dispensary","id":"17165"},
+                            {"facility":"Khunyangu SDH","id":"15939"},
+                            {"facility":"Matayos Health Centre","id":"16004"},
+                            {"facility":"Mukhobola","id":"16029"},
+                            {"facility":"Munongo Dispensary","id":"16043"},
+                            {"facility":"Nasewa Health Centre","id":"16074"},
+                            {"facility":"Osieko","id":"17680"},
+                            {"facility":"Port Victoria","id":"16091"},
+                            {"facility":"Rukala Dispensary","id":"16095"},
+                            {"facility":"Tanaka Nursing Home","id":"16149"}
+                        ],
+                    "Teso":
+                        [
+                            {"facility":"Angurai","id":"15800"},
+                            {"facility":"Changara (GOK) Disp","id":"16421"},
+                            {"facility":"Kamolo Dispensary","id":"17242"},
+                            {"facility":"Malaba Disp","id":"15993"},
+                            {"facility":"Moding Health Centre","id":"16021"},
+                            {"facility":"Teso District Hospital","id":"16150"}
+                        ]
+                },
+
+            "Elgeyo":
+                {
+                    "Keiyo":
+                        [
+                            {"facility":"Chegilet Dispensary","id":"14306"},
+                            {"facility":"Chepkorio Health Centre","id":"14346"},
+                            {"facility":"Flourspar Health Centre","id":"14500"},
+                            {"facility":"Iten","id":"14586"},
+                            {"facility":"Kamwosor SDH","id":"14680"},
+                            {"facility":"Kaptarakwa Sub-District Hospital","id":"14776"},
+                            {"facility":"Kapteren HC","id":"14781"},
+                            {"facility":"Kocholwo Sub-District Hospital","id":"15238"},
+                            {"facility":"Msekekwa Health Centre","id":"15238"},
+                            {"facility":"Muskut Health Centre","id":"15260"},
+                            {"facility":"Sergoit Dispensary","id":"15554"},
+                            {"facility":"Simotwo","id":"15578"},
+                            {"facility":"Tambach SDH","id":"15703"}
+
+                        ],
+                    "Marakwet":
+                        [
+                            {"facility":"Arror Health Centre","id":"14216"},
+                            {"facility":"Chebiemit District Hospital","id":"14294"},
+                            {"facility":"Chebororwa Health Centre","id":"14301"},
+                            {"facility":"Chemworor Dipsensary","id":"14327"},
+                            {"facility":"Cheptongei Dispensary","id":"14373"},
+                            {"facility":"Chesongoch SDH","id":"14373"},
+                            {"facility":"Kamogo  Health Centre","id":"14674"},
+                            {"facility":"Kaparon  Health Centre","id":"16335"},
+                            {"facility":"Kapcherop Health Centre","id":"14695"},
+                            {"facility":"Kapsowar (AIC) Hospital","id":"14767"},
+                            {"facility":"Kaptalamwa Health Centre","id":"14774"},
+                            {"facility":"Kapyego Health Center","id":"14798"},
+                            {"facility":"Mogil Health Centre","id":"15193"},
+                            {"facility":"Tot Sub-District Hospital","id":"15738"}
+                        ]
+                },
+
+
+            "Kisumu":
+                {
+                    "Kisumu":
+                        [
+                            {"facility":"Chulaimbo SDH","id":"13528"},
+                            {"facility":"Riat dispensary","id":"14046"},
+                            {"facility":"Siriba Dispensary","id":"14094"},
+                            {"facility":"Sunga Dispensary","id":"17175"}
+
+                        ]
+
+                },
+
+            "Nandi":
+                {
+                    "Nandi North":
+                        [
+                            {"facility":"Diguna Disp","id":"15229"},
+                            {"facility":"Mosoriot","id":"15229"},
+
+
+                        ]
+                },
+
+            "Trans N":
+                {
+                    "Trans Nzoia":
+                        [
+                            {"facility":"Andersen Medical Centre","id":"14203"},
+                            {"facility":"Bikeke Health Centre","id":"16361"},
+                            {"facility":"Chepchoina Dispensary","id":"14332"},
+                            {"facility":"Cherangany Health Centre (Trans Nzoia East)","id":"14379"},
+                            {"facility":"Endebess District Hospital","id":"14455"},
+                            {"facility":"GK Farm Prisons Kitale (Trans Nzoia)","id":"14514"},
+                            {"facility":"GK Remand Prisons Dispensary (Trans Nzoia West)","id":"14528"},
+                            {"facility":"Kapkoi Dispensary (Kwanza)","id":"14720"},
+                            {"facility":"Kaplamai Health Centre","id":"14734"},
+                            {"facility":"Kapsara District Hospital","id":"14753"},
+                            {"facility":"Kiminini Cottage Hospital","id":"14872"},
+                            {"facility":"Kitalale Dispensary","id":"14946"},
+                            {"facility":"Kitale District Hospital","id":"14947"},
+                            {"facility":"Kolongolo M Dispensary","id":"14981"},
+                            {"facility":"Kwanza Health Centre","id":"15003"},
+                            {"facility":"Motosiet Dispensary","id":"15234"},
+                            {"facility":"Mt Elgon National Park Dispensary","id":"15240"},
+                            {"facility":"Mt. Elgon Hospital (Trans Nzoia West)","id":"15239"},
+                            {"facility":"Muungano Dispensary","id":"15239"},
+                            {"facility":"Saboti","id":"15508"},
+                            {"facility":"St Raphael Dispensary","id":"18515"},
+                            {"facility":"Suwerwa Health Centre","id":"15692"},
+                            {"facility":"Tulwet HC","id":"15747"}
+
+                        ]
+
+                },
+
+            "Uasin G":
+                {
+                    "Uasin Gishu":
+                        [
+                            {"facility":"Amani Hospital","id":"16347"},
+                            {"facility":"Burnt Forest","id":"16347"},
+                            {"facility":"Cedar Associate Clinic","id":"14280"},
+                            {"facility":"Chepkanga Health Centre","id":"14335"},
+                            {"facility":"Chepsaita","id":"14358"},
+                            {"facility":"Cheramei Dispensary","id":"14377"},
+                            {"facility":"Elgeyo Border","id":"14437"},
+                            {"facility":"FHOK","id":"16348"},
+                            {"facility":"GK Ngeria Prison","id":"14524"},
+                            {"facility":"GK Prison Eldoret","id":"14519"},
+                            {"facility":"Huruma SDH","id":"'14555"},
+                            {"facility":"Kaptumo Dispensary","id":"14791"},
+                            {"facility":"Kesses","id":"14841"},
+                            {"facility":"Kipkabus","id":"14893"},
+                            {"facility":"Moi Teaching and Referral Hospital","id":"15204"},
+                            {"facility":"Moi University HC","id":"15205"},
+                            {"facility":"Moiben","id":"15206"},
+                            {"facility":"Mois Bridge HC","id":"15209"},
+                            {"facility":"Pioneer HC","id":"15463"},
+                            {"facility":"Plateau","id":"15464"},
+                            {"facility":"Railways","id":"15478"},
+                            {"facility":"Soy HC","id":"15623"},
+                            {"facility":"St Ladislaus Dispensary","id":"15655"},
+                            {"facility":"St Lukes Orthopaedic and Trauma Hospital","id":"15655"},
+                            {"facility":"St. Mary's Kapsoya","id":"15655"},
+                            {"facility":"Turbo","id":"15753"},
+                            {"facility":"Uasin Gishu District Hospital","id":"15758"},
+                            {"facility":"Ziwa SDH","id":"15788"}
+
+
+
+
+
+                        ]
+                },
+
+            "West Po":
+                {
+                    "West Pokot":
+                        [
+                            {"facility":"Alale Health Centre","id":"16367"},
+                            {"facility":"Amakuriat Dispensary","id":"14198"},
+                            {"facility":"Chepareria Sub District Hospital","id":"14330"},
+                            {"facility":"Kabichbich Health Centre","id":"14615"},
+                            {"facility":"Kacheliba District Hospital","id":"14634"},
+                            {"facility":"Kapenguria District Hospital","id":"14701"},
+                            {"facility":"Kaptabuk Dispensary (West Pokot)","id":"14772"},
+                            {"facility":"Kasei Dispensary","id":"14807"},
+                            {"facility":"Konyao Dispensary","id":"14988"},
+                            {"facility":"Lomut Dispensary","id":"15073"},
+                            {"facility":"Marich Dispensary","id":"15130"},
+                            {"facility":"Orolwo Dispensary","id":"16370"},
+                            {"facility":"Ortum Hospital","id":"15446"},
+                            {"facility":"Shujaa Satellite Clinic","id":"15446"},
+                            {"facility":"Sigor Sub District Hospital","id":"'15564"},
+                            {"facility":"Sina Dispensary","id":"15580"},
+                            {"facility":"Tinei Disp","id":"16368"},
+                            {"facility":"kanyarkwat dispensary","id":"14689"},
+                            {"facility":"keringet health center","id":"14837"}
+
+                        ]
+                }
+
+        };
+        var key1,key2,key3;
+        var hold_locations = [];
+        var hold_divisions =[];
+        var selectedDistrict,selectedDivision;
+        for (key1 in counties) {
+            $("#county_to_refer").append("<option value='"+key1+"'>"+key1+"</option>");
+        }
+        $("#county_to_refer").change(function () {
+            selectedDistrict = this.value;
+            $("#sub_county").empty();
+            $("#sub_county").append("<option value='...'>...</option>");
+            $("#county_facility").empty();
+            $("#county_facility").append("<option value='...'>...</option>");
+            for (key2 in counties[selectedDistrict]) {
+                if(!hold_divisions.indexOf(key2)> -1){
+                    hold_divisions.push(key2);
+                    $("#sub_county").append("<option value='"+key2+"'>"+key2+"</option>");
+                }
+            }
+
+        });
+        $("#sub_county").change(function () {
+            selectedDivision = this.value;
+            $("#county_facility").empty();
+            $("#county_facility").append("<option value='...'>...</option>");
+            for (key3 in counties[selectedDistrict][selectedDivision]) {
+                if(!hold_locations.indexOf(key3)> -1){
+                    hold_locations.push(key3);
+                    $("#county_facility").append("<option value='"+counties[selectedDistrict][selectedDivision][key3].id+"'>"+counties[selectedDistrict][selectedDivision][key3].facility+"</option>");
+
+                }
+            }
+
         });
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()","encounter\\.provider_id");

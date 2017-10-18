@@ -160,7 +160,7 @@
             <fieldset name="1560^RELATIONSHIP^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="970^MOTHER^99DCT">
                         Mother
@@ -168,7 +168,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="971^FATHER^99DCT">
                         Father
@@ -176,7 +176,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="972^SIBLING^99DCT">
                         Sibling
@@ -184,7 +184,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="1528^CHILD^99DCT">
                         Child
@@ -192,7 +192,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility eligibility_pass"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="5617^SPOUSE^99DCT">
                         Spouse
@@ -200,7 +200,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility eligibility_pass"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="163565^PARTNER^99DCT">
                         Partner
@@ -208,7 +208,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="162221^CO-WIFE^99DCT">
                         Co-Wife
@@ -216,92 +216,6 @@
                 </div>
             </fieldset>
         </div>
-
-        <div class="form-group">
-            <h5><strong>Has partner ever physically hurt you?</strong></h5>
-            <fieldset name="1169^HIV INFECTED^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input type="radio" class="repeat_eligible_physically eligible_final"
-                               value="YES">
-                        Yes
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input type="radio" class="repeat_eligible_physically eligible_final"
-                               value="NO">
-                        No
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-
-        <div class="form-group">
-            <h5><strong>Has partner ever threatened to hurt you?</strong></h5>
-            <fieldset name="1169^HIV INFECTED^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input type="radio" class="repeat_eligible_threatened eligible_final"
-                               value="YES">
-                        Yes
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input type="radio" class="repeat_eligible_threatened eligible_final"
-                               value="NO">
-                        No
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-
-
-        <div class="form-group">
-            <h5><strong>Has partner ever forced you to do something sexually that made you feel uncomfortable?</strong></h5>
-            <fieldset name="1169^HIV INFECTED^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input type="radio" class="repeat_eligible_sexually eligible_final"
-                               value="YES">
-                        Yes
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input type="radio" class="repeat_eligible_sexually eligible_final"
-                               value="NO">
-                        No
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-
-        <div class="form-group">
-            <label>The partner eligible for testing </label>
-            <fieldset name="160658^ELIGIBLE^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input class="repeat_eligible_final eligible_final_yes" type="radio"
-                               data-concept="160658^ELIGIBLE^99DCT"
-                               value="1065^Yes^99DCT" readonly="">
-                        Yes
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input class="repeat_eligible_final eligible_final_no" type="radio"
-                               data-concept="160658^ELIGIBLE^99DCT"
-                               value="1066^No^99DCT">
-                        No
-                    </label>
-                </div>
-
-            </fieldset>
-
-        </div>
-
 
         <div class="form-group">
             <h5><strong>Relationship status:</strong></h5>
@@ -324,6 +238,96 @@
                 </div>
             </fieldset>
         </div>
+
+
+        <div class="check_eligibility_passed">
+            <div class="form-group">
+                <label>Has partner ever physically hurt you?</label>
+                <fieldset name="1169^HIV INFECTED^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_physically eligible_final"
+                                   value="YES">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_physically eligible_final"
+                                   value="NO">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="form-group">
+                <label>Has partner ever threatened to hurt you?</label>
+                <fieldset name="1169^HIV INFECTED^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_threatened eligible_final"
+                                   value="YES">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_threatened eligible_final"
+                                   value="NO">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+
+            <div class="form-group">
+                <label>Has partner ever forced you to do something sexually that made you feel uncomfortable? </label>
+                <fieldset name="1169^HIV INFECTED^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_sexually eligible_final"
+                                   value="YES">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_sexually eligible_final"
+                                   value="NO">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="form-group">
+                <label>The partner eligible for testing </label>
+                <fieldset name="160658^ELIGIBLE^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input class="repeat_eligible_final eligible_final_yes" type="radio"
+                                   data-concept="160658^ELIGIBLE^99DCT"
+                                   value="1065^Yes^99DCT" readonly="">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input class="repeat_eligible_final eligible_final_no" type="radio"
+                                   data-concept="160658^ELIGIBLE^99DCT"
+                                   value="1066^No^99DCT">
+                            No
+                        </label>
+                    </div>
+
+                </fieldset>
+
+            </div>
+        </div>
+
+
 
         <div class="form-group">
             <h5><strong>HIV status:</strong></h5>
@@ -515,6 +519,21 @@
         });
         $testResults.trigger('change');
 
+
+        var $check_eligibility = $('.check_eligibility');
+        $check_eligibility.change(function () {
+            var $check_eligibilityToShow = $(this).closest('.repeat').find('.check_eligibility_passed');
+            if($(this).closest('.repeat').find('.eligibility_pass').is(':checked')){
+                $check_eligibilityToShow.show();
+            }
+            else{
+                $check_eligibilityToShow.hide();
+            }
+
+        });
+        $check_eligibility.trigger('change');
+
+
         var $inCareSelect = $('.repeat_in_care');
         $inCareSelect.change(function () {
             var $inCareSelectSectionToShow = $(this).closest('.repeat').find('.in_care')
@@ -588,6 +607,7 @@
                 $($eligible_final_yes).prop("checked", false);
             }
         });
+
 
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
