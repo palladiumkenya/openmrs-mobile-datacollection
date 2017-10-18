@@ -144,7 +144,10 @@
             <label for="contact_age">Age:<span class="required">*</span></label>
             <input class="form-control" id="contact_age" name="contact_age" type="text"
                    data-concept="160617^CONTACT AGE^99DCT" required="required">
-            <select class="form-control" id="duration_unit" name="duration_unit" data-concept="1732^DURATION^99DCT" required="required">
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="duration_unit" name="duration_unit" data-concept="1732^DURATION^99DCT"
+                    required="required">
                 <option value="">...</option>
                 <option value="1734^DURATION UNIT^99DCT">Years</option>
                 <option value="1074^DURATION UNIT^99DCT">Months</option>
@@ -157,15 +160,15 @@
             <fieldset name="1560^RELATIONSHIP^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input  type="radio" class="repeat_radio_relationship"
-                                data-concept="1560^RELATIONSHIP^99DCT"
-                                value="970^MOTHER^99DCT">
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
+                               data-concept="1560^RELATIONSHIP^99DCT"
+                               value="970^MOTHER^99DCT">
                         Mother
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="971^FATHER^99DCT">
                         Father
@@ -173,7 +176,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="972^SIBLING^99DCT">
                         Sibling
@@ -181,7 +184,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="1528^CHILD^99DCT">
                         Child
@@ -189,7 +192,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility eligibility_pass"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="5617^SPOUSE^99DCT">
                         Spouse
@@ -197,7 +200,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility eligibility_pass"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="163565^PARTNER^99DCT">
                         Partner
@@ -205,7 +208,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input type="radio" class="repeat_radio_relationship"
+                        <input type="radio" class="repeat_radio_relationship check_eligibility"
                                data-concept="1560^RELATIONSHIP^99DCT"
                                value="162221^CO-WIFE^99DCT">
                         Co-Wife
@@ -235,6 +238,96 @@
                 </div>
             </fieldset>
         </div>
+
+
+        <div class="check_eligibility_passed">
+            <div class="form-group">
+                <label>Has partner ever physically hurt you?</label>
+                <fieldset name="1169^HIV INFECTED^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_physically eligible_final"
+                                   value="YES">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_physically eligible_final"
+                                   value="NO">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="form-group">
+                <label>Has partner ever threatened to hurt you?</label>
+                <fieldset name="1169^HIV INFECTED^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_threatened eligible_final"
+                                   value="YES">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_threatened eligible_final"
+                                   value="NO">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+
+            <div class="form-group">
+                <label>Has partner ever forced you to do something sexually that made you feel uncomfortable? </label>
+                <fieldset name="1169^HIV INFECTED^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_sexually eligible_final"
+                                   value="YES">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input type="radio" class="repeat_eligible_sexually eligible_final"
+                                   value="NO">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="form-group">
+                <label>The partner eligible for testing </label>
+                <fieldset name="160658^ELIGIBLE^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input class="repeat_eligible_final eligible_final_yes" type="radio"
+                                   data-concept="160658^ELIGIBLE^99DCT"
+                                   value="1065^Yes^99DCT" readonly="">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input class="repeat_eligible_final eligible_final_no" type="radio"
+                                   data-concept="160658^ELIGIBLE^99DCT"
+                                   value="1066^No^99DCT">
+                            No
+                        </label>
+                    </div>
+
+                </fieldset>
+
+            </div>
+        </div>
+
+
 
         <div class="form-group">
             <h5><strong>HIV status:</strong></h5>
@@ -331,19 +424,34 @@
             $(encounterDatetime).val(currentDate);
         }
 
-        $('.repeat_radio_relationship').change(function() {
+        $('.repeat_radio_relationship').change(function () {
             $(this).closest('.section').find('.repeat_radio_relationship').not(this).prop('checked', false);
         });
 
-        $('.repeat_r_status').change(function() {
+        $('.repeat_r_status').change(function () {
             $(this).closest('.section').find('.repeat_r_status').not(this).prop('checked', false);
         });
-        $('.repeat_hiv_status').change(function() {
+        $('.repeat_hiv_status').change(function () {
             $(this).closest('.section').find('.repeat_hiv_status').not(this).prop('checked', false);
         });
 
-        $('.repeat_in_care').change(function() {
+        $('.repeat_in_care').change(function () {
             $(this).closest('.section').find('.repeat_in_care').not(this).prop('checked', false);
+        });
+
+        $('.repeat_eligible_physically').change(function () {
+            $(this).closest('.section').find('.repeat_eligible_physically').not(this).prop('checked', false);
+        });
+
+        $('.repeat_eligible_threatened').change(function () {
+            $(this).closest('.section').find('.repeat_eligible_threatened').not(this).prop('checked', false);
+        });
+
+        $('.repeat_eligible_sexually').change(function () {
+            $(this).closest('.section').find('.repeat_eligible_sexually').not(this).prop('checked', false);
+        });
+        $('.repeat_eligible_final').change(function () {
+            $(this).closest('.section').find('.repeat_eligible_final').not(this).prop('checked', false);
         });
 
         var currentYear = new Date().getFullYear();
@@ -401,21 +509,36 @@
 
         var $testResults = $('.repeat_hiv_status');
         $testResults.change(function () {
-            var $testResultSectionToShow =  $(this).closest('.repeat').find('.show-positive');
+            var $testResultSectionToShow = $(this).closest('.repeat').find('.show-positive');
             var divToShowVal = $(this).val();
-            if (divToShowVal  != '703^POSITIVE^99DCT' ) {
-                $testResultSectionToShow .hide();
+            if (divToShowVal != '703^POSITIVE^99DCT') {
+                $testResultSectionToShow.hide();
             } else {
-                $testResultSectionToShow .show();
+                $testResultSectionToShow.show();
             }
         });
         $testResults.trigger('change');
 
+
+        var $check_eligibility = $('.check_eligibility');
+        $check_eligibility.change(function () {
+            var $check_eligibilityToShow = $(this).closest('.repeat').find('.check_eligibility_passed');
+            if($(this).closest('.repeat').find('.eligibility_pass').is(':checked')){
+                $check_eligibilityToShow.show();
+            }
+            else{
+                $check_eligibilityToShow.hide();
+            }
+
+        });
+        $check_eligibility.trigger('change');
+
+
         var $inCareSelect = $('.repeat_in_care');
         $inCareSelect.change(function () {
-            var $inCareSelectSectionToShow =  $(this).closest('.repeat').find('.in_care')
+            var $inCareSelectSectionToShow = $(this).closest('.repeat').find('.in_care')
             var divToShowVal = $(this).val();
-            if (divToShowVal  == '1065^Yes^99DCT' ) {
+            if (divToShowVal == '1065^Yes^99DCT') {
                 $inCareSelectSectionToShow.show();
             } else {
                 $inCareSelectSectionToShow.hide();
@@ -467,6 +590,24 @@
             else
                 $validate_upn.hide();
         });
+
+
+        $('.eligible_final').change(function () {
+            var $eligible_final_yes = $(this).closest('.repeat').find('.eligible_final_yes');
+            var $eligible_final_no = $(this).closest('.repeat').find('.eligible_final_no');
+
+            if ($(this).closest('.repeat').find('.repeat_eligible_physically:checked').val() === 'YES' ||
+                $(this).closest('.repeat').find('.repeat_eligible_threatened:checked').val() === 'YES' ||
+                $(this).closest('.repeat').find('.repeat_eligible_sexually:checked').val() === 'YES') {
+                $($eligible_final_yes).prop("checked", false);
+                $($eligible_final_no).prop("checked", true);
+
+            } else {
+                $($eligible_final_no).prop("checked", false);
+                $($eligible_final_yes).prop("checked", true);
+            }
+        });
+
 
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
