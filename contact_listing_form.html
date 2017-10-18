@@ -599,12 +599,12 @@
             if ($(this).closest('.repeat').find('.repeat_eligible_physically:checked').val() === 'YES' ||
                 $(this).closest('.repeat').find('.repeat_eligible_threatened:checked').val() === 'YES' ||
                 $(this).closest('.repeat').find('.repeat_eligible_sexually:checked').val() === 'YES') {
-                $($eligible_final_yes).prop("checked", true);
-                $($eligible_final_no).prop("checked", false);
+                $($eligible_final_yes).prop("checked", false);
+                $($eligible_final_no).prop("checked", true);
 
             } else {
-                $($eligible_final_no).prop("checked", true);
-                $($eligible_final_yes).prop("checked", false);
+                $($eligible_final_no).prop("checked", false);
+                $($eligible_final_yes).prop("checked", true);
             }
         });
 
