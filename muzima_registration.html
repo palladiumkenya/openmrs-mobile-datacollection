@@ -99,18 +99,38 @@
 
     <div class="section">
         <h3>Address</h3>
+
         <div class="form-group">
-            <label for="patient.county">County: </label>
-            <input class="form-control" id="patient.county" name="patient.county" type="text">
+            <label for="county_to_refer">County:<span class="required">*</span></label>
+            <div class="indent">
+                <small><i>( Select a county to narrow down on the preferred sub county )</i></small>
+            </div>
+            <select class="form-control" id="county_to_refer" name="patient.county" readonly="readonly">
+                <option value="">...</option>
+            </select>
         </div>
+
         <div class="form-group">
-            <label for="patient.sub_county">Sub County: </label>
-            <input class="form-control" id="patient.sub_county" name="patient.sub_county" type="text">
+            <label for="sub_county">Sub county:<span class="required">*</span></label>
+            <div class="indent">
+                <small><i>( Select a sub county to narrow down on the preferred facility ) </i></small>
+            </div>
+            <select class="form-control" id="sub_county" name="patient.sub_county" readonly="readonly">
+                <option value="">...</option>
+            </select>
         </div>
+
         <div class="form-group">
-            <label for="patient.ward">Ward: </label>
-            <input class="form-control" id="patient.ward" name="patient.ward" type="text">
+            <label for="county_facility">Ward:<span class="required">*</span></label>
+            <div class="indent">
+                <small><i>( Select on the preferred facility to refer ) </i></small>
+            </div>
+            <select class="form-control" id="county_facility" name="patient.ward" readonly="readonly">
+                <option value="">...</option>
+            </select>
         </div>
+
+
         <div class="form-group">
             <label for="patient.location">Location: </label>
             <input class="form-control" id="patient.location" name="patient.location" type="text">
@@ -322,9 +342,20 @@
             <label for="patient.next_of_kin_name">Next of kin name: </label>
             <input class="form-control" id="patient.next_of_kin_name" name="patient.next_of_kin_name" type="text">
         </div>
+
         <div class="form-group">
-            <label for="patient.next_of_kin_relationship">Next of kin relationship: </label>
-            <input class="form-control" id="patient.next_of_kin_relationship" name="patient.next_of_kin_relationship" type="text">
+            <label for="patient.sex">Relationship <span class="required">*</span></label>
+            <select class="form-control" id="patient.next_of_kin_relationship"
+                    name="patient.next_of_kin_relationship" required="required">
+                <option value="">...</option>
+                <option value="Mother">Mother</option>
+                <option value="Father">Father</option>
+                <option value="Sibling">Sibling</option>
+                <option value="Child">Child</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Partner">Partner</option>
+                <option value="Co-Wife">Co-Wife</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="patient.next_of_kin_contact">Next of kin contact: </label>
@@ -373,6 +404,8 @@
                    type="hidden" required="required">
         </div>
     </div>
+
+
 </form>
 
 </body>
@@ -456,6 +489,167 @@
                 range: [0, 120]
             }
         }
+        });
+
+
+
+        var counties={
+            "Homa-Bay":
+                {
+                    "Homa bay town":
+                        [
+                            {"facility":"Central","id":"Central"},
+                            {"facility":"Central Kasipul","id":"Central Kasipul"},
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"East Kamagak","id":"East Kamagak"},
+                            {"facility":"Gwassi North","id":"Gwassi North"},
+                            {"facility":"Gwassi South","id":"Gwassi South"},
+                            {"facility":"Kabondo East","id":"Kabondo East"},
+                            {"facility":"Kanyikale","id":"Kanyikale"},
+                            {"facility":"Kabondo West","id":"Kabondo West"},
+                            {"facility":"Kibiri","id":"Kibiri"},
+                            {"facility":"Labwe","id":"Labwe"}
+                        ],
+                    "Kasipul":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ],
+                    "Rangwe":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ],
+                    "Riana":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ],
+                    "Ndhiwa":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ]
+
+                },
+
+            "Busia":
+                {
+                    "Busia":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ],
+                    "Teso":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ]
+                },
+
+            "Elgeyo":
+                {
+                    "Keiyo":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+
+                        ],
+                    "Marakwet":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ]
+                },
+
+
+            "Kisumu":
+                {
+                    "Kisumu":
+                        [
+                            {"facility":"Chulaimbo SDH","id":"Chulaimbo SDH"},
+                            {"facility":"Riat dispensary","id":"Riat dispensary"},
+                            {"facility":"Siriba Dispensary","id":"Siriba"},
+                            {"facility":"Sunga Dispensary","id":"Sunga"}
+
+                        ]
+
+                },
+
+            "Trans N":
+                {
+                    "Trans Nzoia":
+                        [
+                            {"facility":"Bikeke Health Centre","id":"Bikeke"},
+                            {"facility":"Chepchoina Dispensary","id":"Chepchoina"},
+                            {"facility":"Tulwet HC","id":"Tulwet"}
+
+                        ]
+
+                },
+
+
+            "West Po":
+                {
+                    "West Pokot":
+                        [
+                            {"facility":"East Gem","id":"East Gem"},
+                            {"facility":"Kagen","id":"Kagen"},
+                            {"facility":"Kochia","id":"Kochia"},
+                            {"facility":"West Gem","id":"West Gem"}
+                        ]
+                }
+
+        };
+        var key1,key2,key3;
+        var hold_locations = [];
+        var hold_divisions =[];
+        var selectedDistrict,selectedDivision;
+        for (key1 in counties) {
+            $("#county_to_refer").append("<option value='"+key1+"'>"+key1+"</option>");
+        }
+        $("#county_to_refer").change(function () {
+            selectedDistrict = this.value;
+            $("#sub_county").empty();
+            $("#sub_county").append("<option value='...'>...</option>");
+            $("#county_facility").empty();
+            $("#county_facility").append("<option value='...'>...</option>");
+            for (key2 in counties[selectedDistrict]) {
+                if(!hold_divisions.indexOf(key2)> -1){
+                    hold_divisions.push(key2);
+                    $("#sub_county").append("<option value='"+key2+"'>"+key2+"</option>");
+                }
+            }
+
+        });
+        $("#sub_county").change(function () {
+            selectedDivision = this.value;
+            $("#county_facility").empty();
+            $("#county_facility").append("<option value='...'>...</option>");
+            for (key3 in counties[selectedDistrict][selectedDivision]) {
+                if(!hold_locations.indexOf(key3)> -1){
+                    hold_locations.push(key3);
+                    $("#county_facility").append("<option value='"+counties[selectedDistrict][selectedDivision][key3].id+"'>"+counties[selectedDistrict][selectedDivision][key3].facility+"</option>");
+
+                }
+            }
+
         });
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()","encounter\\.provider_id");
