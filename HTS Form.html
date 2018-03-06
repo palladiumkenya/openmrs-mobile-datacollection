@@ -463,13 +463,13 @@
                                 data-concept="164962^HIV TEST KIT USED^99DCT">
                             <option value="">...</option>
                             <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
-                            <option value="164961^UNI-GOLD TEST KIT^99DCT">Uni-Gold</option>
+                            <option value="164961^FIRST RESPONSE TEST KIT^99DCT">First Response</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Lot Number<span class="required">*</span></label>
-                        <input class="form-control" id="lot_nu" name="lot_nu" type="number"
+                        <input class="form-control" id="lot_nu" name="lot_nu" type="text"
                                data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                     </div>
 
@@ -534,13 +534,13 @@
                                     data-concept="164962^HIV TEST KIT USED^99DCT">
                                 <option value="">...</option>
                                 <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
-                                <option value="164961^UNI-GOLD TEST KIT^99DCT">Uni-Gold</option>
+                                <option value="164961^FIRST RESPONSE TEST KIT^99DCT">First Response</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Lot Number<span class="required">*</span></label>
-                            <input class="form-control" id="hiv_2_lot" name="hiv_2_kit" type="number"
+                            <input class="form-control" id="hiv_2_lot" name="hiv_2_kit" type="text"
                                    data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                         </div>
                     </div>
@@ -746,6 +746,8 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#hiv_final_p input[type=radio]').attr("style", "pointer-events:none;");
+        $('#hiv_final_n input[type=radio]').attr("style", "pointer-events:none;");
         var dateFormat = "dd-mm-yy";
         var currentDate = $.datepicker.formatDate(dateFormat, new Date());
         var encounterDatetime = $('#encounter\\.encounter_datetime');
@@ -806,7 +808,7 @@
         });
         dobType.trigger('change');
 
-SO
+
         jQuery.validator.addClassRules({
             'check-confirm-identifier': {
                 validateConfirmIdentifierElement: true

@@ -139,7 +139,11 @@
             <input class="form-control" id="contact_name" name="contact_name" type="text"
                    data-concept="160750^CONTACT NAME^99DCT" required="required">
         </div>
-
+        <div class="form-group">
+            <label>Phone Number:</label>
+            <input class="form-control phoneNumber" id="phone_number" name="phone_number" type="tel"
+                   data-concept="159635^PHONE NUMBER^99DCT">
+        </div>
         <div class="form-group">
             <label for="contact_age">Age:<span class="required">*</span></label>
             <input class="form-control" id="contact_age" name="contact_age" type="text"
@@ -218,14 +222,14 @@
         </div>
 
         <div class="form-group">
-            <h5><strong>Relationship status:</strong></h5>
+            <h5><strong>Currently living with index client? </strong></h5>
             <fieldset name="163607^RELATIONSHIP STATUS^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input type="radio" class="repeat_r_status"
                                data-concept="163607^RELATIONSHIP STATUS^99DCT"
                                value="159450^CURRENT RELATIONSHIP^99DCT">
-                        Current
+                        Yes
                     </label>
                 </div>
                 <div class="form-group">
@@ -233,7 +237,7 @@
                         <input type="radio" class="repeat_r_status"
                                data-concept="163607^RELATIONSHIP STATUS^99DCT"
                                value="160432^DECEASED^99DCT">
-                        Deceased
+                        No
                     </label>
                 </div>
             </fieldset>
@@ -337,7 +341,7 @@
                         <input type="radio" class="repeat_hiv_status"
                                data-concept="1169^HIV INFECTED^99DCT"
                                value="703^POSITIVE^99DCT">
-                        Positive
+                        Known positive
                     </label>
                 </div>
                 <div class="form-group">

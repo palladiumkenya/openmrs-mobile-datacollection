@@ -39,20 +39,44 @@
             <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text">
         </div>
         <div class="form-group">
-            <label for="patient.mothers_name">Mother's Name: <span class="required">*</span></label>
+            <label for="patient.mothers_name">Mother's Name:</label>
             <input class="form-control" id="patient.mothers_name" name="patient.mothers_name" type="text">
         </div>
     </div>
 
     <div class="section">
         <h3>Identifiers</h3>
-        <div class="form-group">
-            <label>National ID<span
-                    class="required">*</span></label>
 
-            <div class="form-horizontal">
-                <input class="form-control" id="patient.medical_record_number"
-                       name="patient.medical_record_number" type="text" required="required">
+
+            <div>
+                <label>Medical Record Number (To be assigned by the system):</label>
+                <input type="text" class="form-control" id="patient.medical_record_number"
+                       name="patient.medical_record_number" readonly="readonly" >
+
+            </div>
+
+        <div class="form-group">
+            <label>Other Identifiers:</label>
+            <div class="section repeat other_identifier" id="other_identifier" data-name="other_identifier" data-group="patient.otheridentifier">
+                <div class="form-group group-set other_identifier_type" id="other_identifier_type">
+                    <label for="identifier_type_name">Identifier Type</label>
+                    <select class="form-control identifier_type_name" name="identifier_type_name"  id="identifier_type_name">
+                        <option value="">...</option>
+                        <option value="National ID">National ID Number</option>
+                    </select>
+                </div>
+                <div class="identifier_value_section">
+                    <div class="form-group">
+                        <label for="other_identifier_value">Enter Identifier</label>
+                        <input class="form-control check-other-identifier" id="other_identifier_value"
+                               name="identifier_value" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_other_identifier_value">Confirm Identifier</label>
+                        <input class="form-control check-confirm-identifier" id="confirm_other_identifier_value"
+                               name="confirm_other_identifier_value" type="text">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -100,7 +124,7 @@
         <div class="form-group">
             <label for="county_to_refer">County:<span class="required">*</span></label>
             <div class="indent">
-                <small><i>(Select a county to narrow down on the preferred sub county )</i></small>
+                <small><i>( Select a county to narrow down on the preferred sub county )</i></small>
             </div>
             <select class="form-control" id="county_to_refer" name="patient.county" readonly="readonly">
                 <option value="">...</option>
@@ -110,7 +134,7 @@
         <div class="form-group">
             <label for="sub_county">Sub county:<span class="required">*</span></label>
             <div class="indent">
-                <small><i>(Select a sub county to narrow down on the preferred facility ) </i></small>
+                <small><i>( Select a sub county to narrow down on the preferred facility ) </i></small>
             </div>
             <select class="form-control" id="sub_county" name="patient.sub_county" readonly="readonly">
                 <option value="">...</option>
@@ -120,12 +144,14 @@
         <div class="form-group">
             <label for="county_facility">Ward:<span class="required">*</span></label>
             <div class="indent">
-                <small><i>(Select on the preferred facility to refer ) </i></small>
+                <small><i>( Select on the preferred facility to refer ) </i></small>
             </div>
             <select class="form-control" id="county_facility" name="patient.ward" readonly="readonly">
                 <option value="">...</option>
             </select>
         </div>
+
+
         <div class="form-group">
             <label for="patient.location">Location: </label>
             <input class="form-control" id="patient.location" name="patient.location" type="text">
@@ -339,7 +365,7 @@
         </div>
 
         <div class="form-group">
-            <label for="patient.sex">Relationship <span class="required">*</span></label>
+            <label for="patient.sex">Relationship </label>
             <select class="form-control" id="patient.next_of_kin_relationship"
                     name="patient.next_of_kin_relationship" required="required">
                 <option value="">...</option>
@@ -422,7 +448,7 @@
             yearRange: birthdate_start_year + ':' + currentYear,
         });
 
-
+		$('#patient\\.medical_record_number').val(new Date().getUTCMilliseconds());
         $('#save_draft').click(function () {
             // pre process the medications
             $(this).prop('disabled', true);
@@ -486,9 +512,22 @@
         }
         });
 
+        $.validator.addMethod(
+            "validateConfirmIdentifierElement",
+            function(confirm_other_identifier_value, confirm_identifier_element){
+                var other_identifier_value = $(confirm_identifier_element).closest('.repeat').find('.check-other-identifier').val();
+                if (other_identifier_value == confirm_other_identifier_value) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            "Other Identifiers do not match."
+        );
 
 
-        var counties={
+
+       var counties={
             "Homa-Bay":
                 {
                     "Homa-bay town":
