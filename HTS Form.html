@@ -179,6 +179,14 @@
                     Female sex Worker
                 </label>
             </div>
+            <div class="form-group">
+                <label>
+                    <input id="oth" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="5622^OTHER^99DCT"/>
+                    Others
+                </label>
+            </div>
         </div>
     </div>
 
@@ -207,7 +215,6 @@
         </div>
 
         <div id="disability_details" style="display:none">
-
             <label>
                 Please indicate the type of disability<span class="required">*</span>
             </label>
@@ -256,7 +263,6 @@
 
         </div>
     </div>
-
     <div class="section">
         <h4>HIV Test History</h4>
         <div class="form-group">
@@ -265,25 +271,34 @@
             <fieldset name="164401^HIV TEST PERFORMED^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="ever_tested" id="Hiv_test_yes" type="radio"
+                        <input name="evertested" id="ever_tested_yes" type="radio"
                                data-concept="164401^HIV TEST PERFORMED^99DCT"
-                               value="1065^Yes^99DCT">
+                               value="1065^YES^99DCT">
                         Yes
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="ever_tested" id="hiv_test_no" type="radio"
+                        <input name="evertested" id="ever_tested_no" type="radio"
                                data-concept="164401^HIV TEST PERFORMED^99DCT"
-                               value="1066^No^99DCT">
+                               value="1066^NO^99DCT">
                         No
                     </label>
                 </div>
-
             </fieldset>
         </div>
+        <div id="test_duration" style="display:none">
+            <label>
+                Please indicate the duration in months since the last HIV test
+            </label>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="duration_months" type="number"
+                           data-concept="159813^DURATION^99DCT" />
+                </label>
+            </div>
+        </div>
     </div>
-
     <div class="section">
         <h4>Consent</h4>
         <div class="form-group">
@@ -337,19 +352,15 @@
                             Individual
                         </label>
                     </div>
-
                 </fieldset>
-
             </div>
-
         </div>
         <div class="section">
             <h4>HTS Strategy</h4>
-
             <fieldset name="164956^HIV TESTING SERVICES STRATEGY^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="strategy_pitc" type="radio"
+                        <input class="hts_strategy" name="strategy" id="strategy_pitc" type="radio"
                                data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
                                value="164163^PITC^99DCT">
                         Provider Initiated Testing(PITC)
@@ -357,16 +368,16 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="strategy_npi" type="radio"
+                        <input class="hts_strategy" name="strategy" id="strategy_npi" type="radio"
                                data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
                                value="164953^NON-PROVIDER-INITIATED HIV TESTING AND COUNSELING^99DCT">
-                        Non Provider Initiated Testing
+                        Non Patient Initiated Testing
                     </label>
                 </div>
 
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="strategy_ivct" type="radio"
+                        <input class="hts_strategy" name="strategy" id="strategy_ivct" type="radio"
                                data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
                                value="164954^INTEGRATED VCT^99DCT">
                         Integrated VCT Center
@@ -374,7 +385,7 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="strategy_svct" type="radio"
+                        <input class="hts_strategy" name="strategy" id="strategy_svct" type="radio"
                                data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
                                value="164955^STANDALONE VCT CENTER^99DCT">
                         Stand Alone VCT Center
@@ -383,25 +394,125 @@
 
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="strategy_hbt" type="radio"
+                        <input class="hts_strategy" name="strategy" id="strategy_hbt" type="radio"
                                data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
-                               value="159938^HOME BASES HIV TESTING PROGRAM^99DCT">
+                               value="159938^HOME BASED HIV TESTING PROGRAM^99DCT">
                         Home Based Testing
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="strategy" id="strategy_mor" type="radio"
+                        <input class="hts_strategy" name="strategy" id="strategy_mor" type="radio"
                                data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
                                value="159939^MOBILE VCT PROGRAM^99DCT">
                         Mobile Outreach HTS
                     </label>
                 </div>
-
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_oth" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="5622^OTHER^99DCT">
+                        Others
+                    </label>
+                </div>
             </fieldset>
 
         </div>
+        <div class="section">
+            <h4>HTS entry point</h4>
+            <fieldset name="159936^HIV TESTING ENTRY POINT^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_ipd" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="5485^IPD^99DCT">
+                        In Patient Department(IPD)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_opd" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="160542^OPD^99DCT">
+                        Out Patient Department(OPD)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_paed" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="162181^PEADIATRIC^99DCT">
+                        Peadiatric Clinic
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_nut" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="160552^NUTRITION^99DCT">
+                        Nutrition Clinic
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_pmtct" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="160538^PMTCT^99DCT">
+                        PMTCT
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_tb" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="160541^TB^99DCT">
+                        TB
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_ccc" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="162050^CCC^99DCT">
+                        CCC
+                    </label>
+                </div>
+                       <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_vct" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="159940^VCT^99DCT">
+                        VCT
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_hbtc" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="159938^HBTC^99DCT">
+                        Home Based Testing
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_mo" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="159939^MO^99DCT">
+                        Mobile Outreach
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_others" type="radio"
+                               data-concept="159936^HIV TESTING ENTRY POINT^99DCT"
+                               value="5622^Others^99DCT">
+                        Other
+                    </label>
+                </div>
+            </fieldset>
 
+        </div>
         <div class="section">
             <h4>Type of Test</h4>
 
@@ -672,15 +783,6 @@
                             Presumed TB
                         </label>
                     </div>
-
-                    <div class="form-group">
-                        <label class="font-normal">
-                            <input name="tb_screening" id="tb_screening_confirmed" type="radio"
-                                   data-concept="1659^TB DISEASE STATUS^99DCT"
-                                   value="1662^TB CONFIRMED^99DCT">
-                            TB Confirmed
-                        </label>
-                    </div>
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="tb_screening" id="tb_screening_not_done" type="radio"
@@ -888,11 +990,14 @@
         $("input[name='pt']:radio")
             .change(function () {
                 $("#key_p_details").toggle($(this).val() == "164929^KEY POPULATION^99DCT");
-
             });
         $("input[name='disability']:radio")
             .change(function () {
                 $("#disability_details").toggle($(this).val() == "1065^YES^99DCT");
+            });
+        $("input[name='evertested']:radio")
+            .change(function () {
+                $("#test_duration").toggle($(this).val() == "1065^YES^99DCT");
             });
 
         $("input[name='linked']:radio")
@@ -966,6 +1071,39 @@
                 }
                 else {
                     $("#discordant_c").prop("checked", false);
+                }
+            }
+        });
+        $('.hts_strategy').change(function () {
+            if ($("input:radio[name=strategy]").is(":checked")) {
+                var $mode = $('input[name=strategy]:checked').val();
+                if ($mode === "159938^HOME BASED HIV TESTING PROGRAM^99DCT") {
+                    $("#entry_point_hbtc").prop("checked", true);
+                }
+                else {
+                    $("#entry_point_hbtc").prop("checked", false);
+                }
+            }
+        });
+        $('.hts_strategy').change(function () {
+            if ($("input:radio[name=strategy]").is(":checked")) {
+                var $mode = $('input[name=strategy]:checked').val();
+                if ($mode === "159939^MOBILE VCT PROGRAM^99DCT") {
+                    $("#entry_point_mo").prop("checked", true);
+                }
+                else {
+                    $("#entry_point_mo").prop("checked", false);
+                }
+            }
+        });
+        $('.hts_strategy').change(function () {
+            if ($("input:radio[name=strategy]").is(":checked")) {
+                var $mode = $('input[name=strategy]:checked').val();
+                if ($mode === "164954^INTEGRATED VCT^99DCT" || $mode === "164955^STANDALONE VCT CENTER^99DCT") {
+                    $("#entry_point_vct").prop("checked", true);
+                }
+                else {
+                    $("#entry_point_vct").prop("checked", false);
                 }
             }
         });
