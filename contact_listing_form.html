@@ -154,6 +154,34 @@
             </select>
         </div>
 
+        <!--Sex Field-->
+        <div class="form-group">
+            <h5><strong>Sex:<span class="required">*</span></strong></h5>
+            <fieldset name="1533^RESPONDENT GENDER^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_contact_sex"
+                               data-concept="1533^RESPONDENT GENDER^99DCT"
+                               value="1534^MALE GENDER^99DCT">
+                        Male
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_contact_sex"
+                               data-concept="1533^RESPONDENT GENDER^99DCT"
+                               value="1535^FEMALE GENDER^99DCT">
+                        Female
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <!--end of sex field-->
+        <div class="form-group">
+            <label>Phone Number:</label>
+            <input class="form-control" id="contact_phone_contact" name="contact_phone_contact" type="text"
+                   data-concept="159635^CONTACT PHONE NUMBER^99DCT">
+        </div>
 
         <div class="form-group">
             <h5><strong>Relationship to index client:</strong></h5>
@@ -431,6 +459,11 @@
         $('.repeat_r_status').change(function () {
             $(this).closest('.section').find('.repeat_r_status').not(this).prop('checked', false);
         });
+
+        $('.repeat_contact_sex').change(function () {
+            $(this).closest('.section').find('.repeat_contact_sex').not(this).prop('checked', false);
+        });
+
         $('.repeat_hiv_status').change(function () {
             $(this).closest('.section').find('.repeat_hiv_status').not(this).prop('checked', false);
         });
