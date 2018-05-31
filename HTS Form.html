@@ -62,31 +62,6 @@
             <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
                    readonly="readonly" value="">
         </div>
-        <!--        <div class="form-group">
-                    <label for="patient.phone_number">Phone Number:</label>
-                    <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
-                           readonly="readonly" value="">
-                </div>
-                <div class="form-group">
-                    <label for="patient.alternate_phone_contact">Alternate Phone Number:</label>
-                    <input class="form-control" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="text"
-                           readonly="readonly" value="">
-                </div>
-                <div class="form-group">
-                    <label for="patient.postal_address">Address:</label>
-                    <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="text"
-                           readonly="readonly" value="">
-                </div>
-                <div class="form-group">
-                    <label for="patient.landmark">Landmark:</label>
-                    <input class="form-control" id="patient.landmark" name="patient.landmark" type="text"
-                           readonly="readonly" value="">
-                </div>
-                <div class="form-group">
-                    <label for="patient.nearest_health_center">Nearest Facility:</label>
-                    <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
-                           readonly="readonly" value="">
-                </div>-->
     </div>
 
     <div class="section">
@@ -589,7 +564,6 @@
                     <label>Expiry Date <span class="required">*</span></label>
                     <input class="form-control datepicker kit-expiry-date" readonly="readonly" id="expiry_date_1"
                            data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text" required="required">
-
                     <label class="date_alert" style="color: red;display:none">Please note that the test kit used has
                         expired</label>
                 </div>
@@ -850,6 +824,7 @@
     $(document).ready(function () {
         $('#hiv_final_p input[type=radio]').attr("style", "pointer-events:none;");
         $('#hiv_final_n input[type=radio]').attr("style", "pointer-events:none;");
+        $('.date_alert').hide();
         var dateFormat = "dd-mm-yy";
         var currentDate = $.datepicker.formatDate(dateFormat, new Date());
         var encounterDatetime = $('#encounter\\.encounter_datetime');
@@ -1016,17 +991,26 @@
             $womenOnly.show();
         }
 
-
         $('.kit-expiry-date').change(function () {
             var $date = $(this).val();
-            if ($date < currentDate) {
-
+            var partsCurrentDate = currentDate.split('-');
+            var partsExpiryDate = $date.split('-');
+            var cDate = partsCurrentDate[0];
+            var cMonth = partsCurrentDate[1];
+            var cYear = partsCurrentDate[2];
+            var eDate = partsExpiryDate[0];
+            var eMonth = partsExpiryDate[1];
+            var eYear = partsExpiryDate[2];
+            if (eYear < cYear) {
                 $(this).closest('.section').find('.date_alert').show();
-            } else {
+              }else if(eYear <= cYear && eMonth < cMonth) {
+                    $(this).closest('.section').find('.date_alert').show();
+                }else if(eMonth == cMonth && eDate < cDate) {
+                        $(this).closest('.section').find('.date_alert').show();
+                    }else {
                 $(this).closest('.section').find('.date_alert').hide();
             }
         });
-
 
         $('.final_auto_check').change(function () {
             if ($("input:radio[name=hiv_test_one]").is(":checked")) {
