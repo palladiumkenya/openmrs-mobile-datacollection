@@ -62,6 +62,31 @@
             <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
                    readonly="readonly" value="">
         </div>
+        <!-- <div class="form-group">
+             <label for="patient.phone_number">Phone Number:</label>
+             <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.alternate_phone_contact">Alternate Phone Number:</label>
+             <input class="form-control" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.postal_address">Address:</label>
+             <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.landmark">Landmark:</label>
+             <input class="form-control" id="patient.landmark" name="patient.landmark" type="text"
+                    readonly="readonly" value="">
+         </div>
+         <div class="form-group">
+             <label for="patient.nearest_health_center">Nearest Facility:</label>
+             <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
+                    readonly="readonly" value="">
+         </div>-->
     </div>
 
     <div class="section">
@@ -114,18 +139,14 @@
             <input class="form-control" id="contact_name" name="contact_name" type="text"
                    data-concept="160750^CONTACT NAME^99DCT" required="required">
         </div>
-        <div class="form-group">
-            <label>Phone Number:</label>
-            <input class="form-control phoneNumber" id="phone_number" name="phone_number" type="tel"
-                   data-concept="159635^PHONE NUMBER^99DCT">
-        </div>
+
         <div class="form-group">
             <label for="contact_age">Age:<span class="required">*</span></label>
             <input class="form-control" id="contact_age" name="contact_age" type="text"
                    data-concept="160617^CONTACT AGE^99DCT" required="required">
         </div>
         <div class="form-group">
-            <select class="form-control" id="duration_unit" name="duration_unit" data-concept="1732^DURATION^99DCT"
+            <select class="form-control" id="duration_unit" name="duration_unit" data-concept="163541^AGE UNIT^99DCT"
                     required="required">
                 <option value="">...</option>
                 <option value="1734^DURATION UNIT^99DCT">Years</option>
@@ -133,6 +154,34 @@
             </select>
         </div>
 
+        <!--Sex Field-->
+        <div class="form-group">
+            <h5><strong>Sex:<span class="required">*</span></strong></h5>
+            <fieldset name="1533^RESPONDENT GENDER^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_contact_sex"
+                               data-concept="1533^RESPONDENT GENDER^99DCT"
+                               value="1534^MALE GENDER^99DCT">
+                        Male
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input type="radio" class="repeat_contact_sex"
+                               data-concept="1533^RESPONDENT GENDER^99DCT"
+                               value="1535^FEMALE GENDER^99DCT">
+                        Female
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <!--end of sex field-->
+        <div class="form-group">
+            <label>Phone Number:</label>
+            <input class="form-control" id="contact_phone_contact" name="contact_phone_contact" type="text"
+                   data-concept="159635^CONTACT PHONE NUMBER^99DCT">
+        </div>
 
         <div class="form-group">
             <h5><strong>Relationship to index client:</strong></h5>
@@ -197,14 +246,14 @@
         </div>
 
         <div class="form-group">
-            <h5><strong>Currently living with index client? </strong></h5>
+            <h5><strong>Relationship status:</strong></h5>
             <fieldset name="163607^RELATIONSHIP STATUS^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
                         <input type="radio" class="repeat_r_status"
                                data-concept="163607^RELATIONSHIP STATUS^99DCT"
                                value="159450^CURRENT RELATIONSHIP^99DCT">
-                        Yes
+                        Current
                     </label>
                 </div>
                 <div class="form-group">
@@ -212,7 +261,7 @@
                         <input type="radio" class="repeat_r_status"
                                data-concept="163607^RELATIONSHIP STATUS^99DCT"
                                value="160432^DECEASED^99DCT">
-                        No
+                        Deceased
                     </label>
                 </div>
             </fieldset>
@@ -316,7 +365,7 @@
                         <input type="radio" class="repeat_hiv_status"
                                data-concept="1169^HIV INFECTED^99DCT"
                                value="703^POSITIVE^99DCT">
-                        Known positive
+                        Positive
                     </label>
                 </div>
                 <div class="form-group">
@@ -410,6 +459,11 @@
         $('.repeat_r_status').change(function () {
             $(this).closest('.section').find('.repeat_r_status').not(this).prop('checked', false);
         });
+
+        $('.repeat_contact_sex').change(function () {
+            $(this).closest('.section').find('.repeat_contact_sex').not(this).prop('checked', false);
+        });
+
         $('.repeat_hiv_status').change(function () {
             $(this).closest('.section').find('.repeat_hiv_status').not(this).prop('checked', false);
         });
