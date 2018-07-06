@@ -1005,7 +1005,7 @@
                 $(this).closest('.section').find('.date_alert').show();
               }else if(eYear <= cYear && eMonth < cMonth) {
                     $(this).closest('.section').find('.date_alert').show();
-                }else if(eMonth == cMonth && eDate < cDate) {
+                }else if(eYear <= cYear && eMonth == cMonth && eDate < cDate) {
                         $(this).closest('.section').find('.date_alert').show();
                     }else {
                 $(this).closest('.section').find('.date_alert').hide();
