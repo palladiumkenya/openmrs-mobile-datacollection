@@ -62,31 +62,6 @@
             <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
                    readonly="readonly" value="">
         </div>
-       <!-- <div class="form-group">
-            <label for="patient.phone_number">Phone Number:</label>
-            <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.alternate_phone_contact">Alternate Phone Number:</label>
-            <input class="form-control" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.postal_address">Address:</label>
-            <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.landmark">Landmark:</label>
-            <input class="form-control" id="patient.landmark" name="patient.landmark" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.nearest_health_center">Nearest Facility:</label>
-            <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
-                   readonly="readonly" value="">
-        </div>-->
     </div>
 
     <div class="section">
@@ -179,7 +154,6 @@
 
     </div>
 
-
     <div class="section yesSectionToShow">
 
         <div class="form-group yesLinkedToShow">
@@ -203,8 +177,66 @@
             <input class="form-control" id="hwht" name="hwht" type="text"
                    data-concept="1473^HEALTH CARE PROVIDER^99DCT" required="required">
         </div>
-    </div>
 
+         <div class="form-group">
+                    <label>Cadre of Health worker : </label>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="cadre"  id="nurse" type="radio"
+                                   data-concept="162577^CADRE^99DCT"
+                                   value="1577^Nurse^99DCT">
+                            Nurse
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="cadre" id="doctor" type="radio"
+                                   data-concept="162577^CADRE^99DCT"
+                                   value="1575^doctor^99DCT">
+                            Clinical Officer/Doctor
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="occupation"  id="employee" type="radio"
+                                   data-concept="162577^CADRE^99DCT"
+                                   value="1540^Employee^99DCT">
+                            Employee
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="occupation" id="chw" type="radio"
+                                   data-concept="162577^CADRE^99DCT"
+                                   value="1555^Chw^99DCT">
+                            Community Health Worker
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="occupation"  id="driver" type="radio"
+                                   data-concept="162577^CADRE^99DCT"
+                                   value="5622^Other^99DCT">
+                            Other
+                        </label>
+                    </div>
+            </div>
+        <div class="form-group">
+            <label>Date enrolled: </label>
+            <input class="form-control datepicker linkage" readonly="readonly" id="linkage-date"
+                   data-concept="163181^LINKAGE DATE^99DCT" name="linkage" type="text" >
+            <!--<label class="date_alert" style="color: red;display:none">Please note that the linkage date cannot be in the future</label>-->
+        </div>
+        <div class="section form-group">
+            <label>Remarks</label>
+            <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
+                      data-concept="163042^FREETEXT GENERAL^99DCT"
+                      placeholder="Provider notes/comments."></textarea>
+        </div>
+        </div>
+    </div>
 
 </form>
 </body>
@@ -317,6 +349,27 @@
             else
                 $validate_upn.hide();
         });
+
+//        $('.linkage-date').change(function () {
+//            var $date = $(this).val();
+//            var partsCurrentDate = currentDate.split('-');
+//            var partsExpiryDate = $date.split('-');
+//            var cDate = partsCurrentDate[0];
+//            var cMonth = partsCurrentDate[1];
+//            var cYear = partsCurrentDate[2];
+//            var eDate = partsExpiryDate[0];
+//            var eMonth = partsExpiryDate[1];
+//            var eYear = partsExpiryDate[2];
+//            if (eYear < cYear) {
+//                $(this).closest('.section').find('.date_alert').show();
+//            }else if(eYear <= cYear && eMonth < cMonth) {
+//                $(this).closest('.section').find('.date_alert').show();
+//            }else if(eYear <= cYear && eMonth == cMonth && eDate < cDate) {
+//                $(this).closest('.section').find('.date_alert').show();
+//            }else {
+//                $(this).closest('.section').find('.date_alert').hide();
+//            }
+//        });
 
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");

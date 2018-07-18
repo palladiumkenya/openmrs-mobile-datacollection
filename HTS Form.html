@@ -126,6 +126,14 @@
                         Key Population
                     </label>
                 </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="pt" id="pri_p" type="radio"
+                               data-concept="164930^POPULATION TYPE^99DCT"
+                               value="138643^PRIORITY POPULATION^99DCT">
+                        Priority Population
+                    </label>
+                </div>
             </fieldset>
         </div>
 
@@ -160,6 +168,48 @@
                            data-concept="160581^HIV RISK FACTOR^99DCT"
                            value="5622^OTHER^99DCT"/>
                     Others
+                </label>
+            </div>
+        </div>
+        <div id="pri_p_details" style="display:none">
+            <div class="form-group">
+                <label>
+                    <input id="fisher" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="159674^FISHER FOLK^99DCT"/>
+                    Fisher folk
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input id="truck" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="162198^TRUCKER^99DCT"/>
+                    Truck drivers
+                </label>
+            </div>
+            <div class="form-group women_relevant">
+                <label>
+                    <input id="agyw" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="160549^ADOLESCENT GIRLS^99DCT"/>
+                    Adolescent girls and young women
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input id="prisoner" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="162277^PRISONER^99DCT"/>
+                    Prisoner
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input id="na" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="1175^NOT APPLICABLE^99DCT"/>
+                    Not Applicable
                 </label>
             </div>
         </div>
@@ -965,6 +1015,10 @@
         $("input[name='pt']:radio")
             .change(function () {
                 $("#key_p_details").toggle($(this).val() == "164929^KEY POPULATION^99DCT");
+            });
+        $("input[name='pt']:radio")
+            .change(function () {
+                $("#pri_p_details").toggle($(this).val() == "138643^PRIORITY POPULATION^99DCT");
             });
         $("input[name='disability']:radio")
             .change(function () {
