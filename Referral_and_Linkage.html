@@ -192,11 +192,18 @@
                         <label class="font-normal">
                             <input name="cadre" id="doctor" type="radio"
                                    data-concept="162577^CADRE^99DCT"
-                                   value="1575^doctor^99DCT">
+                                   value="1574^doctor^99DCT">
                             Clinical Officer/Doctor
                         </label>
                     </div>
-
+                 <div class="form-group">
+                     <label class="font-normal">
+                         <input name="occupation" id="chw" type="radio"
+                                data-concept="162577^CADRE^99DCT"
+                                value="1555^Chw^99DCT">
+                         Community Health Worker
+                     </label>
+                 </div>
                     <div class="form-group">
                         <label class="font-normal">
                             <input name="occupation"  id="employee" type="radio"
@@ -205,16 +212,7 @@
                             Employee
                         </label>
                     </div>
-                    <div class="form-group">
-                        <label class="font-normal">
-                            <input name="occupation" id="chw" type="radio"
-                                   data-concept="162577^CADRE^99DCT"
-                                   value="1555^Chw^99DCT">
-                            Community Health Worker
-                        </label>
-                    </div>
-
-                    <div class="form-group">
+                  <div class="form-group">
                         <label class="font-normal">
                             <input name="occupation"  id="driver" type="radio"
                                    data-concept="162577^CADRE^99DCT"
@@ -226,8 +224,12 @@
         <div class="form-group">
             <label>Date enrolled: </label>
             <input class="form-control datepicker linkage" readonly="readonly" id="linkage-date"
-                   data-concept="163181^LINKAGE DATE^99DCT" name="linkage" type="text" >
-            <!--<label class="date_alert" style="color: red;display:none">Please note that the linkage date cannot be in the future</label>-->
+                   data-concept="160555^LINKAGE DATE^99DCT" name="linkage" type="text" >
+        </div>
+        <div class="form-group">
+            <label>ART start date: </label>
+            <input class="form-control datepicker artDate" readonly="readonly" id="art-start-date"
+                   data-concept="159599^ART START DATE^99DCT" name="artDate" type="text" >
         </div>
         <div class="section form-group">
             <label>Remarks</label>
@@ -350,6 +352,7 @@
                 $validate_upn.hide();
         });
 
+        //Validation of enrollment date and art start date
 //        $('.linkage-date').change(function () {
 //            var $date = $(this).val();
 //            var partsCurrentDate = currentDate.split('-');
