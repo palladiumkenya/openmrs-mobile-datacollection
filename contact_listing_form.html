@@ -554,7 +554,7 @@
                 </div>
             </div>
         <div class="section">
-            <h4>Patient Tracing</h4>
+            <h4>Contact Tracing</h4>
             <div class="form-group">
                 <h5><strong>Contact type:</strong></h5>
                 <fieldset name="164966^MODE OF CLIENT TRACING^99DCT">
@@ -745,9 +745,11 @@
             var $negativeResultSectionToShow = $(this).closest('.repeat').find('.show-negative');
             var divToShowVal = $(this).val();
             if (divToShowVal != '703^POSITIVE^99DCT') {
+                    $negativeResultSectionToShow.show();
                     $positiveResultSectionToShow.hide();
                 } else {
                     $positiveResultSectionToShow.show();
+                    $negativeResultSectionToShow.hide();
                 }
         });
         $testResults.trigger('click');
