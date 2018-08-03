@@ -10,7 +10,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
     <script src="js/muzima.js"></script>
-    <title>HTS Linkage and Referral Form</title>
+    <title>HTS Screening Form</title>
     <style>
         h4 {
             text-align: center;
@@ -19,9 +19,9 @@
 </head>
 <body class="col-md-8 col-md-offset-2">
 <div id="result"></div>
-<form id="hts_linkage_and_referral_form" name="hts_linkage_and_referral_form">
+<form id="hts_form" name="hts_form">
 
-    <h2 class="text-center">HTS Linkage and Referral Form</h2>
+    <h2 class="text-center">HTS Screening Form v1.0</h2>
 
     <div class="section">
         <h3>Demographics</h3>
@@ -62,31 +62,6 @@
             <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
                    readonly="readonly" value="">
         </div>
-       <!-- <div class="form-group">
-            <label for="patient.phone_number">Phone Number:</label>
-            <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.alternate_phone_contact">Alternate Phone Number:</label>
-            <input class="form-control" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.postal_address">Address:</label>
-            <input class="form-control" id="patient.postal_address" name="patient.postal_address" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.landmark">Landmark:</label>
-            <input class="form-control" id="patient.landmark" name="patient.landmark" type="text"
-                   readonly="readonly" value="">
-        </div>
-        <div class="form-group">
-            <label for="patient.nearest_health_center">Nearest Facility:</label>
-            <input class="form-control" id="patient.nearest_health_center" name="patient.nearest_health_center" type="text"
-                   readonly="readonly" value="">
-        </div>-->
     </div>
 
     <div class="section">
@@ -131,78 +106,151 @@
     </div>
 
     <div class="section">
-        <h4>Patient Tracing</h4>
+        <h4>Patient Type </h4>
         <div class="form-group">
-            <h5><strong>Contact type:</strong></h5>
-            <fieldset name="164966^MODE OF CLIENT TRACING^99DCT">
+            <h5><strong>Patient type</strong><span class="required">*</span></h5>
+            <fieldset name="160112^ACCOMPANIST^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="contact" id="contact_phone" type="radio"
-                               data-concept="164966^MODE OF CLIENT TRACING^99DCT"
-                               value="1650^MOBILE PHONE^99DCT">
-                        Phone
+                        <input name="pt" type="radio"
+                               data-concept="160112^ACCOMPANIST^99DCT"
+                               value="1066^HP^99DCT">
+                        HP
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input name="contact" id="contact_physical" type="radio"
-                               data-concept="164966^MODE OF CLIENT TRACING^99DCT"
-                               value="164965^PHYSICAL TRACING^99DCT">
-                        Physical
+                        <input name="pt" type="radio"
+                               data-concept="160112^ACCOMPANIST^99DCT"
+                               value="1065^NP^99DCT">
+                        NP
                     </label>
                 </div>
             </fieldset>
         </div>
+    </div>
 
-
+    <div class="section">
+        <h4>Department/Coverage</h4>
         <div class="form-group">
-            <h5><strong>Status:</strong></h5>
-            <fieldset name="159811^ENROLLED IN HIV CARE^99DCT">
+            <h5><strong>Department/Coverage? </strong><span class="required">*</span></h5>
+            <fieldset name="159936^DEPARTMENT^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
-                        <input class="yesSelect" name="status" id="status_successful" type="radio"
-                               data-concept="159811^ENROLLED IN HIV CARE^99DCT"
-                               value="1065^YES^99DCT">
-                        Contacted and linked
+                        <input name="test_point" type="radio"
+                               data-concept="159936^DEPARTMENT^99DCT"
+                               value="160542^OUTPATIENT^99DCT">
+                        Outpatient
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
-                        <input class="yesSelect" name="status" id="status_not_successful" type="radio"
-                               data-concept="159811^ENROLLED IN HIV CARE^99DCT"
-                               value="1066^NO^99DCT">
-                        Contacted but not linked
+                        <input name="test_point" type="radio"
+                               data-concept="159936^DEPARTMENT^99DCT"
+                               value="5485^INPATIENT^99DCT">
+                        Inpatient
                     </label>
                 </div>
             </fieldset>
         </div>
+    </div>
 
+    <div class="section">
+        <h4>HIV Test History</h4>
+        <div class="form-group">
+            <label>
+                Client tested for HIV before? <span class="required">*</span></label>
+            <fieldset name="164401^HIV TEST PERFORMED^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="ever_tested" type="radio"
+                               data-concept="164401^HIV TEST PERFORMED^99DCT"
+                               value="1065^Yes^99DCT">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="ever_tested" type="radio"
+                               data-concept="164401^HIV TEST PERFORMED^99DCT"
+                               value="1066^No^99DCT">
+                        No
+                    </label>
+                </div>
+
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="testHistoryYes">
+        <div class="section">
+            <h4>Test Result</h4>
+            <div class="form-group">
+                <label>
+                    Test Result </label>
+                <fieldset name="159427^HIV TEST RESULT^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="last_test_result"  type="radio"
+                                   data-concept="159427^HIV TEST RESULT^99DCT"
+                                   value="664^NEGATIVE^99DCT">
+                            Negative
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="last_test_result" type="radio"
+                                   data-concept="159427^HIV TEST RESULT^99DCT"
+                                   value="703^POSITIVE^99DCT">
+                            Positive
+                        </label>
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <div class="form-group">
+                <label for="date_of_last_test">Date Tested:</label>
+                <input class="form-control nonFutureDate past-date datepicker" id="date_of_last_test"  name="date_of_last_test" type="text"
+                       data-concept="164400^HIV TEST DATE^99DCT" required="required">
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h4>Eligibility for testing</h4>
+            <div class="form-group">
+                <h5><strong>Client eligible for testing? <span class="required">*</span></strong></h5>
+                <fieldset name="162699^CLIENT ELIGIBLE FOR TESTING^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="client_eligibility" type="radio"
+                                   data-concept="162699^CLIENT ELIGIBLE FOR TESTING^99DCT"
+                                   value="1065^YES^99DCT">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="client_eligibility" type="radio"
+                                   data-concept="162699^CLIENT ELIGIBLE FOR TESTING^99DCT"
+                                   value="1066^NO^99DCT">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
     </div>
 
 
-    <div class="section yesSectionToShow">
-
-        <div class="form-group yesLinkedToShow">
-            <label for="flt">Facility linked to:<span class="required">*</span></label>
-            <input class="form-control" id="flt" name="flt" type="text"
-                   data-concept="162724^HEALTH FACILITY^99DCT" required="required">
-        </div>
-
-        <div class="form-group">
-            <label for="upn">Unique Patient Number (UPN):<span class="required">*</span></label>
-            <input class="form-control" id="upn" name="upn" type="text"
-                   data-concept="162053^CCC NUMBER^99DCT" required="required">
-        </div>
-
-        <div style="display:none" class="form-group upn">
-            <label><span style="font-size: small; color: red; ">Invalid Unique Patient Number format</span></label>
-        </div>
-
-        <div class="form-group">
-            <label for="hwht">Health worker handed to :<span class="required">*</span></label>
-            <input class="form-control" id="hwht" name="hwht" type="text"
-                   data-concept="1473^HEALTH CARE PROVIDER^99DCT" required="required">
-        </div>
+    <div class="section form-group">
+        <label>Remarks</label>
+        <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
+                  data-concept="163042^FREETEXT GENERAL^99DCT"
+                  placeholder="Provider notes/comments."></textarea>
     </div>
 
 
@@ -282,7 +330,6 @@
 
         document.setupAutoCompleteData('encounter\\.location_id');
 
-
         document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
 
         $('#registration_form').validate({
@@ -292,31 +339,24 @@
                 }
             }
         });
-        var $yesSelect = $('.yesSelect');
-        $yesSelect.change(function () {
-            var $yesSectionToShow = $('.yesSectionToShow');
-            var divToShowVal = $(this).val();
-            if (divToShowVal == '1065^YES^99DCT') {
-                if (($(this).is(':checked'))) {
-                    $yesSectionToShow.show();
-                }
-                else {
-                    $yesSectionToShow.hide();
-                }
-            } else {
-                $yesSectionToShow.hide();
-            }
-        });
-        $yesSelect.trigger('change');
 
-        $('#upn').change(function () {
-            var $validate_upn = $('.upn');
-            var length = $('#upn').val().length;
-            if (length < 10 || length > 12)
-                $validate_upn.show();
-            else
-                $validate_upn.hide();
-        });
+
+        $(".testHistoryYes").hide();
+        $("input[name='ever_tested']:radio")
+            .change(function () {
+                $(".testHistoryYes").toggle($(this).val() == "1065^Yes^99DCT");
+            });
+
+        var $patientSex = $('#patient\\.sex');
+        var $menOnly = $('.men_relevant');
+        var $womenOnly = $('.women_relevant');
+        if ($patientSex.val() != 'F') {
+            $menOnly.show();
+            $womenOnly.hide();
+        } else {
+            $menOnly.hide();
+            $womenOnly.show();
+        }
 
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");

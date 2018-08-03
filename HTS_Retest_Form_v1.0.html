@@ -1,0 +1,1135 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+    <title>HTS Retest Form</title>
+    <style>
+        h4 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="col-md-8 col-md-offset-2">
+<div id="result"></div>
+<form id="hts_form" name="hts_form">
+
+    <h2 class="text-center">HTS Retest Form v1.0 </h2>
+
+    <div class="section">
+        <h3>Demographics</h3>
+        <div class="form-group">
+            <input class="form-control" id="patient.uuid"
+                   name="patient.uuid" type="hidden" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.medical_record_number">National ID:</label>
+            <input class="form-control" id="patient.medical_record_number"
+                   name="patient.medical_record_number" type="text" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.family_name">Family Name:</label>
+            <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.given_name">Given Name:</label>
+            <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.middle_name">Middle Name:</label>
+            <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.sex">Gender:</label>
+            <select class="form-control" id="patient.sex" name="patient.sex" disabled="disabled">
+                <option value="">...</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="patient.birth_date">Date Of Birth:</label>
+            <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
+                   readonly="readonly" value="">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="form-group">
+            <label for="encounter.location_id">Encounter Location:<span class="required">*</span></label>
+            <input class="form-control valid-location-only" id="encounter.location_id" type="text"
+                   placeholder="Start typing something..." required="required">
+            <input class="form-control" name="encounter.location_id" type="hidden">
+        </div>
+
+        <div class="form-group hidden">
+            <label for="encounter.location_id_select">Encounter Location <span class="required">*</span></label>
+            <select class="form-control" id="encounter.location_id_select" required="required">
+                <option>...</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="encounter.provider_id_select">Provider Name:</label>
+            <input class="form-control valid-provider-only" id="encounter.provider_id_select" type="text"
+                   placeholder="Start typing something...">
+            <input class="form-control" name="encounter.provider_id_select" type="hidden">
+        </div>
+        <div class="form-group hidden">
+            <select id="select_providers">
+            </select>
+        </div>
+        <div class="form-group show_provider_id_text">
+            <label for="encounter.provider_id">Provider's system-id:<span class="required">*</span></label>
+            <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id"
+                   type="text" required="required" disabled="disabled">
+        </div>
+        <div class="form-group">
+            <label for="encounter.encounter_datetime">Encounter Date <span class="required">*</span></label>
+            <input class="form-control nonFutureDate past-date datepicker" readonly="readonly"
+                   id="encounter.encounter_datetime"
+                   name="encounter.encounter_datetime" type="text" required="required">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
+                   type="hidden" required="required">
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>Population Type</h4>
+        <div class="form-group">
+            <h5><strong>Patient population type</strong></h5>
+            <fieldset name="164930^POPULATION TYPE^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="pt" id="general_p" type="radio"
+                               data-concept="164930^POPULATION TYPE^99DCT"
+                               value="164928^GENERAL POPULATION^99DCT">
+                        General Population
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="pt" id="key_p" type="radio"
+                               data-concept="164930^POPULATION TYPE^99DCT"
+                               value="164929^KEY POPULATION^99DCT">
+                        Key Population
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="pt" id="pri_p" type="radio"
+                               data-concept="164930^POPULATION TYPE^99DCT"
+                               value="138643^PRIORITY POPULATION^99DCT">
+                        Priority Population
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div id="key_p_details" style="display:none">
+            <div class="form-group">
+                <label>
+                    <input id="drug_injection" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="105^INTRAVENOUS DRUG USE^99DCT"/>
+                    People who inject drugs
+                </label>
+            </div>
+            <div class="form-group men_relevant">
+                <label>
+                    <input id="msm" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="160578^MEN WHO HAVE SEX WITH MEN^99DCT"/>
+                    Men who have sex with men
+                </label>
+            </div>
+            <div class="form-group women_relevant">
+                <label>
+                    <input id="fsw" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="160579^FEMALE SEX WORKER^99DCT"/>
+                    Female sex Worker
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input id="oth" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="5622^OTHER^99DCT"/>
+                    Others
+                </label>
+            </div>
+        </div>
+        <div id="pri_p_details" style="display:none">
+            <div class="form-group">
+                <label>
+                    <input id="fisher" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="159674^FISHER FOLK^99DCT"/>
+                    Fisher folk
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input id="truck" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="162198^TRUCKER^99DCT"/>
+                    Truck drivers
+                </label>
+            </div>
+            <div class="form-group women_relevant">
+                <label>
+                    <input id="agyw" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="160549^ADOLESCENT GIRLS^99DCT"/>
+                    Adolescent girls and young women
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input id="prisoner" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="162277^PRISONER^99DCT"/>
+                    Prisoner
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input id="na" type="checkbox"
+                           data-concept="160581^HIV RISK FACTOR^99DCT"
+                           value="1175^NOT APPLICABLE^99DCT"/>
+                    Not Applicable
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>Disability</h4>
+        <div class="form-group">
+            <h5><strong>Patient has any disability? </strong></h5>
+            <fieldset name="164951^PATIENT DISABLED^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="disability" id="disability_yes" type="radio"
+                               data-concept="164951^PATIENT DISABLED^99DCT"
+                               value="1065^YES^99DCT">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="disability" id="disability_no" type="radio"
+                               data-concept="164951^PATIENT DISABLED^99DCT"
+                               value="1066^NO^99DCT">
+                        No
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div id="disability_details" style="display:none">
+            <label>
+                Please indicate the type of disability<span class="required">*</span>
+            </label>
+
+            <div class="form-group">
+
+                <label class="font-normal">
+                    <input id="disability_deaf" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="120291^DEAF^99DCT"/>
+                    Deaf
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_blind" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="147215^BLIND^99DCT"/>
+                    Blind
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_mc" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="151342^MENTALLY CHALLENGED^99DCT"/>
+                    Mentally Challenged
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_pc" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="164538^PHYSICALLY CHALLENGED^99DCT"/>
+                    Physically Challenged
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="disability_other" type="checkbox"
+                           data-concept="162558^DISABILITY^99DCT"
+                           value="5622^OTHER^99DCT"/>
+                    Other
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <div class="section">
+        <h4>HIV Test History</h4>
+        <div class="form-group">
+            <label>
+                Patient ever been tested for HIV? <span class="required">*</span></label>
+            <fieldset name="164401^HIV TEST PERFORMED^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="evertested" id="ever_tested_yes" type="radio"
+                               data-concept="164401^HIV TEST PERFORMED^99DCT"
+                               value="1065^YES^99DCT">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="evertested" id="ever_tested_no" type="radio"
+                               data-concept="164401^HIV TEST PERFORMED^99DCT"
+                               value="1066^NO^99DCT">
+                        No
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <div id="test_duration" style="display:none">
+            <label>
+                Please indicate the duration in months since the last HIV test
+            </label>
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="duration_months" type="number"
+                           data-concept="159813^DURATION^99DCT" />
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h4>Consent</h4>
+        <div class="form-group">
+            <label>
+                Patient has informed consent <span class="required">*</span></label>
+
+            <fieldset name="1710^INFORMED CONSENT^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="patient_consent" name="client_consent" id="consent_yes" type="radio"
+                               data-concept="1710^INFORMED CONSENT^99DCT"
+                               value="1^Yes^99DCT">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="patient_consent" name="client_consent" id="consent_no" type="radio"
+                               data-concept="1710^INFORMED CONSENT^99DCT"
+                               value="0^No^99DCT">
+                        No
+                    </label>
+                </div>
+
+            </fieldset>
+        </div>
+
+    </div>
+
+    <div class="client_consent_informed">
+
+        <div class="section">
+            <h4>Couple testing</h4>
+            <div class="form-group">
+                <label>
+                    Client tested as? <span class="required">*</span></label>
+                <fieldset name="164959^PATIENT TESTED AS^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input class="individual_mode" name="couple_testing" id="couple" type="radio"
+                                   data-concept="164959^PATIENT TESTED AS^99DCT"
+                                   value="164958^COUPLE TESTING^99DCT">
+                            Couple
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input class="individual_mode" name="couple_testing" id="individual" type="radio"
+                                   data-concept="164959^PATIENT TESTED AS^99DCT"
+                                   value="164957^INDIVIDUAL TESTING^99DCT">
+                            Individual
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="section">
+            <h4>HTS Strategy</h4>
+            <fieldset name="164956^HIV TESTING SERVICES STRATEGY^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_pitc" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="164163^PITC^99DCT">
+                        Provider Initiated Testing(PITC)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_npi" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="164953^NON-PROVIDER-INITIATED HIV TESTING AND COUNSELING^99DCT">
+                        Non Patient Initiated Testing
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_ivct" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="164954^INTEGRATED VCT^99DCT">
+                        Integrated VCT Center
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_svct" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="164955^STANDALONE VCT CENTER^99DCT">
+                        Stand Alone VCT Center
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_hbt" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="159938^HOME BASED HIV TESTING PROGRAM^99DCT">
+                        Home Based Testing
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_mor" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="159939^MOBILE VCT PROGRAM^99DCT">
+                        Mobile Outreach HTS
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_oth" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="5622^OTHER^99DCT">
+                        Others
+                    </label>
+                </div>
+            </fieldset>
+
+        </div>
+        <div class="section">
+            <h4>HTS entry point</h4>
+            <fieldset name="160540^HIV TESTING ENTRY POINT^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_ipd" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="5485^IPD^99DCT">
+                        In Patient Department(IPD)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_opd" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="160542^OPD^99DCT">
+                        Out Patient Department(OPD)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_paed" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="162181^PEADIATRIC^99DCT">
+                        Peadiatric Clinic
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_nut" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="160552^NUTRITION^99DCT">
+                        Nutrition Clinic
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_pmtct" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="160538^PMTCT^99DCT">
+                        PMTCT
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_tb" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="160541^TB^99DCT">
+                        TB
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_ccc" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="162050^CCC^99DCT">
+                        CCC
+                    </label>
+                </div>
+                       <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_vct" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="159940^VCT^99DCT">
+                        VCT
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_hbtc" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="159938^HBTC^99DCT">
+                        Home Based Testing
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_mo" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="159939^MO^99DCT">
+                        Mobile Outreach
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="entry_point" id="entry_point_others" type="radio"
+                               data-concept="160540^HIV TESTING ENTRY POINT^99DCT"
+                               value="5622^Others^99DCT">
+                        Other
+                    </label>
+                </div>
+            </fieldset>
+
+        </div>
+
+        <div class="section" data-concept="164410^TEST LABORATORY NUMBER CONSTRUCT^99DCT">
+            <h4>HIV Test 1</h4>
+
+            <fieldset name="1040^HIV RAPID TEST 1^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="final_auto_check" name="hiv_test_one" id="hiv_1_p" type="radio"
+                               data-concept="1040^HIV RAPID TEST 1^99DCT"
+                               value="703^POSITIVE^99DCT">
+                        Positive
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="final_auto_check" name="hiv_test_one" id="hiv_1_n" type="radio"
+                               data-concept="1040^HIV RAPID TEST 1^99DCT"
+                               value="664^NEGATIVE^99DCT">
+                        Negative
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="final_auto_check" name="hiv_test_one" id="hiv_1_i" type="radio"
+                               data-concept="1040^HIV RAPID TEST 1^99DCT"
+                               value="163611^INVALID^99DCT">
+                        Invalid
+                    </label>
+                </div>
+
+                <div>
+
+                    <div class="form-group">
+                        <label>Kit Name<span class="required">*</span></label>
+                        <select class="form-control" id="hiv_1_kit" name="hiv_1_kit" required="required"
+                                data-concept="164962^HIV TEST KIT USED^99DCT">
+                            <option value="">...</option>
+                            <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
+                            <option value="164961^FIRST RESPONSE TEST KIT^99DCT">First Response</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lot Number<span class="required">*</span></label>
+                        <input class="form-control" id="lot_nu" name="lot_nu" type="text"
+                               data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>Expiry Date <span class="required">*</span></label>
+                    <input class="form-control datepicker kit-expiry-date" readonly="readonly" id="expiry_date_1"
+                           data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text" required="required">
+                    <label class="date_alert" style="color: red;display:none">Please note that the test kit used has
+                        expired</label>
+                </div>
+
+            </fieldset>
+
+        </div>
+
+
+        <div class="section other_tests" data-concept="164410^TEST LABORATORY NUMBER CONSTRUCT^99DCT^2">
+            <h4>HIV Test 2</h4>
+            <fieldset name="1326^HIV RAPID TEST 2^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="final_auto_check" name="hiv_test_two" id="hiv_2_p" type="radio"
+                               data-concept="1326^HIV RAPID TEST 2^99DCT"
+                               value="703^POSITIVE^99DCT">
+                        Positive
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="final_auto_check" name="hiv_test_two" id="hiv_2_n" type="radio"
+                               data-concept="1326^HIV RAPID TEST 2^99DCT"
+                               value="664^NEGATIVE^99DCT">
+                        Negative
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="final_auto_check" name="hiv_test_two" id="hiv_2_i" type="radio"
+                               data-concept="1326^HIV RAPID TEST 2^99DCT"
+                               value="163611^INVALID^99DCT">
+                        Invalid
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input class="final_auto_check" name="hiv_test_two" id="hiv_2_na" type="radio"
+                               data-concept="1326^HIV RAPID TEST 2^99DCT"
+                               value="1175^NOT APPLICABLE^99DCT">
+                        Not Applicable
+                    </label>
+                </div>
+
+                <div>
+                    <div class="testResultSectionToShow">
+
+                        <div class="form-group">
+                            <label>Kit Name<span class="required">*</span></label>
+                            <select class="form-control" id="hiv_2_kit" name="hiv_2_kit" required="required"
+                                    data-concept="164962^HIV TEST KIT USED^99DCT">
+                                <option value="">...</option>
+                                <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
+                                <option value="164961^FIRST RESPONSE TEST KIT^99DCT">First Response</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Lot Number<span class="required">*</span></label>
+                            <input class="form-control" id="hiv_2_lot" name="hiv_2_kit" type="text"
+                                   data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Expiry Date <span class="required">*</span></label>
+                        <input class="form-control kit-expiry-date  datepicker" readonly="readonly" id="expiry_date_2"
+                               data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text"
+                               required="required">
+                        <label class="date_alert" style="color: red;display:none">Please note that the test kit used has
+                            expired</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="section">
+            <h4>Final Results</h4>
+            <div>
+
+                <div class="form-group">
+                    <label>Final Results: <span class="required">*</span></label>
+                    <fieldset name="159427^FINAL HIV RESULTS^99DCT">
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input name="final_result" id="hiv_final_p" type="radio"
+                                       data-concept="159427^FINAL HIV RESULTS^99DCT"
+                                       value="703^POSITIVE^99DCT" readonly="">
+                                Positive
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input name="final_result" id="hiv_final_n" type="radio"
+                                       data-concept="159427^FINAL HIV RESULTS^99DCT"
+                                       value="664^NEGATIVE^99DCT">
+                                Negative
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input name="final_result" id="hiv_final_i" type="radio"
+                                       data-concept="159427^FINAL HIV RESULTS^99DCT"
+                                       value="1138^INCONCLUSIVE^99DCT">
+                                Inconclusive
+                            </label>
+                        </div>
+                    </fieldset>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Results given to Client?<span class="required">*</span></label>
+                    <fieldset name="164848^HIV RESULTS GIVEN TO CLIENT^99DCT">
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input name="final_result_given" id="hiv_final_given_y" type="radio"
+                                       data-concept="164848^HIV RESULTS GIVEN TO CLIENT^99DCT"
+                                       value="1065^YES^99DCT">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input name="final_result_given" id="hiv_final_given_n" type="radio"
+                                       data-concept="164848^HIV RESULTS GIVEN TO CLIENT^99DCT"
+                                       value="1066^NO^99DCT">
+                                No
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h4>Discordance</h4>
+            <div class="form-group">
+                <h5><strong>Couple is discordant:</strong></h5>
+                <fieldset name="6096^DISCORDANT COUPLE^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="discordant" id="discordant_a" type="radio"
+                                   data-concept="6096^DISCORDANT COUPLE^99DCT"
+                                   value="1065^YES^99DCT">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="discordant" id="discordant_b" type="radio"
+                                   data-concept="6096^DISCORDANT COUPLE^99DCT"
+                                   value="1066^NO^99DCT">
+                            No
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="discordant" id="discordant_c" type="radio"
+                                   data-concept="6096^DISCORDANT COUPLE^99DCT"
+                                   value="1175^NOT APPLICABLE^99DCT">
+                            N/A
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="section">
+            <h4>TB Screening</h4>
+            <div class="form-group">
+                <label>Tb Screening results:<span class="required">*</span></label>
+
+                <fieldset name="1659^TB DISEASE STATUS^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="tb_screening" id="tb_screening_no_signs" type="radio"
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="1660^NO SIGNS OR SYMPTOMS^99DCT">
+                            No TB Signs
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="tb_screening" id="tb_screening_presumed" type="radio"
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="142177^TB SUSPECTED^99DCT">
+                            Presumed TB
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="tb_screening" id="tb_screening_not_done" type="radio"
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="160737^NOT SCREENED^99DCT">
+                            Not Done
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="tb_screening" id="tb_screening_on_treatment" type="radio"
+                                   data-concept="1659^TB DISEASE STATUS^99DCT"
+                                   value="1111^ON TB TREATMENT^99DCT">
+                            On TB Treatment
+                        </label>
+                    </div>
+
+                </fieldset>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h4>HIV Self Test</h4>
+            <div class="form-group">
+                <h5><strong>Has the client done HIV self test in the last 12 months? </strong></h5>
+                <fieldset name="164952^PATIENT HAD HIV SELF TEST^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="self_test" id="self_test_yes" type="radio"
+                                   data-concept="164952^PATIENT HAD HIV SELF TEST^99DCT"
+                                   value="1065^YES^99DCT">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="self_test" id="self_test_no" type="radio"
+                                   data-concept="164952^PATIENT HAD HIV SELF TEST^99DCT"
+                                   value="1066^NO^99DCT">
+                            No
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="section form-group">
+        <label>Remarks</label>
+        <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
+                  data-concept="163042^FREETEXT GENERAL^99DCT"
+                  placeholder="Provider notes/comments."></textarea>
+    </div>
+
+
+</form>
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#hiv_final_p input[type=radio]').attr("style", "pointer-events:none;");
+        $('#hiv_final_n input[type=radio]').attr("style", "pointer-events:none;");
+        $('.date_alert').hide();
+        var dateFormat = "dd-mm-yy";
+        var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+        var encounterDatetime = $('#encounter\\.encounter_datetime');
+        if ($(encounterDatetime).val() == "") {
+            $(encounterDatetime).val(currentDate);
+        }
+
+        var currentYear = new Date().getFullYear();
+        var birthdate_start_year = currentYear - 140;
+        $('.birth_date_picker').datepicker({
+            dateFormat: dateFormat,
+            changeMonth: true,
+            changeYear: true,
+            yearRange: birthdate_start_year + ':' + currentYear,
+        });
+
+
+        $('#save_draft').click(function () {
+            // pre process the medications
+            $(this).prop('disabled', true);
+            document.saveDraft(this);
+            $(this).prop('disabled', false);
+        });
+
+        $('#submit_form').click(function () {
+            // pre process the medications
+            $(this).prop('disabled', true);
+            document.submit();
+            $(this).prop('disabled', false);
+        });
+
+        $.fn.calculateFields = function () {
+            var tempAgeInYears = $.trim($("#tmp\\.age_in_years").val());
+            if (tempAgeInYears != '') {
+                $('#patient\\.birthdate_estimated').val('true');
+                $('#patient\\.birth_date').val($.fn.getTempBirthDate(tempAgeInYears));
+            }
+            return true;
+        };
+
+        $.fn.customValidationCheck = function () {
+            return $.fn.calculateFields();
+        };
+
+        var dobType = $('#tmp\\.birthdate_type');
+        dobType.change(function () {
+            var $show_birth_date = $('.show_birthdate');
+            var $show_age = $('.show_age');
+            if ($('#tmp\\.birthdate_type').val() == 'age') {
+                $show_age.show();
+                $show_birth_date.find('input').val('');
+                $show_birth_date.hide();
+            } else {
+                $show_age.hide();
+                $show_age.find('input').val('');
+                $show_birth_date.show();
+            }
+        });
+        dobType.trigger('change');
+
+
+        jQuery.validator.addClassRules({
+            'check-confirm-identifier': {
+                validateConfirmIdentifierElement: true
+            }
+        });
+
+
+        var $negativeSelect = $('.negativeSelect');
+        $negativeSelect.change(function () {
+            var $negativeSectionToShow = $(this).closest('.section').find('.negativeSectionToShow');
+            var $positiveSectionToShow = $(this).closest('.section').find('.positiveSectionToShow');
+            var divToShowVal = $(this).val();
+            if (divToShowVal == '664^NEGATIVE^99DCT') {
+                $negativeSectionToShow.show();
+                $positiveSectionToShow.hide();
+            } else if (divToShowVal == '703^POSITIVE^99DCT') {
+                $positiveSectionToShow.show();
+                $negativeSectionToShow.hide();
+            } else {
+                $negativeSectionToShow.hide();
+                $positiveSectionToShow.hide();
+            }
+        });
+        $negativeSelect.trigger('change');
+
+        var $inCareSelect = $('.inCareSelect');
+        $inCareSelect.change(function () {
+            var $inCareSelectSectionToShow = $(this).closest('.section').find('.inCareSelectSectionToShow');
+            var divToShowVal = $(this).val();
+            if (divToShowVal == '1065^Yes^99DCT') {
+                $inCareSelectSectionToShow.show();
+            } else {
+                $inCareSelectSectionToShow.hide();
+            }
+        });
+        $inCareSelect.trigger('change');
+
+        var $testResults = $('.testResults');
+        $testResults.change(function () {
+            var $testResultSectionToShow = $(this).closest('.section').find('.testResultSectionToShow');
+            var divToShowVal = $(this).val();
+            if (divToShowVal == '...') {
+                $testResultSectionToShow.hide();
+            } else {
+                $testResultSectionToShow.show();
+            }
+        });
+        $testResults.trigger('change');
+
+
+        var $yesClass = $('.yesClass');
+        $yesClass.change(function () {
+            var $yeClassToShow = $(this).closest('.section').find('.yesClassToShow');
+            var divToShowVal = $(this).val();
+            if (divToShowVal == '1065^YES^99DCT') {
+                $yeClassToShow.show();
+            } else {
+                $yeClassToShow.hide();
+            }
+        });
+        $yesClass.trigger('change');
+
+
+        document.setupAutoCompleteData('encounter\\.location_id');
+
+
+        document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+
+        $('#registration_form').validate({
+            rules: {
+                'tmp.age_in_years': {
+                    range: [0, 120]
+                }
+            }
+        });
+
+        $("input[name='pt']:radio")
+            .change(function () {
+                $("#key_p_details").toggle($(this).val() == "164929^KEY POPULATION^99DCT");
+            });
+        $("input[name='pt']:radio")
+            .change(function () {
+                $("#pri_p_details").toggle($(this).val() == "138643^PRIORITY POPULATION^99DCT");
+            });
+        $("input[name='disability']:radio")
+            .change(function () {
+                $("#disability_details").toggle($(this).val() == "1065^YES^99DCT");
+            });
+        $("input[name='evertested']:radio")
+            .change(function () {
+                $("#test_duration").toggle($(this).val() == "1065^YES^99DCT");
+            });
+
+        $("input[name='linked']:radio")
+            .change(function () {
+                $("#ccc_no_div").toggle($(this).val() == "1065^YES^99DCT");
+            });
+
+        var $patientSex = $('#patient\\.sex');
+        var $menOnly = $('.men_relevant');
+        var $womenOnly = $('.women_relevant');
+        if ($patientSex.val() != 'F') {
+            $menOnly.show();
+            $womenOnly.hide();
+        } else {
+            $menOnly.hide();
+            $womenOnly.show();
+        }
+
+        $('.kit-expiry-date').change(function () {
+            var $date = $(this).val();
+            var partsCurrentDate = currentDate.split('-');
+            var partsExpiryDate = $date.split('-');
+            var cDate = partsCurrentDate[0];
+            var cMonth = partsCurrentDate[1];
+            var cYear = partsCurrentDate[2];
+            var eDate = partsExpiryDate[0];
+            var eMonth = partsExpiryDate[1];
+            var eYear = partsExpiryDate[2];
+            if (eYear < cYear) {
+                $(this).closest('.section').find('.date_alert').show();
+              }else if(eYear <= cYear && eMonth < cMonth) {
+                    $(this).closest('.section').find('.date_alert').show();
+                }else if(eYear <= cYear && eMonth == cMonth && eDate < cDate) {
+                        $(this).closest('.section').find('.date_alert').show();
+                    }else {
+                $(this).closest('.section').find('.date_alert').hide();
+            }
+        });
+
+        $('.final_auto_check').change(function () {
+            if ($("input:radio[name=hiv_test_one]").is(":checked")) {
+                var $test_one = $('input[name=hiv_test_one]:checked').val();
+                var $test_two = $('input[name=hiv_test_two]:checked').val();
+                if ($test_one === "664^NEGATIVE^99DCT") {
+                    $("#hiv_final_n").prop("checked", true);
+                    $('.other_tests').hide();
+                } else {
+                    $('.other_tests').show();
+                    $("#hiv_final_n").prop("checked", false);
+                    if ($("input:radio[name=hiv_test_one]").is(":checked") && $("input:radio[name=hiv_test_two]").is(":checked")) {
+                        if ($test_one === $test_two) {
+                            if ($test_one === "703^POSITIVE^99DCT") {
+                                $("#hiv_final_p").prop("checked", true);
+                            } else {
+                                $("#hiv_final_n").prop("checked", true);
+                            }
+                        } else {
+                            $("#hiv_final_i").prop("checked", true);
+                        }
+                    }
+                }
+            }
+        });
+
+        $('.client_consent_informed').hide();
+        $('.patient_consent').change(function () {
+            if ($("input:radio[name=client_consent]").is(":checked") && $('input[name=client_consent]:checked').val() === "1^Yes^99DCT") {
+                $('.client_consent_informed').show();
+            } else {
+                $('.client_consent_informed').hide();
+            }
+        });
+
+
+        $('.individual_mode').change(function () {
+            if ($("input:radio[name=couple_testing]").is(":checked")) {
+                var $mode = $('input[name=couple_testing]:checked').val();
+                if ($mode === "164957^INDIVIDUAL TESTING^99DCT") {
+                    $("#discordant_c").prop("checked", true);
+                }
+                else {
+                    $("#discordant_c").prop("checked", false);
+                }
+            }
+        });
+        $('.hts_strategy').change(function () {
+            if ($("input:radio[name=strategy]").is(":checked")) {
+                var $mode = $('input[name=strategy]:checked').val();
+                if ($mode === "159938^HOME BASED HIV TESTING PROGRAM^99DCT") {
+                    $("#entry_point_hbtc").prop("checked", true);
+                }
+                else {
+                    $("#entry_point_hbtc").prop("checked", false);
+                }
+            }
+        });
+        $('.hts_strategy').change(function () {
+            if ($("input:radio[name=strategy]").is(":checked")) {
+                var $mode = $('input[name=strategy]:checked').val();
+                if ($mode === "159939^MOBILE VCT PROGRAM^99DCT") {
+                    $("#entry_point_mo").prop("checked", true);
+                }
+                else {
+                    $("#entry_point_mo").prop("checked", false);
+                }
+            }
+        });
+        $('.hts_strategy').change(function () {
+            if ($("input:radio[name=strategy]").is(":checked")) {
+                var $mode = $('input[name=strategy]:checked').val();
+                if ($mode === "164954^INTEGRATED VCT^99DCT" || $mode === "164955^STANDALONE VCT CENTER^99DCT") {
+                    $("#entry_point_vct").prop("checked", true);
+                }
+                else {
+                    $("#entry_point_vct").prop("checked", false);
+                }
+            }
+        });
+
+        document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
+
+        document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
+
+    });
+</script>
+
+
+</html>
