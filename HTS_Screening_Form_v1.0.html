@@ -104,7 +104,10 @@
                    type="hidden" required="required">
         </div>
     </div>
-
+    <div id="under_18_warning" class="warning">
+        <h3>Please don't fill this form for under 18 months clients</h3>
+    </div>
+    <div id="show_for_over18_months">
     <div class="section">
         <h4>Patient Type </h4>
         <div class="form-group">
@@ -252,7 +255,13 @@
                   data-concept="163042^FREETEXT GENERAL^99DCT"
                   placeholder="Provider notes/comments."></textarea>
     </div>
-
+    </div>
+    <div id="show_for_under18_months">
+        <div class="error">
+            <h1>This client is ineligible for HTS!</h1>
+            <h3>Please discard all changes to this form</h3>
+        </div>
+    </div>
 
 </form>
 </body>
@@ -263,10 +272,32 @@
         var dateFormat = "dd-mm-yy";
         var currentDate = $.datepicker.formatDate(dateFormat, new Date());
         var encounterDatetime = $('#encounter\\.encounter_datetime');
-        if ($(encounterDatetime).val() == "") {
-            $(encounterDatetime).val(currentDate);
-        }
+        // if ($(encounterDatetime).val() == "") {
+        //     $(encounterDatetime).val(currentDate);
+        // }
 
+        $('#show_for_over18_months').hide();
+        $('#show_for_under18_months').hide();
+        // setup on change for encounter date
+        $('#encounter\\.encounter_datetime').change(function () {
+
+            var encDay = $('#encounter\\.encounter_datetime').val().split("-");
+            var from = $('#patient\\.birth_date').val().split("-");
+            var birthDay = new Date(from[2], from[1] - 1, from[0]);
+            var encDate = new Date(encDay[2], encDay[1] - 1, encDay[0]);
+
+            var ageInM = monthDiff(birthDay, encDate);
+
+            if (ageInM >= 18) {
+                $('#show_for_over18_months').show();
+                $('#show_for_under18_months').hide();
+                $('#under_18_warning').hide();
+
+            } else {
+                $('#show_for_over18_months').hide();
+                $('#show_for_under18_months').show();
+            }
+        });
         var currentYear = new Date().getFullYear();
         var birthdate_start_year = currentYear - 140;
         $('.birth_date_picker').datepicker({
@@ -364,6 +395,11 @@
         document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
 
     });
+
+    function monthDiff(dateFrom, dateTo) {
+        return dateTo.getMonth() - dateFrom.getMonth() +
+            (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
+    }
 </script>
 
 
