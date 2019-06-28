@@ -19,7 +19,8 @@
 </head>
 <body class="col-md-8 col-md-offset-2">
 <div id="result"></div>
-<div id="custom_validation" style="display: none" class="error"><h3>You cannot save this form for under 18 months old!</h3></div>
+<div id="custom_validation" style="display: none" class="error"><h3>You cannot save this form for under 18 months
+    old!</h3></div>
 <form id="hts_form" name="hts_form">
 
     <h2 class="text-center">HTS Screening Form v1.0</h2>
@@ -114,119 +115,120 @@
     </div>
 
     <div id="show_for_over18_months">
-    <div class="section">
-        <h4>Patient Type </h4>
-        <div class="form-group">
-            <h5><strong>Patient type</strong><span class="required">*</span></h5>
-            <fieldset name="160112^ACCOMPANIST^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="pt" type="radio"
-                               data-concept="160112^ACCOMPANIST^99DCT"
-                               value="1066^HP^99DCT">
-                        HP
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="pt" type="radio"
-                               data-concept="160112^ACCOMPANIST^99DCT"
-                               value="1065^NP^99DCT">
-                        NP
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-
-    <div class="section">
-        <h4>Department/Coverage</h4>
-        <div class="form-group">
-            <h5><strong>Department/Coverage? </strong><span class="required">*</span></h5>
-            <fieldset name="159936^DEPARTMENT^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="test_point" type="radio"
-                               data-concept="159936^DEPARTMENT^99DCT"
-                               value="160542^OUTPATIENT^99DCT">
-                        Outpatient
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="test_point" type="radio"
-                               data-concept="159936^DEPARTMENT^99DCT"
-                               value="5485^INPATIENT^99DCT">
-                        Inpatient
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-
-    <div class="section">
-        <h4>HIV Test History</h4>
-        <div class="form-group">
-            <label>
-                Client tested for HIV before? <span class="required">*</span></label>
-            <fieldset name="164401^HIV TEST PERFORMED^99DCT">
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="ever_tested" type="radio"
-                               data-concept="164401^HIV TEST PERFORMED^99DCT"
-                               value="1065^Yes^99DCT">
-                        Yes
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="font-normal">
-                        <input name="ever_tested" type="radio"
-                               data-concept="164401^HIV TEST PERFORMED^99DCT"
-                               value="1066^No^99DCT">
-                        No
-                    </label>
-                </div>
-
-            </fieldset>
-        </div>
-    </div>
-
-    <div class="testHistoryYes">
         <div class="section">
-            <h4>Test Result</h4>
+            <h4>Patient Type </h4>
             <div class="form-group">
-                <label>
-                    Test Result </label>
-                <fieldset name="159427^HIV TEST RESULT^99DCT">
+                <h5><strong>Patient type</strong><span class="required">*</span></h5>
+                <fieldset name="160112^ACCOMPANIST^99DCT">
                     <div class="form-group">
                         <label class="font-normal">
-                            <input name="last_test_result"  type="radio"
-                                   data-concept="159427^HIV TEST RESULT^99DCT"
-                                   value="664^NEGATIVE^99DCT">
-                            Negative
+                            <input name="pt" type="radio"
+                                   data-concept="160112^ACCOMPANIST^99DCT"
+                                   value="1066^HP^99DCT">
+                            HP
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="font-normal">
-                            <input name="last_test_result" type="radio"
-                                   data-concept="159427^HIV TEST RESULT^99DCT"
-                                   value="703^POSITIVE^99DCT">
-                            Positive
+                            <input name="pt" type="radio"
+                                   data-concept="160112^ACCOMPANIST^99DCT"
+                                   value="1065^NP^99DCT">
+                            NP
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="section">
+            <h4>Department/Coverage</h4>
+            <div class="form-group">
+                <h5><strong>Department/Coverage? </strong><span class="required">*</span></h5>
+                <fieldset name="159936^DEPARTMENT^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="test_point" type="radio"
+                                   data-concept="159936^DEPARTMENT^99DCT"
+                                   value="160542^OUTPATIENT^99DCT">
+                            Outpatient
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="test_point" type="radio"
+                                   data-concept="159936^DEPARTMENT^99DCT"
+                                   value="5485^INPATIENT^99DCT">
+                            Inpatient
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="section">
+            <h4>HIV Test History</h4>
+            <div class="form-group">
+                <label>
+                    Client tested for HIV before? <span class="required">*</span></label>
+                <fieldset name="164401^HIV TEST PERFORMED^99DCT">
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="ever_tested" type="radio"
+                                   data-concept="164401^HIV TEST PERFORMED^99DCT"
+                                   value="1065^Yes^99DCT">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="ever_tested" type="radio"
+                                   data-concept="164401^HIV TEST PERFORMED^99DCT"
+                                   value="1066^No^99DCT">
+                            No
                         </label>
                     </div>
 
                 </fieldset>
-
             </div>
-
-            <div class="form-group">
-                <label for="date_of_last_test">Date Tested:</label>
-                <input class="form-control nonFutureDate past-date datepicker" id="date_of_last_test"  name="date_of_last_test" type="text"
-                       data-concept="164400^HIV TEST DATE^99DCT" required="required">
-            </div>
-
         </div>
 
+        <div class="testHistoryYes">
+            <div class="section">
+                <h4>Test Result</h4>
+                <div class="form-group">
+                    <label>
+                        Test Result </label>
+                    <fieldset name="159427^HIV TEST RESULT^99DCT">
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input name="last_test_result" type="radio"
+                                       data-concept="159427^HIV TEST RESULT^99DCT"
+                                       value="664^NEGATIVE^99DCT">
+                                Negative
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input name="last_test_result" type="radio"
+                                       data-concept="159427^HIV TEST RESULT^99DCT"
+                                       value="703^POSITIVE^99DCT">
+                                Positive
+                            </label>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="date_of_last_test">Date Tested:</label>
+                    <input class="form-control nonFutureDate past-date datepicker" id="date_of_last_test"
+                           name="date_of_last_test" type="text"
+                           data-concept="164400^HIV TEST DATE^99DCT" required="required">
+                </div>
+
+            </div>
+        </div>
         <div class="section">
             <h4>Eligibility for testing</h4>
             <div class="form-group">
@@ -252,15 +254,14 @@
             </div>
 
         </div>
-    </div>
 
 
-    <div class="section form-group">
-        <label>Remarks</label>
-        <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
-                  data-concept="163042^FREETEXT GENERAL^99DCT"
-                  placeholder="Provider notes/comments."></textarea>
-    </div>
+        <div class="section form-group">
+            <label>Remarks</label>
+            <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
+                      data-concept="163042^FREETEXT GENERAL^99DCT"
+                      placeholder="Provider notes/comments."></textarea>
+        </div>
     </div>
     <div id="show_for_under18_months">
         <div class="error">
