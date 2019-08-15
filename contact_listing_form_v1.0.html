@@ -619,13 +619,14 @@
                 </fieldset>
             </div>
           </div>
-            <div class="form-group">
-                <label>Date booked for testing </label>
-                <input class="form-control datepicker linkage" readonly="readonly" id="linkage-date"
-                       data-concept="164400^LINKAGE DATE^99DCT" name="linkage" type="text" >
-                <!--<label class="date_alert" style="color: red;display:none">Please note that the linkage date cannot be in the future</label>-->
+            <div id="booking-date" style="display:none">
+                <div class="form-group">
+                    <label>Date booked for testing </label>
+                    <input class="form-control datepicker linkage" readonly="readonly" id="linkage-date"
+                           data-concept="164400^LINKAGE DATE^99DCT" name="linkage" type="text" >
+                    <!--<label class="date_alert" style="color: red;display:none">Please note that the linkage date cannot be in the future</label>-->
+                </div>
             </div>
-
         </div>
     </div>
      </div>
@@ -656,8 +657,10 @@
         $('.client_status').change(function () {
             if ($("input:radio[name=contact_status]").is(":checked") && $('input[name=contact_status]:checked').val() === "1065^YES^99DCT") {
                 $('#linkage-date').prop('disabled', false);
+                $('#booking-date').show();
             } else {
                 $('#linkage-date').prop('disabled', true);
+                $('#booking-date').hide();
             }
         });
 
