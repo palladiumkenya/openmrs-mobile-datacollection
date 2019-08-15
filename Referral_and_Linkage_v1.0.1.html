@@ -116,6 +116,23 @@
         </div>
 
         <div id="show_for_over18_months">
+
+            <div class="section">
+                <h4>Patient Referral</h4>
+                <div class="form-group">
+                    <div class="form-group yesLinkedToShow">
+                        <label for="flt">Facility referred to: </label>
+                        <input class="form-control" id="facility_tbl" name="facility_tbl" type="text"
+                               data-concept="161550^HEALTH FACILITY^99DCT" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date to be enrolled: </label>
+                    <input class="form-control datepicker linkage_tbl" readonly="readonly" id="tbl-date"
+                           data-concept="161560^LINKAGE DATE^99DCT" name="linkage" type="text">
+                </div>
+            </div>
+
             <div class="section">
                 <h4>Patient Tracing</h4>
                 <div class="form-group">
@@ -138,8 +155,6 @@
                         </div>
                     </fieldset>
                 </div>
-
-
                 <div class="form-group">
                     <h5><strong>Status:</strong></h5>
                     <fieldset name="159811^ENROLLED IN HIV CARE^99DCT">
@@ -157,9 +172,15 @@
                                 Contacted but not linked
                             </label>
                         </div>
+                        <div class="form-group">
+                            <label class="font-normal">
+                                <input class="yesSelect" name="status" id="status_not_done" type="radio"
+                                       data-concept="164371^ENROLLED IN HIV CARE^99DCT" value="1066^NO^99DCT">
+                                Not Contacted
+                            </label>
+                        </div>
                     </fieldset>
                 </div>
-
             </div>
 
             <div class="section yesSectionToShow">
@@ -177,8 +198,7 @@
                 </div>
 
                 <div style="display:none" class="form-group upn">
-                    <label><span style="font-size: small; color: red; ">Invalid Unique Patient Number
-                            format</span></label>
+                    <label><span style="font-size: small; color: red; ">Invalid Unique Patient Number format</span></label>
                 </div>
 
                 <div class="form-group">
@@ -227,12 +247,12 @@
                 </div>
                 <div class="form-group">
                     <label>Date enrolled: </label>
-                    <input class="form-control datepicker linkage" readonly="readonly" id="linkage-date"
-                        data-concept="160555^LINKAGE DATE^99DCT" name="linkage" type="text">
+                    <input class="form-control nonFutureDate past-date datepicker enrolldate" readonly="readonly" id="linkage-date"
+                        data-concept="160555^LINKAGE DATE^99DCT" name="enrolldate" type="text">
                 </div>
                 <div class="form-group">
                     <label>ART start date: </label>
-                    <input class="form-control datepicker artDate" readonly="readonly" id="art-start-date"
+                    <input class="form-control nonFutureDate past-date datepicker artDate" readonly="readonly" id="art-start-date"
                         data-concept="159599^ART START DATE^99DCT" name="artDate" type="text">
                 </div>
                 <div class="section form-group">
@@ -388,13 +408,14 @@
 
         $('#upn').change(function () {
             var $validate_upn = $('.upn');
-            var length = $('#upn').val().length;
-            if (length < 10 || length > 12)
+            var $regex = /^[0-9]{10}$/;
+            var $contact_upn = $('#upn').val();
+            if(!$regex.test($contact_upn))
                 $validate_upn.show();
             else
                 $validate_upn.hide();
-        });
 
+        });
         //Validation of enrollment date and art start date
         //        $('.linkage-date').change(function () {
         //            var $date = $(this).val();
