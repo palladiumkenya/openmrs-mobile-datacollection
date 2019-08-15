@@ -187,10 +187,12 @@
         <!--end of sex field-->
         <div class="form-group">
             <label>Phone Number:</label>
-            <input class="form-control" id="contact_phone_contact" name="contact_phone_contact" type="tel"
+            <input class="form-control" phoneNumber id="contact_phone_number" name="contact_phone_contact" type="tel"
                    data-concept="159635^CONTACT PHONE NUMBER^99DCT">
         </div>
-
+      <div style="display:none" class="form-group phone">
+          <label><span style="font-size: small; color: red; ">Invalid Contact Phone Number Format</span></label>
+      </div>
         <div class="form-group">
                     <label>Marital Status:</label>
                     <div class="form-group">
@@ -545,6 +547,14 @@
                                 <label class="font-normal">
                                     <input name="discordant" id="discordant_c" type="radio"
                                            data-concept="164408^PNS APPROACH^99DCT"
+                                           value="161642^PROVIDER^99DCT">
+                                    Contract referral
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="font-normal">
+                                    <input name="discordant" id="discordant_d" type="radio"
+                                           data-concept="164408^PNS APPROACH^99DCT"
                                            value="160551^PASSIVE^99DCT">
                                     Passive referral
                                 </label>
@@ -819,13 +829,25 @@
 
         $('#upn').change(function () {
             var $validate_upn = $('.upn');
-            var length = $('#upn').val().length;
-            if (length < 10 || length > 12)
+            var $regex = /^[0-9]{10}$/;
+            var $contact_upn = $('#upn').val();
+            if(!$regex.test($contact_upn))
                 $validate_upn.show();
             else
                 $validate_upn.hide();
+
         });
 
+        $('#contact_phone_number').change(function () {
+            var $validate_phone = $('.phone');
+            var $regex = /^(?:\+254|0|254)(\d{9})$/;
+            var $contact_phone_number = $('#contact_phone_number').val();
+            if(!$regex.test($contact_phone_number))
+                $validate_phone.show();
+            else
+                $validate_phone.hide();
+
+        });
 
         $('.eligible_final').change(function () {
             var $eligible_final_yes = $(this).closest('.repeat').find('.eligible_final_yes');
