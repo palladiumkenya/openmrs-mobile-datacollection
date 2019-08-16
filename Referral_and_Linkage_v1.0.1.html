@@ -140,16 +140,15 @@
                     <fieldset name="164966^MODE OF CLIENT TRACING^99DCT">
                         <div class="form-group">
                             <label class="font-normal">
-                                <input name="contact" id="contact_phone" type="radio"
+                                <input name="contact" id="contact_phone" type="radio" class="contact"
                                     data-concept="164966^MODE OF CLIENT TRACING^99DCT" value="1650^MOBILE PHONE^99DCT">
                                 Phone
                             </label>
                         </div>
                         <div class="form-group">
                             <label class="font-normal">
-                                <input name="contact" id="contact_physical" type="radio"
-                                    data-concept="164966^MODE OF CLIENT TRACING^99DCT"
-                                    value="164965^PHYSICAL TRACING^99DCT">
+                                <input name="contact" id="contact_physical" type="radio" class="contact"
+                                    data-concept="164966^MODE OF CLIENT TRACING^99DCT" value="164965^PHYSICAL TRACING^99DCT">
                                 Physical
                             </label>
                         </div>
@@ -175,11 +174,96 @@
                         <div class="form-group">
                             <label class="font-normal">
                                 <input class="yesSelect" name="status" id="status_not_done" type="radio"
-                                       data-concept="164371^ENROLLED IN HIV CARE^99DCT" value="1066^NO^99DCT">
+                                       data-concept="164371^ENROLLED IN HIV CARE^99DCT" value="1118^NO^99DCT">
                                 Not Contacted
                             </label>
                         </div>
-                    </fieldset>
+               <!--Reasons for not contacted-->
+                        <div class="reasons_not_contacted_phone" >
+                            <label>Reason(s) not contacted</label>
+                            <div class="form-group phone_relevant">
+                                <label>
+                                    <input id="no-locator" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="165073^NO LOCATOR INFO^99DCT"/>
+                                    No locator information
+                                </label>
+                            </div>
+                            <div class="form-group phone_relevant">
+                                <label>
+                                    <input id="incorrect" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="165072^INCORRECT LOCATOR INFO^99DCT"/>
+                                    Incorrect locator information
+                                </label>
+                            </div>
+                            <div class="form-group phone_relevant">
+                                <label>
+                                    <input id="mteja" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="1567^CALLS FAILING^99DCT"/>
+                                    Calls not going through
+                                </label>
+                            </div>
+                            <div class="form-group phone_relevant">
+                                <label>
+                                    <input id="died-phone" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="160034^DIED^99DCT"/>
+                                    Died
+                                </label>
+                            </div>
+                            <div class="form-group phone_relevant">
+                                <label>
+                                    <input id="other-phone-reasons" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="5622^OTHER^99DCT"/>
+                                    Others
+                                </label>
+                            </div>
+                        </div>
+                        <div class="reasons_not_contacted_physical" >
+                            <label>Reason(s) not contacted</label>
+                            <div class="form-group physical_relevant">
+                                <label>
+                                    <input id="no-dwelling-info" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="165073^NO LOCATOR INFO^99DCT"/>
+                                    No locator information
+                                </label>
+                            </div>
+                            <div class="form-group physical_relevant">
+                                <label>
+                                    <input id="incorrect-dwelling-info" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="165072^INCORRECT LOCATOR INFO^99DCT"/>
+                                    Incorrect locator information
+                                </label>
+                            </div>
+                            <div class="form-group physical_relevant">
+                                <label>
+                                    <input id="migrated" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="160415^MIGRATED^99DCT"/>
+                                    Migrated from reported location
+                                </label>
+                            </div>
+                            <div class="form-group physical_relevant">
+                                <label>
+                                    <input id="not-found" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="1706^NOT FOUND^99DCT"/>
+                                    Not found at home
+                                </label>
+                            </div>
+                            <div class="form-group physical_relevant">
+                                <label>
+                                    <input id="died-physical" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="160034^DIED^99DCT"/>
+                                    Died
+                                </label>
+                            </div>
+                            <div class="form-group physical_relevant">
+                                <label>
+                                    <input id="other-physical-reasons" type="checkbox" data-concept="1779^REASON UNCONTACTED^1779"
+                                           value="5622^OTHER^99DCT"/>
+                                    Others
+                                </label>
+                            </div>
+                    </div>
+               <!--End reasons not contacted    -->
+            </fieldset>
                 </div>
             </div>
 
@@ -282,7 +366,6 @@
         // if ($(encounterDatetime).val() == "") {
         //     $(encounterDatetime).val(currentDate);
         // }
-
         $('#show_for_over18_months').hide();
         $('#show_for_under18_months').hide();
         $('#under_18_warning').hide();
@@ -293,7 +376,6 @@
             var from = $('#patient\\.birth_date').val().split("-");
             var birthDay = new Date(from[2], from[1] - 1, from[0]);
             var encDate = new Date(encDay[2], encDay[1] - 1, encDay[0]);
-
             var ageInM = monthDiff(birthDay, encDate);
 
             if (ageInM >= 18) {
@@ -389,6 +471,9 @@
                 }
             }
         });
+        //Validate contact status by phone or physical
+        $('.reasons_not_contacted_phone').hide();
+        $('.reasons_not_contacted_physical').hide();
         var $yesSelect = $('.yesSelect');
         $yesSelect.change(function () {
             var $yesSectionToShow = $('.yesSectionToShow');
@@ -396,12 +481,24 @@
             if (divToShowVal == '1065^YES^99DCT') {
                 if (($(this).is(':checked'))) {
                     $yesSectionToShow.show();
+                    $('.reasons_not_contacted_phone').hide();
+                    $('.reasons_not_contacted_physical').hide();
                 }
-                else {
-                    $yesSectionToShow.hide();
-                }
-            } else {
+
+            } else if ((divToShowVal == '1118^NO^99DCT') && ($("input:radio[name=contact]").is(":checked") && $('input[name=contact]:checked').val() === "1650^MOBILE PHONE^99DCT")) {
                 $yesSectionToShow.hide();
+                $('.reasons_not_contacted_phone').show();
+                $('.reasons_not_contacted_physical').hide();
+
+            }else if ((divToShowVal == '1118^NO^99DCT') && ($("input:radio[name=contact]").is(":checked") && $('input[name=contact]:checked').val() === "164965^PHYSICAL TRACING^99DCT")) {
+                $yesSectionToShow.hide();
+                $('.reasons_not_contacted_physical').show();
+                $('.reasons_not_contacted_phone').hide();
+            }
+            else {
+                $yesSectionToShow.hide();
+                $('.reasons_not_contacted_phone').hide();
+                $('.reasons_not_contacted_physical').hide();
             }
         });
         $yesSelect.trigger('change');
