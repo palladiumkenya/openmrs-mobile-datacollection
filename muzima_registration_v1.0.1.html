@@ -499,7 +499,34 @@
             }
         });
         dobType.trigger('change');
-
+        // Validate guardian for over 18 years   tmp.age_in_years
+        $('#child_show_guardian').hide();
+        var dobByYears = $('#tmp\\.age_in_years');
+        dobByYears.change(function () {
+            var tempAgeInYears = $.trim($("#tmp\\.age_in_years").val());
+            if (tempAgeInYears != '') {
+                if(tempAgeInYears < 18){
+                    $('#child_show_guardian').show();
+                }else{
+                    $('#child_show_guardian').hide();
+                }
+            }
+        });
+        dobByYears.trigger('change');
+       var dobByBirthdate = $('#patient\\.birth_date');
+        dobByBirthdate.change(function () {
+            var encDay = $('#encounter\\.encounter_datetime').val().split("-");
+            var from = $('#patient\\.birth_date').val().split("-");
+            var birthDay = new Date(from[2], from[1] - 1, from[0]);
+            var encDate = new Date(encDay[2], encDay[1] - 1, encDay[0]);
+            var ageInM = monthDiff(birthDay, encDate);
+            if (ageInM < 216) {
+                $('#child_show_guardian').show();
+            }else{
+                $('#child_show_guardian').hide();
+            }
+        });
+        dobByBirthdate.trigger('change');
 
         jQuery.validator.addClassRules({
             'check-confirm-identifier':{
@@ -532,7 +559,10 @@
             },
             "Other Identifiers do not match."
         );
-
+        function monthDiff(dateFrom, dateTo) {
+            return dateTo.getMonth() - dateFrom.getMonth() +
+                (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
+        }
 
 
        var counties={
