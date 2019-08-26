@@ -163,14 +163,14 @@
             <input class="form-control phoneNumber" id="patient.phone_number" name="patient.phone_number" type="tel">
         </div>
         <div style="display:none" class="form-group phone">
-            <label><span style="font-size: small; color: red; ">Invalid Patient Phone Number Format</span></label>
+            <label><span style="font-size: small; color: red; ">Invalid Client Phone Number Format</span></label>
         </div>
         <div class="form-group">
             <label for="patient.alternate_phone_contact">Alternate Phone Number: </label>
             <input class="form-control phoneNumber" id="patient.alternate_phone_contact" name="patient.alternate_phone_contact" type="tel">
         </div>
         <div style="display:none" class="form-group alt_phone">
-            <label><span style="font-size: small; color: red; ">Invalid Patient Alternate Phone Number Format</span></label>
+            <label><span style="font-size: small; color: red; ">Invalid Client Alternate Phone Number Format</span></label>
         </div>
         <div class="form-group">
             <label for="patient.postal_address">Postal Address: </label>
@@ -499,6 +499,7 @@
             }
         });
         dobType.trigger('change');
+
         // Validate guardian for over 18 years   tmp.age_in_years
         $('#child_show_guardian').hide();
         var dobByYears = $('#tmp\\.age_in_years');
