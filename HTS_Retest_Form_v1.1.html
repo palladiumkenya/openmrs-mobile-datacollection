@@ -108,7 +108,7 @@
     <div class="section">
         <h4>Population Type</h4>
         <div class="form-group">
-            <h5><strong>Patient population type</strong></h5>
+            <h5><strong>Client population type</strong></h5>
             <fieldset name="164930^POPULATION TYPE^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -218,7 +218,7 @@
     <div class="section">
         <h4>Disability</h4>
         <div class="form-group">
-            <h5><strong>Patient has any disability? </strong></h5>
+            <h5><strong>Client has any disability? </strong></h5>
             <fieldset name="164951^PATIENT DISABLED^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -292,7 +292,7 @@
         <h4>HIV Test History</h4>
         <div class="form-group">
             <label>
-                Patient ever been tested for HIV? <span class="required">*</span></label>
+                Client ever been tested for HIV? <span class="required">*</span></label>
             <fieldset name="164401^HIV TEST PERFORMED^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -328,7 +328,7 @@
         <h4>Consent</h4>
         <div class="form-group">
             <label>
-                Patient has informed consent <span class="required">*</span></label>
+                Client has informed consent <span class="required">*</span></label>
 
             <fieldset name="1710^INFORMED CONSENT^99DCT">
                 <div class="form-group">
@@ -625,7 +625,18 @@
                     <label class="date_alert" style="color: red;display:none">Please note that the test kit used has
                         expired</label>
                 </div>
-
+                <div id="dual-results-1" style="display:none">
+                    <div class="form-group">
+                        <label>Syphilis Results: </label>
+                        <select class="form-control" id="syphilis_results" name="syphilis_results"
+                                data-concept="299^SYPHYLIS RESULTS^99DCT">
+                            <option value="">...</option>
+                            <option value="664^NEGATIVE^99DCT">Negative</option>
+                            <option value="703^POSITIVE^99DCT">Positive</option>
+                            <option value="163611^INVALID^99DCT">Invalid</option>
+                        </select>
+                    </div>
+                </div>
             </fieldset>
 
         </div>
@@ -998,6 +1009,31 @@
         });
         $testResults.trigger('change');
 
+// Validate Dual kit and kit repetition
+        var $kit1Selected = $('#hiv_1_kit');
+        $kit1Selected.change(function () {
+            var kitSelectedVal = $(this).val();
+            if (kitSelectedVal == '165351^DUAL TEST KIT^99DCT') {   //Dual kit selected
+                $('#dual-results-1').show();
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").add();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").remove();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+
+            }else if (kitSelectedVal == '164960^DETERMINE TEST KIT^99DCT') {   //Determine selected
+                $('#dual-results-1').hide();
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").add();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").remove();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+
+            } else if (kitSelectedVal == '164961^FIRST RESPONSE TEST KIT^99DCT') {      //First response selected
+                $('#dual-results-1').hide();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").add();
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").remove();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+
+            }
+        });
+        $kit1Selected.trigger('change');
 
         var $yesClass = $('.yesClass');
         $yesClass.change(function () {
