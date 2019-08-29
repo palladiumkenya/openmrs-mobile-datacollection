@@ -11,7 +11,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
     <script src="js/muzima.js"></script>
-    <title>HTS Linkage and Referral Form</title>
+    <title>Referral and Linkage Form</title>
     <style>
         h4 {
             text-align: center;
@@ -24,7 +24,7 @@
     <div id="custom_validation" style="display: none" class="error"><h3>You cannot save this form for under 18 months old!</h3></div>
     <form id="hts_linkage_and_referral_form" name="hts_linkage_and_referral_form">
 
-        <h2 class="text-center">HTS Linkage and Referral Form v1.1</h2>
+        <h2 class="text-center">Referral and Linkage Form v1.1</h2>
 
         <div class="section">
             <h3>Demographics</h3>
@@ -123,7 +123,7 @@
                     <div class="form-group yesLinkedToShow">
                         <label for="flt">Facility referred to: </label>
                         <input class="form-control" id="facility_tbl" name="facility_tbl" type="text"
-                               data-concept="161550^HEALTH FACILITY^99DCT" required="required">
+                               data-concept="161550^HEALTH FACILITY^99DCT">
                     </div>
                 </div>
                 <div class="form-group">
@@ -133,152 +133,17 @@
                 </div>
             </div>
 
-            <div class="section">
-                <h4>Tracing</h4>
-                <div class="form-group">
-                    <h5><strong>Contact type:</strong></h5>
-                    <fieldset name="164966^MODE OF CLIENT TRACING^99DCT">
-                        <div class="form-group">
-                            <label class="font-normal">
-                                <input name="contact" id="contact_phone" type="radio" class="contact"
-                                    data-concept="164966^MODE OF CLIENT TRACING^99DCT" value="1650^MOBILE PHONE^99DCT">
-                                Phone
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="font-normal">
-                                <input name="contact" id="contact_physical" type="radio" class="contact"
-                                    data-concept="164966^MODE OF CLIENT TRACING^99DCT" value="164965^PHYSICAL TRACING^99DCT">
-                                Physical
-                            </label>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="form-group">
-                    <h5><strong>Status:</strong></h5>
-                    <fieldset name="159811^ENROLLED IN HIV CARE^99DCT">
-                        <div class="form-group">
-                            <label class="font-normal">
-                                <input class="yesSelect" name="status" id="status_successful" type="radio"
-                                    data-concept="159811^ENROLLED IN HIV CARE^99DCT" value="1065^YES^99DCT">
-                                Contacted and linked
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="font-normal">
-                                <input class="yesSelect" name="status" id="status_not_successful" type="radio"
-                                    data-concept="159811^ENROLLED IN HIV CARE^99DCT" value="1066^NO^99DCT">
-                                Contacted but not linked
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="font-normal">
-                                <input class="yesSelect" name="status" id="status_not_done" type="radio"
-                                       data-concept="159811^ENROLLED IN HIV CARE^99DCT" value="1118^NO^99DCT">
-                                Not Contacted
-                            </label>
-                        </div>
-               <!--Reasons for not contacted-->
-                     <div class="reasons_not_contacted_phone" >
-                            <label>Reason not contacted</label>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="phone-reason" name="phone-specific" id="no-locator" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="165073^NO LOCATOR INFO^99DCT"/>
-                                    No locator information
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="phone-reason" name="phone-specific" id="incorrect" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="165072^INCORRECT LOCATOR INFO^99DCT"/>
-                                    Incorrect locator information
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="phone-reason" name="phone-specific" id="mteja" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="1567^CALLS FAILING^99DCT"/>
-                                    Calls not going through
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="phone-reason" name="phone-specific" id="died-phone" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="160034^DIED^99DCT"/>
-                                    Died
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="phone-reason" name="phone-specific" id="other-phone-reasons" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="5622^OTHER^99DCT"/>
-                                    Others
-                                </label>
-                            </div>
-                        </div>
-                        <div class="reasons_not_contacted_physical" >
-                            <label>Reason not contacted</label>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="physical-reason" name="physical-specific" id="no-dwelling-info" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="165073^NO LOCATOR INFO^99DCT"/>
-                                    No locator information
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="physical-reason" name="physical-specific" id="incorrect-dwelling-info" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="165072^INCORRECT LOCATOR INFO^99DCT"/>
-                                    Incorrect locator information
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="physical-reason" name="physical-specific" id="migrated" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="160415^MIGRATED^99DCT"/>
-                                    Migrated
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="physical-reason" name="physical-specific" id="not-found" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="1706^NOT FOUND^99DCT"/>
-                                    Not found at home
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="physical-reason" name="physical-specific" id="died-physical" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="160034^DIED^99DCT"/>
-                                    Died
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="font-normal">
-                                    <input class="physical-reason" name="physical-specific" id="other-physical-reasons" type="radio" data-concept="1779^REASON UNCONTACTED^1779"
-                                           value="5622^OTHER^99DCT"/>
-                                    Others
-                                </label>
-                            </div>
-                    </div>
-               <!--End reasons not contacted    -->
-            </fieldset>
-                </div>
-            </div>
-
             <div class="section yesSectionToShow">
-
+                <h4>Linkage</h4>
                 <div class="form-group yesLinkedToShow">
-                    <label for="flt">Facility linked to:<span class="required">*</span></label>
+                    <label for="flt">Facility linked to:</label>
                     <input class="form-control" id="flt" name="flt" type="text"
-                        data-concept="162724^HEALTH FACILITY^99DCT" required="required">
+                        data-concept="162724^HEALTH FACILITY^99DCT">
                 </div>
 
                 <div class="form-group">
-                    <label for="upn">CCC Number:<span class="required">*</span></label>
-                    <input class="form-control" id="upn" name="upn" type="text" data-concept="162053^CCC NUMBER^99DCT"
-                        required="required">
+                    <label for="upn">CCC Number:</label>
+                    <input class="form-control" id="upn" name="upn" type="text" data-concept="162053^CCC NUMBER^99DCT">
                 </div>
 
                 <div style="display:none" class="form-group upn">
@@ -286,9 +151,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="hwht">Health worker handed to :<span class="required">*</span></label>
+                    <label for="hwht">Health worker handed to :</label>
                     <input class="form-control" id="hwht" name="hwht" type="text"
-                        data-concept="1473^HEALTH CARE PROVIDER^99DCT" required="required">
+                        data-concept="1473^HEALTH CARE PROVIDER^99DCT">
                 </div>
 
                 <div class="form-group">
@@ -435,23 +300,6 @@
             return $.fn.calculateFields();
         };
 
-        var dobType = $('#tmp\\.birthdate_type');
-        dobType.change(function () {
-            var $show_birth_date = $('.show_birthdate');
-            var $show_age = $('.show_age');
-            if ($('#tmp\\.birthdate_type').val() == 'age') {
-                $show_age.show();
-                $show_birth_date.find('input').val('');
-                $show_birth_date.hide();
-            } else {
-                $show_age.hide();
-                $show_age.find('input').val('');
-                $show_birth_date.show();
-            }
-        });
-        dobType.trigger('change');
-
-
         jQuery.validator.addClassRules({
             'check-confirm-identifier': {
                 validateConfirmIdentifierElement: true
@@ -460,8 +308,6 @@
 
 
         document.setupAutoCompleteData('encounter\\.location_id');
-
-
         document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
 
         $('#registration_form').validate({
@@ -471,37 +317,6 @@
                 }
             }
         });
-        //Validate contact status by phone or physical
-        $('.reasons_not_contacted_phone').hide();
-        $('.reasons_not_contacted_physical').hide();
-        var $yesSelect = $('.yesSelect');
-        $yesSelect.change(function () {
-            var $yesSectionToShow = $('.yesSectionToShow');
-            var divToShowVal = $(this).val();
-            if (divToShowVal == '1065^YES^99DCT') {
-                if (($(this).is(':checked'))) {
-                    $yesSectionToShow.show();
-                    $('.reasons_not_contacted_phone').hide();
-                    $('.reasons_not_contacted_physical').hide();
-                }
-
-            } else if ((divToShowVal == '1118^NO^99DCT') && ($("input:radio[name=contact]").is(":checked") && $('input[name=contact]:checked').val() === "1650^MOBILE PHONE^99DCT")) {
-                $yesSectionToShow.hide();
-                $('.reasons_not_contacted_phone').show();
-                $('.reasons_not_contacted_physical').hide();
-
-            }else if ((divToShowVal == '1118^NO^99DCT') && ($("input:radio[name=contact]").is(":checked") && $('input[name=contact]:checked').val() === "164965^PHYSICAL TRACING^99DCT")) {
-                $yesSectionToShow.hide();
-                $('.reasons_not_contacted_physical').show();
-                $('.reasons_not_contacted_phone').hide();
-            }
-            else {
-                $yesSectionToShow.hide();
-                $('.reasons_not_contacted_phone').hide();
-                $('.reasons_not_contacted_physical').hide();
-            }
-        });
-        $yesSelect.trigger('change');
 
         $('#upn').change(function () {
             var $validate_upn = $('.upn');
@@ -513,28 +328,6 @@
                 $validate_upn.hide();
 
         });
-        //Validation of enrollment date and art start date
-        //        $('.linkage-date').change(function () {
-        //            var $date = $(this).val();
-        //            var partsCurrentDate = currentDate.split('-');
-        //            var partsExpiryDate = $date.split('-');
-        //            var cDate = partsCurrentDate[0];
-        //            var cMonth = partsCurrentDate[1];
-        //            var cYear = partsCurrentDate[2];
-        //            var eDate = partsExpiryDate[0];
-        //            var eMonth = partsExpiryDate[1];
-        //            var eYear = partsExpiryDate[2];
-        //            if (eYear < cYear) {
-        //                $(this).closest('.section').find('.date_alert').show();
-        //            }else if(eYear <= cYear && eMonth < cMonth) {
-        //                $(this).closest('.section').find('.date_alert').show();
-        //            }else if(eYear <= cYear && eMonth == cMonth && eDate < cDate) {
-        //                $(this).closest('.section').find('.date_alert').show();
-        //            }else {
-        //                $(this).closest('.section').find('.date_alert').hide();
-        //            }
-        //        });
-
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
 
