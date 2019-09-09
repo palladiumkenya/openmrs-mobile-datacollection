@@ -40,24 +40,35 @@
         if(completeFormData != null){
             var formData = JSON.parse(completeFormData);
             $.each(formData,function(k,v){
-              var payload = JSON.parse(v.jsonPayload);
-              var encounter = payload.encounter;
-              var formUuid =encounter['encounter.form_uuid'];
-              if(formUuid == "d658f62a-d04e-4345-9a7f-80e5087327eb"){
-                totalTested++;
+                var payload = JSON.parse(v.jsonPayload);
+                var encounter = payload.encounter;
+                var formUuid =encounter['encounter.form_uuid'];
+                if(formUuid == "d658f62a-d04e-4345-9a7f-80e5087327eb"){       // Selects HTS INITIAL Form forms by UUID
+                    totalTested++;
+                    console.log(obs);
+                }
+                if(formUuid == "4641a011-4532-4479-a282-f61360139036"){       // Selects HTS RETEST Form forms by UUID
+                    var obs = payload.observation;
+                    if(obs['159427^FINAL HIV RESULTS^99DCT'] == '703^POSITIVE^99DCT'){
+                        totalPositive++;
+                    }
+                    console.log(obs);
+                }
+                if(formUuid == "bef75354-3dca-41bd-859d-bae25ceecd70"){       // Selects REFERRAL AND LINKAGE Form forms by UUID
+                    var obs = payload.observation;
+                    if(obs['159811^ENROLLED IN HIV CARE^99DCT'] == '1065^YES^99DCT'){
+                        totalLinked++;
+                    }
+                    console.log(obs);
+                }
+                if(formUuid == "39930c85-1f78-4a24-aa54-ce6c1f1e6da9"){    // Selects contact listing forms by UUID
 
-                var obs = payload.observation;
-                if(obs['159427^FINAL HIV RESULTS^99DCT'] == '703^POSITIVE^99DCT'){
-                  totalPositive++;
+                    var obs = payload.observation;
+                    if(obs['160593^Expected^99DCT'] != 'undefined'){
+                        totalIdentified++;
+                    }
+                    console.log(obs);
                 }
-                if(obs['159811^ENROLLED IN HIV CARE^99DCT'] == '1065^YES^99DCT'){
-                  totalLinked++;
-                }
-                if(obs['160593^Expected^99DCT'] != 'undefined'){
-                  totalIdentified++;
-                }
-                console.log(obs);
-              }
                 console.log(formUuid);
             });
         }
@@ -70,17 +81,16 @@
 
         //GET TOTAL POSITIVE
 
+        /*
 
-/*
+                var totalPositive = reportInterface.totalPositiveCountInterface();
+                $('#totalPositive').html(totalPositive);
 
-        var totalPositive = reportInterface.totalPositiveCountInterface();
-        $('#totalPositive').html(totalPositive);
+                var totalLinked = reportInterface.totalLinkedCountInterface();
+                $('#totalLinked').html(totalLinked);
 
-        var totalLinked = reportInterface.totalLinkedCountInterface();
-        $('#totalLinked').html(totalLinked);
-
-        var totalIdentified = reportInterface.totalContactsCountInterface();
-        $('#totalIdentified').html(totalIdentified);*/
+                var totalIdentified = reportInterface.totalContactsCountInterface();
+                $('#totalIdentified').html(totalIdentified);*/
 
     });
 </script>
