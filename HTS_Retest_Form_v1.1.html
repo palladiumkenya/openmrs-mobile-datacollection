@@ -21,7 +21,7 @@
 <div id="result"></div>
 <form id="hts_form" name="hts_form">
 
-    <h2 class="text-center">HTS Retest Form v1.0 </h2>
+    <h2 class="text-center">HTS Retest Form v1.1 </h2>
 
     <div class="section">
         <h3>Demographics</h3>
@@ -108,7 +108,7 @@
     <div class="section">
         <h4>Population Type</h4>
         <div class="form-group">
-            <h5><strong>Patient population type</strong></h5>
+            <h5><strong>Client population type</strong></h5>
             <fieldset name="164930^POPULATION TYPE^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -218,7 +218,7 @@
     <div class="section">
         <h4>Disability</h4>
         <div class="form-group">
-            <h5><strong>Patient has any disability? </strong></h5>
+            <h5><strong>Client has any disability? </strong></h5>
             <fieldset name="164951^PATIENT DISABLED^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -292,7 +292,7 @@
         <h4>HIV Test History</h4>
         <div class="form-group">
             <label>
-                Patient ever been tested for HIV? <span class="required">*</span></label>
+                Client ever been tested for HIV? <span class="required">*</span></label>
             <fieldset name="164401^HIV TEST PERFORMED^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -328,7 +328,7 @@
         <h4>Consent</h4>
         <div class="form-group">
             <label>
-                Patient has informed consent <span class="required">*</span></label>
+                Client has informed consent <span class="required">*</span></label>
 
             <fieldset name="1710^INFORMED CONSENT^99DCT">
                 <div class="form-group">
@@ -343,7 +343,7 @@
                     <label class="font-normal">
                         <input class="patient_consent" name="client_consent" id="consent_no" type="radio"
                                data-concept="1710^INFORMED CONSENT^99DCT"
-                               value="0^No^99DCT">
+                               value="2^No^99DCT">
                         No
                     </label>
                 </div>
@@ -381,7 +381,7 @@
             </div>
         </div>
         <div class="section">
-            <h4>HTS Strategy</h4>
+            <h4>HTS Strategy</h4><span class="required">*</span>
             <fieldset name="164956^HIV TESTING SERVICES STRATEGY^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -435,6 +435,14 @@
                 </div>
                 <div class="form-group">
                     <label class="font-normal">
+                        <input class="hts_strategy" name="strategy" id="strategy_pns" type="radio"
+                               data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
+                               value="161557^PNS^99DCT">
+                        PNS
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
                         <input class="hts_strategy" name="strategy" id="strategy_oth" type="radio"
                                data-concept="164956^HIV TESTING SERVICES STRATEGY^99DCT"
                                value="5622^OTHER^99DCT">
@@ -445,7 +453,7 @@
 
         </div>
         <div class="section">
-            <h4>HTS entry point</h4>
+            <h4>HTS entry point</h4><span class="required">*</span>
             <fieldset name="160540^HIV TESTING ENTRY POINT^99DCT">
                 <div class="form-group">
                     <label class="font-normal">
@@ -536,9 +544,29 @@
                     </label>
                 </div>
             </fieldset>
-
         </div>
-
+   <div id="test-type" style="display:none">
+        <div class="section">
+            <h4>Type of Test</h4>
+            <label> What is the test type? <span class="required">*</span></label>
+            <fieldset name="162084^TYPE OF TEST^99DCT">
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="initial_test" id="initial" type="radio"
+                               data-concept="162084^TYPE OF TEST^99DCT" value="162080^INITIAL^99DCT">
+                        Initial test
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="font-normal">
+                        <input name="initial_test" id="confirmation" type="radio"
+                               data-concept="162084^TYPE OF TEST^99DCT" value="162082^CONFIRMATION^99DCT">
+                        Retest
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+   </div>
         <div class="section" data-concept="164410^TEST LABORATORY NUMBER CONSTRUCT^99DCT">
             <h4>HIV Test 1</h4>
 
@@ -578,6 +606,8 @@
                             <option value="">...</option>
                             <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
                             <option value="164961^FIRST RESPONSE TEST KIT^99DCT">First Response</option>
+                            <option value="165351^DUAL TEST KIT^99DCT">Dual Test Kit</option>
+
                         </select>
                     </div>
 
@@ -595,7 +625,18 @@
                     <label class="date_alert" style="color: red;display:none">Please note that the test kit used has
                         expired</label>
                 </div>
-
+                <div id="dual-results-1" style="display:none">
+                    <div class="form-group">
+                        <label>Syphilis Results: </label>
+                        <select class="form-control" id="syphilis_results" name="syphilis_results"
+                                data-concept="299^SYPHYLIS RESULTS^99DCT">
+                            <option value="">...</option>
+                            <option value="664^NEGATIVE^99DCT">Negative</option>
+                            <option value="703^POSITIVE^99DCT">Positive</option>
+                            <option value="163611^INVALID^99DCT">Invalid</option>
+                        </select>
+                    </div>
+                </div>
             </fieldset>
 
         </div>
@@ -648,6 +689,7 @@
                                 <option value="">...</option>
                                 <option value="164960^DETERMINE TEST KIT^99DCT">Determine</option>
                                 <option value="164961^FIRST RESPONSE TEST KIT^99DCT">First Response</option>
+                                <option value="165351^DUAL TEST KIT^99DCT">Dual Test Kit</option>
                             </select>
                         </div>
 
@@ -660,7 +702,7 @@
                     <div class="form-group">
                         <label>Expiry Date <span class="required">*</span></label>
                         <input class="form-control kit-expiry-date  datepicker" readonly="readonly" id="expiry_date_2"
-                               data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_1" type="text"
+                               data-concept="162502^EXPIRATION DATE^99DCT" name="expiry_date_2" type="text"
                                required="required">
                         <label class="date_alert" style="color: red;display:none">Please note that the test kit used has
                             expired</label>
@@ -678,7 +720,7 @@
                     <fieldset name="159427^FINAL HIV RESULTS^99DCT">
                         <div class="form-group">
                             <label class="font-normal">
-                                <input name="final_result" id="hiv_final_p" type="radio"
+                                <input name="final_result" id="hiv_final_p" type="radio" required="required"
                                        data-concept="159427^FINAL HIV RESULTS^99DCT"
                                        value="703^POSITIVE^99DCT" readonly="">
                                 Positive
@@ -686,7 +728,7 @@
                         </div>
                         <div class="form-group">
                             <label class="font-normal">
-                                <input name="final_result" id="hiv_final_n" type="radio"
+                                <input name="final_result" id="hiv_final_n" type="radio" required="required"
                                        data-concept="159427^FINAL HIV RESULTS^99DCT"
                                        value="664^NEGATIVE^99DCT">
                                 Negative
@@ -695,7 +737,7 @@
 
                         <div class="form-group">
                             <label class="font-normal">
-                                <input name="final_result" id="hiv_final_i" type="radio"
+                                <input name="final_result" id="hiv_final_i" type="radio" required="required"
                                        data-concept="159427^FINAL HIV RESULTS^99DCT"
                                        value="1138^INCONCLUSIVE^99DCT">
                                 Inconclusive
@@ -850,8 +892,12 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $("#confirmation").prop("checked", true);    //to cater for psmart
         $('#hiv_final_p input[type=radio]').attr("style", "pointer-events:none;");
         $('#hiv_final_n input[type=radio]').attr("style", "pointer-events:none;");
+        $('#hiv_final_i input[type=radio]').attr("style", "pointer-events:none;");
+
         $('.date_alert').hide();
         var dateFormat = "dd-mm-yy";
         var currentDate = $.datepicker.formatDate(dateFormat, new Date());
@@ -963,6 +1009,31 @@
         });
         $testResults.trigger('change');
 
+// Validate Dual kit and kit repetition
+        var $kit1Selected = $('#hiv_1_kit');
+        $kit1Selected.change(function () {
+            var kitSelectedVal = $(this).val();
+            if (kitSelectedVal == '165351^DUAL TEST KIT^99DCT') {   //Dual kit selected
+                $('#dual-results-1').show();
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").add();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").remove();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+
+            }else if (kitSelectedVal == '164960^DETERMINE TEST KIT^99DCT') {   //Determine selected
+                $('#dual-results-1').hide();
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").add();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").remove();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+
+            } else if (kitSelectedVal == '164961^FIRST RESPONSE TEST KIT^99DCT') {      //First response selected
+                $('#dual-results-1').hide();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").add();
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").remove();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+
+            }
+        });
+        $kit1Selected.trigger('change');
 
         var $yesClass = $('.yesClass');
         $yesClass.change(function () {
@@ -1050,6 +1121,8 @@
                 var $test_two = $('input[name=hiv_test_two]:checked').val();
                 if ($test_one === "664^NEGATIVE^99DCT") {
                     $("#hiv_final_n").prop("checked", true);
+                    $("#hiv_final_p").prop("disabled", true);
+                    $("#hiv_final_i").prop("disabled", true);
                     $('.other_tests').hide();
                 } else {
                     $('.other_tests').show();
@@ -1058,14 +1131,22 @@
                         if ($test_one === $test_two) {
                             if ($test_one === "703^POSITIVE^99DCT") {
                                 $("#hiv_final_p").prop("checked", true);
-                            } else {
-                                $("#hiv_final_n").prop("checked", true);
+                                $("#hiv_final_n").prop("disabled", true);
+                                $("#hiv_final_i").prop("disabled", true);
+                            } else if($test_one === "163611^INVALID^99DCT"){
+                                $("#hiv_final_i").prop("checked", true);
+                                $("#hiv_final_n").prop("disabled", true);
+                                $("#hiv_final_p").prop("disabled", true);
                             }
                         } else {
                             $("#hiv_final_i").prop("checked", true);
+                            $("#hiv_final_n").prop("disabled", true);
+                            $("#hiv_final_p").prop("disabled", true);
+
                         }
                     }
                 }
+                //disable uncheched options in hiv final
             }
         });
 
@@ -1084,9 +1165,12 @@
                 var $mode = $('input[name=couple_testing]:checked').val();
                 if ($mode === "164957^INDIVIDUAL TESTING^99DCT") {
                     $("#discordant_c").prop("checked", true);
+                    $("#discordant_a").prop("disabled", true);
+                    $("#discordant_b").prop("disabled", true);
                 }
                 else {
                     $("#discordant_c").prop("checked", false);
+                    $("#discordant_c").prop("disabled", true);
                 }
             }
         });

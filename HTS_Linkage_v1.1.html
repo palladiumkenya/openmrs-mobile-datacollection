@@ -1,0 +1,343 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+    <title>Linkage Form</title>
+    <style>
+        h4 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="col-md-8 col-md-offset-2">
+    <div id="result"></div>
+    <div id="custom_validation" style="display: none" class="error"><h3>You cannot save this form for under 18 months old!</h3></div>
+    <form id="hts_linkage_form" name="hts_linkage_form">
+
+        <h2 class="text-center">Linkage Form v1.1</h2>
+
+        <div class="section">
+            <h3>Demographics</h3>
+            <div class="form-group">
+                <input class="form-control" id="patient.uuid" name="patient.uuid" type="hidden" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.medical_record_number">National ID:</label>
+                <input class="form-control" id="patient.medical_record_number" name="patient.medical_record_number"
+                    type="text" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.family_name">Family Name:</label>
+                <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+                    readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.given_name">Given Name:</label>
+                <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+                    readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.middle_name">Middle Name:</label>
+                <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+                    readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.sex">Gender:</label>
+                <select class="form-control" id="patient.sex" name="patient.sex" disabled="disabled">
+                    <option value="">...</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="patient.birth_date">Date Of Birth:</label>
+                <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text"
+                    readonly="readonly" value="">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="form-group">
+                <label for="encounter.encounter_datetime">Encounter Date <span class="required">*</span></label>
+                <input class="form-control nonFutureDate past-date datepicker" readonly="readonly"
+                       id="encounter.encounter_datetime" name="encounter.encounter_datetime" type="text"
+                       required="required">
+            </div>
+        </div>
+        <div id="under_18_warning" class="error">
+            Please don't fill this form for under 18 months clients <br/>
+            Please discard all changes.
+        </div>
+
+        <div class="section">
+            <div class="form-group">
+                <label for="encounter.location_id">Encounter Location:<span class="required">*</span></label>
+                <input class="form-control valid-location-only" id="encounter.location_id" type="text"
+                    placeholder="Start typing something..." required="required">
+                <input class="form-control" name="encounter.location_id" type="hidden">
+            </div>
+
+            <div class="form-group hidden">
+                <label for="encounter.location_id_select">Encounter Location <span class="required">*</span></label>
+                <select class="form-control" id="encounter.location_id_select" required="required">
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="encounter.provider_id_select">Provider Name:</label>
+                <input class="form-control valid-provider-only" id="encounter.provider_id_select" type="text"
+                    placeholder="Start typing something...">
+                <input class="form-control" name="encounter.provider_id_select" type="hidden">
+            </div>
+            <div class="form-group hidden">
+                <select id="select_providers">
+                </select>
+            </div>
+            <div class="form-group show_provider_id_text">
+                <label for="encounter.provider_id">Provider's system-id:<span class="required">*</span></label>
+                <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id"
+                    type="text" required="required" disabled="disabled">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid" type="hidden"
+                    required="required">
+            </div>
+        </div>
+
+        <div id="show_for_over18_months">
+          <div class="section yesSectionToShow">
+                <h4>Linkage</h4>
+                <div class="form-group yesLinkedToShow">
+                    <label for="facility_tbl">Facility linked to:</label>
+                    <input class="form-control" id="facility_tbl" name="facility_tbl" type="text"
+                        data-concept="162724^HEALTH FACILITY^99DCT">
+
+                    <div class="form-group">
+                        <label for="this_facility">
+                            <input id="this_facility" name="this_facility" type="checkbox" />
+                            Immediate linkage
+                        </label>
+                 </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="upn">CCC Number:</label>
+                    <input class="form-control" id="upn" name="upn" type="text" data-concept="162053^CCC NUMBER^99DCT">
+                </div>
+
+                <div style="display:none" class="form-group upn">
+                    <label><span style="font-size: small; color: red; ">Invalid Unique Patient Number format</span></label>
+                </div>
+
+                <div class="form-group">
+                    <label for="hwht">Health worker handed to :</label>
+                    <input class="form-control" id="hwht" name="hwht" type="text"
+                        data-concept="1473^HEALTH CARE PROVIDER^99DCT">
+                </div>
+
+                <div class="form-group">
+                    <label>Cadre of Health worker : </label>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="cadre" id="nurse" type="radio" data-concept="162577^CADRE^99DCT"
+                                value="1577^Nurse^99DCT">
+                            Nurse
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="cadre" id="doctor" type="radio" data-concept="162577^CADRE^99DCT"
+                                value="1574^doctor^99DCT">
+                            Clinical Officer/Doctor
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="occupation" id="chw" type="radio" data-concept="162577^CADRE^99DCT"
+                                value="1555^Chw^99DCT">
+                            Community Health Worker
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="occupation" id="employee" type="radio" data-concept="162577^CADRE^99DCT"
+                                value="1540^Employee^99DCT">
+                            Employee
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-normal">
+                            <input name="occupation" id="driver" type="radio" data-concept="162577^CADRE^99DCT"
+                                value="5622^Other^99DCT">
+                            Other
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date enrolled: </label>
+                    <input class="form-control nonFutureDate past-date datepicker enrolldate" readonly="readonly" id="linkage-date"
+                        data-concept="160555^LINKAGE DATE^99DCT" name="enrolldate" type="text">
+                </div>
+                <div class="form-group">
+                    <label>ART start date: </label>
+                    <input class="form-control nonFutureDate past-date datepicker artDate" readonly="readonly" id="art-start-date"
+                        data-concept="159599^ART START DATE^99DCT" name="artDate" type="text">
+                </div>
+                <div class="section form-group">
+                    <label>Remarks</label>
+                    <textarea class="form-control" name="freetext_general_2" id="freetext_general_2" rows="5"
+                        data-concept="163042^FREETEXT GENERAL^99DCT" placeholder="Provider notes/comments."></textarea>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="show_for_under18_months">
+            <div class="error">
+                <h1>This client is ineligible for HTS!</h1>
+                <h3>Please discard all changes to this form</h3>
+            </div>
+        </div>
+
+    </form>
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dateFormat = "dd-mm-yy";
+        var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+        var encounterDatetime = $('#encounter\\.encounter_datetime');
+        // if ($(encounterDatetime).val() == "") {
+        //     $(encounterDatetime).val(currentDate);
+        // }
+        $('#show_for_over18_months').hide();
+        $('#show_for_under18_months').hide();
+        $('#under_18_warning').hide();
+        // setup on change for encounter date
+        $('#encounter\\.encounter_datetime').change(function () {
+
+            var encDay = $('#encounter\\.encounter_datetime').val().split("-");
+            var from = $('#patient\\.birth_date').val().split("-");
+            var birthDay = new Date(from[2], from[1] - 1, from[0]);
+            var encDate = new Date(encDay[2], encDay[1] - 1, encDay[0]);
+            var ageInM = monthDiff(birthDay, encDate);
+
+            if (ageInM >= 18) {
+                $('#show_for_over18_months').show();
+                $('#show_for_under18_months').hide();
+                $('#custom_validation').hide();
+                $('#encounter\\.provider_id_select').attr("readonly", false);
+                $('#encounter\\.location_id').attr("readonly", false);
+                $('#under_18_warning').hide();
+
+            } else {
+                $('#show_for_over18_months').hide();
+                $('.encounter\\.provider_id_select').val("");
+                $('#encounter\\.provider_id_select').val("");
+                $('#encounter\\.provider_id_select').attr("readonly", true);
+                $('#encounter\\.location_id').val("");
+                $('#encounter\\.location_id').attr("readonly", true);
+                $('#custom_validation').show();
+                $('#under_18_warning').show();
+            }
+        });
+
+        var currentYear = new Date().getFullYear();
+        var birthdate_start_year = currentYear - 140;
+        $('.birth_date_picker').datepicker({
+            dateFormat: dateFormat,
+            changeMonth: true,
+            changeYear: true,
+            yearRange: birthdate_start_year + ':' + currentYear,
+        });
+
+
+        $('#save_draft').click(function () {
+            // pre process the medications
+            $(this).prop('disabled', true);
+            document.saveDraft(this);
+            $(this).prop('disabled', false);
+        });
+
+        $('#submit_form').click(function () {
+            // pre process the medications
+            $(this).prop('disabled', true);
+            document.submit();
+            $(this).prop('disabled', false);
+        });
+
+        $.fn.calculateFields = function () {
+            var tempAgeInYears = $.trim($("#tmp\\.age_in_years").val());
+            if (tempAgeInYears != '') {
+                $('#patient\\.birthdate_estimated').val('true');
+                $('#patient\\.birth_date').val($.fn.getTempBirthDate(tempAgeInYears));
+            }
+            return true;
+        };
+
+        $.fn.customValidationCheck = function () {
+            return $.fn.calculateFields();
+        };
+
+        jQuery.validator.addClassRules({
+            'check-confirm-identifier': {
+                validateConfirmIdentifierElement: true
+            }
+        });
+
+
+        document.setupAutoCompleteData('encounter\\.location_id');
+        document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+
+        $('#registration_form').validate({
+            rules: {
+                'tmp.age_in_years': {
+                    range: [0, 120]
+                }
+            }
+        });
+
+        $('#upn').change(function () {
+            var $validate_upn = $('.upn');
+            var $regex = /^[0-9]{10}$/;
+            var $contact_upn = $('#upn').val();
+            if(!$regex.test($contact_upn))
+                $validate_upn.show();
+            else
+                $validate_upn.hide();
+
+        });
+
+        $('input[type="checkbox"]').click(function(){
+            if($("#this_facility").prop("checked") == true){
+                $('#facility_tbl').val( $('#encounter\\.location_id').val());
+            }else{
+                $('#facility_tbl').val('');
+            }
+        });
+
+        document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
+
+        document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
+
+    });
+
+    function monthDiff(dateFrom, dateTo) {
+        return dateTo.getMonth() - dateFrom.getMonth() +
+            (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
+    }
+</script>
+
+
+</html>
