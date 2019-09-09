@@ -11,7 +11,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
     <script src="js/muzima.js"></script>
-    <title>Referral and Linkage Form</title>
+    <title>Linkage Form</title>
     <style>
         h4 {
             text-align: center;
@@ -22,9 +22,9 @@
 <body class="col-md-8 col-md-offset-2">
     <div id="result"></div>
     <div id="custom_validation" style="display: none" class="error"><h3>You cannot save this form for under 18 months old!</h3></div>
-    <form id="hts_linkage_and_referral_form" name="hts_linkage_and_referral_form">
+    <form id="hts_linkage_form" name="hts_linkage_form">
 
-        <h2 class="text-center">Referral and Linkage Form v1.1</h2>
+        <h2 class="text-center">Linkage Form v1.1</h2>
 
         <div class="section">
             <h3>Demographics</h3>
@@ -116,29 +116,19 @@
         </div>
 
         <div id="show_for_over18_months">
-
-            <div class="section">
-                <h4>Referral</h4>
-                <div class="form-group">
-                    <div class="form-group yesLinkedToShow">
-                        <label for="flt">Facility referred to: </label>
-                        <input class="form-control" id="facility_tbl" name="facility_tbl" type="text"
-                               data-concept="161550^HEALTH FACILITY^99DCT">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Date to be enrolled: </label>
-                    <input class="form-control datepicker linkage_tbl" readonly="readonly" id="tbl-date"
-                           data-concept="161561^LINKAGE DATE^99DCT" name="linkage" type="text">
-                </div>
-            </div>
-
-            <div class="section yesSectionToShow">
+          <div class="section yesSectionToShow">
                 <h4>Linkage</h4>
                 <div class="form-group yesLinkedToShow">
-                    <label for="flt">Facility linked to:</label>
-                    <input class="form-control" id="flt" name="flt" type="text"
+                    <label for="facility_tbl">Facility linked to:</label>
+                    <input class="form-control" id="facility_tbl" name="facility_tbl" type="text"
                         data-concept="162724^HEALTH FACILITY^99DCT">
+
+                    <div class="form-group">
+                        <label for="this_facility">
+                            <input id="this_facility" name="this_facility" type="checkbox" />
+                            Immediate linkage
+                        </label>
+                 </div>
                 </div>
 
                 <div class="form-group">
@@ -327,6 +317,14 @@
             else
                 $validate_upn.hide();
 
+        });
+
+        $('input[type="checkbox"]').click(function(){
+            if($("#this_facility").prop("checked") == true){
+                $('#facility_tbl').val( $('#encounter\\.location_id').val());
+            }else{
+                $('#facility_tbl').val('');
+            }
         });
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
