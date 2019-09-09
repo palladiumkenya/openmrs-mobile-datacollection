@@ -1082,8 +1082,8 @@
                         if ($test_one === $test_two) {
                             if ($test_one === "703^POSITIVE^99DCT") {
                                 $("#hiv_final_p").prop("checked", true);
-                            } else {
-                                $("#hiv_final_n").prop("checked", true);
+                            } else if($test_one === "163611^INVALID^99DCT"){
+                                $("#hiv_final_i").prop("checked", true);
                             }
                         } else {
                             $("#hiv_final_i").prop("checked", true);
