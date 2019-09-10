@@ -1009,21 +1009,24 @@
             var kitSelectedVal = $(this).val();
             if (kitSelectedVal == '165351^DUAL TEST KIT^99DCT') {   //Dual kit selected
                 $('#dual-results-1').show();
-                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").add();
-                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").remove();
-                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+                $('#hiv_2_kit').val('');
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").show();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").hide();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").hide();
 
             }else if (kitSelectedVal == '164960^DETERMINE TEST KIT^99DCT') {   //Determine selected
                 $('#dual-results-1').hide();
-                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").add();
-                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").remove();
-                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+                $('#hiv_2_kit').val('');
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").show();
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").hide();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").hide();
 
             } else if (kitSelectedVal == '164961^FIRST RESPONSE TEST KIT^99DCT') {      //First response selected
                 $('#dual-results-1').hide();
-                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").add();
-                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").remove();
-                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").remove();
+                $('#hiv_2_kit').val('');
+                $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").show();
+                $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").hide();
+                $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").hide();
 
             }
         });
