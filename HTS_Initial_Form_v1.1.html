@@ -520,7 +520,7 @@
                     </div>
                 </fieldset>
             </div>
-       <div id="test-type" style="display:none">
+            <div id="test-type" style="display:none">
                 <div class="section">
                     <h4>Type of Test</h4>
                     <label> What is the test type? <span class="required">*</span></label>
@@ -584,7 +584,7 @@
 
                         <div class="form-group">
                             <label>Lot Number<span class="required">*</span></label>
-                            <input class="form-control" id="lot_nu" name="lot_nu" type="text"
+                            <input class="form-control" id="lot_number_1" name="lot_number_1" type="text"
                                    data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                         </div>
 
@@ -601,7 +601,7 @@
                     <div id="dual-results-1" style="display:none">
                         <div class="form-group">
                             <label>Syphilis Results: </label>
-                             <select class="form-control" id="syphilis_results" name="syphilis_results"
+                            <select class="form-control" id="syphilis_results" name="syphilis_results"
                                     data-concept="299^SYPHYLIS RESULTS^99DCT">
                                 <option value="">...</option>
                                 <option value="664^NEGATIVE^99DCT">Negative</option>
@@ -665,7 +665,7 @@
 
                             <div class="form-group">
                                 <label>Lot Number<span class="required">*</span></label>
-                                <input class="form-control" id="hiv_2_lot" name="hiv_2_kit" type="text"
+                                <input class="form-control" id="lot_number_2" name="lot_number_2" type="text"
                                        data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                             </div>
                         </div>
@@ -854,6 +854,8 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var patientuuid = $('#patient\\.uuid').val();
+        var latest_lot_number = 'Test kit lot number';
 
         $("#initial").prop("checked", true);    //to cater for psmart
         $('#hiv_final_p input[type=radio]').attr("style", "pointer-events:none;");
@@ -1003,8 +1005,13 @@
         });
         $testResults.trigger('change');
 
-// Validate Dual kit and kit repetition
-       var $kit1Selected = $('#hiv_1_kit');
+// Validate kit lot number and kit repetition
+        /* Autocompletion of Lot Numbers by lot number conceptid and other observations */
+        var searchid = 164964;
+        var patientuuid = $('#patient\\.uuid').val();
+        var historyByData = htmlDataStore.getObsByConceptId("",searchid);
+
+        var $kit1Selected = $('#hiv_1_kit');
         $kit1Selected.change(function () {
             var kitSelectedVal = $(this).val();
             if (kitSelectedVal == '165351^DUAL TEST KIT^99DCT') {   //Dual kit selected
@@ -1020,6 +1027,7 @@
                 $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").show();
                 $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").hide();
                 $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").hide();
+                displayObs(historyByData);
 
             } else if (kitSelectedVal == '164961^FIRST RESPONSE TEST KIT^99DCT') {      //First response selected
                 $('#dual-results-1').hide();
@@ -1029,6 +1037,7 @@
                 $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").hide();
 
             }
+
         });
         $kit1Selected.trigger('change');
 
@@ -1205,14 +1214,23 @@
         });
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
-
         document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
 
     });
+    //End on ready
 
     function monthDiff(dateFrom, dateTo) {
         return dateTo.getMonth() - dateFrom.getMonth() +
             (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
+    }
+
+    function displayObs(historyByData){
+        historyByData = JSON.parse(historyByData);
+        $.each(historyByData, function (i,ob) {
+            $('#lot_number_1').val(ob.valueText);
+
+        });
+
     }
 </script>
 
