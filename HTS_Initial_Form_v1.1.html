@@ -584,7 +584,7 @@
 
                         <div class="form-group">
                             <label>Lot Number<span class="required">*</span></label>
-                            <input class="form-control" id="lot_number_1" name="lot_number_1" type="text"
+                            <input class="form-control" id="lot_number_1" name="lot_number_1" type="text" placeholder="Start typing something..." onChange="getLot1Observations(this.value);"
                                    data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                         </div>
 
@@ -665,7 +665,7 @@
 
                             <div class="form-group">
                                 <label>Lot Number<span class="required">*</span></label>
-                                <input class="form-control" id="lot_number_2" name="lot_number_2" type="text"
+                                <input class="form-control" id="lot_number_2" name="lot_number_2" type="text" placeholder="Start typing something..." onChange="getLot2Observations(this.value);"
                                        data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                             </div>
                         </div>
@@ -855,7 +855,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var patientuuid = $('#patient\\.uuid').val();
-        var latest_lot_number = 'Test kit lot number';
 
         $("#initial").prop("checked", true);    //to cater for psmart
         $('#hiv_final_p input[type=radio]').attr("style", "pointer-events:none;");
@@ -1005,11 +1004,6 @@
         });
         $testResults.trigger('change');
 
-// Validate kit lot number and kit repetition
-        /* Autocompletion of Lot Numbers by lot number conceptid and other observations */
-        var searchid = 164964;
-        var patientuuid = $('#patient\\.uuid').val();
-        var historyByData = htmlDataStore.getObsByConceptId("",searchid);
 
         var $kit1Selected = $('#hiv_1_kit');
         $kit1Selected.change(function () {
@@ -1027,7 +1021,6 @@
                 $("#hiv_2_kit option[value='164961^FIRST RESPONSE TEST KIT^99DCT']").show();
                 $("#hiv_2_kit option[value='164960^DETERMINE TEST KIT^99DCT']").hide();
                 $("#hiv_2_kit option[value='165351^DUAL TEST KIT^99DCT']").hide();
-                displayObs(historyByData);
 
             } else if (kitSelectedVal == '164961^FIRST RESPONSE TEST KIT^99DCT') {      //First response selected
                 $('#dual-results-1').hide();
@@ -1055,8 +1048,6 @@
 
 
         document.setupAutoCompleteData('encounter\\.location_id');
-
-
         document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
 
         $('#registration_form').validate({
@@ -1151,7 +1142,7 @@
                         }
                     }
                 }
-                //disable uncheched options in hiv final
+                //disable unchecked options in hiv final
             }
         });
 
@@ -1215,6 +1206,8 @@
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
         document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
+        document.setupAutoCompleteConcept("lot_number_1");
+        document.setupAutoCompleteConcept("lot_number_2");
 
     });
     //End on ready
@@ -1224,6 +1217,50 @@
             (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
     }
 
+    /*Lot Number auto-complete for concept*/
+    /* Autocompletion of Lot Numbers by lot number conceptid  */
+    document.setupAutoCompleteConcept = function(elementName) {
+        var conceptid = 164964;
+        var dataDictionary = [];
+        var obsNamesResult = "";
+        var obsNamesResults = htmlDataStore.getObsByConceptId("",conceptid);
+        obsNamesResults = JSON.parse(obsNamesResults);
+        $.each(obsNamesResults, function (i,ob) {
+                dataDictionary.push({"val": conceptid, "label": ob.valueText});
+
+        });
+
+        document.setupAutoCompleteWithOnchange(elementName, dataDictionary);
+    };
+
+    document.setupAutoCompleteWithOnchange = function (elementName, dataDictionary) {
+        $("#" + elementName).autocomplete({
+            source: dataDictionary,
+            create: function (event, ui) {
+                var val = $('input[name=' + elementName + ']').val();
+                $.each(dataDictionary, function (i, elem) {
+                    if (elem.val == val) {
+                        $("#" + elementName).val(elem.label);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $('input[name="' + elementName + '"]').val(ui.item.val);
+                $("#" + elementName).val(ui.item.label);
+                return false;
+            },
+            change: function (event, ui) {
+                 getHistoricalData(ui.item.val);
+            }
+        });
+    };
+    /*end auto-complete of Concept*/
+    //get historical data
+    function getHistoricalData(conceptid) {
+             var historyByData = htmlDataStore.getObsByConceptId("",conceptid);
+              displayObs(historyByData);
+    }
+
     function displayObs(historyByData){
         historyByData = JSON.parse(historyByData);
         $.each(historyByData, function (i,ob) {
@@ -1231,6 +1268,16 @@
 
         });
 
+    }
+    function getLot1Observations(lotnum){
+       if(lotnum !=""){
+            document.setupAutoCompleteConcept("lot_number_1");
+        }
+    }
+    function getLot2Observations(lotnum){
+        if(lotnum !=""){
+            document.setupAutoCompleteConcept("lot_number_2");
+        }
     }
 </script>
 
