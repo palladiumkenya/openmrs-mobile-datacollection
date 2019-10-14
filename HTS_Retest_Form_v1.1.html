@@ -613,7 +613,7 @@
 
                     <div class="form-group">
                         <label>Lot Number<span class="required">*</span></label>
-                        <input class="form-control" id="lot_nu" name="lot_nu" type="text"
+                        <input class="form-control" id="lot_number_1" name="lot_number_1" type="text" placeholder="Start typing something..." onChange="getLot1Observations(this.value);"
                                data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                     </div>
 
@@ -695,7 +695,7 @@
 
                         <div class="form-group">
                             <label>Lot Number<span class="required">*</span></label>
-                            <input class="form-control" id="hiv_2_lot" name="hiv_2_kit" type="text"
+                            <input class="form-control" id="lot_number_2" name="lot_number_2" type="text" placeholder="Start typing something..." onChange="getLot2Observations(this.value);"
                                    data-concept="164964^TEST KIT LOT NUMBER^99DCT" required="required">
                         </div>
                     </div>
@@ -892,6 +892,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var patientuuid = $('#patient\\.uuid').val();
 
         $("#confirmation").prop("checked", true);    //to cater for psmart
         $('#hiv_final_p input[type=radio]').attr("style", "pointer-events:none;");
@@ -902,9 +903,9 @@
         var dateFormat = "dd-mm-yy";
         var currentDate = $.datepicker.formatDate(dateFormat, new Date());
         var encounterDatetime = $('#encounter\\.encounter_datetime');
-        if ($(encounterDatetime).val() == "") {
-            $(encounterDatetime).val(currentDate);
-        }
+//        if ($(encounterDatetime).val() == "") {
+//            $(encounterDatetime).val(currentDate);
+//        }
 
         var currentYear = new Date().getFullYear();
         var birthdate_start_year = currentYear - 140;
@@ -1099,23 +1100,17 @@
 
         $('.kit-expiry-date').change(function () {
             var $date = $(this).val();
-            var partsCurrentDate = currentDate.split('-');
             var partsExpiryDate = $date.split('-');
-            var cDate = partsCurrentDate[0];
-            var cMonth = partsCurrentDate[1];
-            var cYear = partsCurrentDate[2];
-            var eDate = partsExpiryDate[0];
-            var eMonth = partsExpiryDate[1];
-            var eYear = partsExpiryDate[2];
-            if (eYear < cYear) {
+            var encDay = $('#encounter\\.encounter_datetime').val().split("-");
+            var expiryDate = new Date(partsExpiryDate[2], partsExpiryDate[1] - 1, partsExpiryDate[0]);
+            var encDate = new Date(encDay[2], encDay[1] - 1, encDay[0]);
+
+            if (expiryDate < encDate) {
                 $(this).closest('.section').find('.date_alert').show();
-              }else if(eYear <= cYear && eMonth < cMonth) {
-                    $(this).closest('.section').find('.date_alert').show();
-                }else if(eYear <= cYear && eMonth == cMonth && eDate < cDate) {
-                        $(this).closest('.section').find('.date_alert').show();
-                    }else {
+            } else {
                 $(this).closest('.section').find('.date_alert').hide();
             }
+
         });
 
         $('.final_auto_check').change(function () {
@@ -1212,10 +1207,75 @@
         });
 
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
-
         document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
+        document.setupAutoCompleteConcept("lot_number_1");
+        document.setupAutoCompleteConcept("lot_number_2");
+
 
     });
+    //End on ready
+    /*Lot Number auto-complete for concept*/
+    /* Autocompletion of Lot Numbers by lot number conceptid  */
+    document.setupAutoCompleteConcept = function(elementName) {
+        var conceptid = 164964;
+        var dataDictionary = [];
+        var obsNamesResult = "";
+        var obsNamesResults = htmlDataStore.getObsByConceptId("",conceptid);
+        obsNamesResults = JSON.parse(obsNamesResults);
+        $.each(obsNamesResults, function (i,ob) {
+            dataDictionary.push({"val": conceptid, "label": ob.valueText});
+
+        });
+
+        document.setupAutoCompleteWithOnchange(elementName, dataDictionary);
+    };
+
+    document.setupAutoCompleteWithOnchange = function (elementName, dataDictionary) {
+        $("#" + elementName).autocomplete({
+            source: dataDictionary,
+            create: function (event, ui) {
+                var val = $('input[name=' + elementName + ']').val();
+                $.each(dataDictionary, function (i, elem) {
+                    if (elem.val == val) {
+                        $("#" + elementName).val(elem.label);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $('input[name="' + elementName + '"]').val(ui.item.val);
+                $("#" + elementName).val(ui.item.label);
+                return false;
+            },
+            change: function (event, ui) {
+                getHistoricalData(ui.item.val);
+            }
+        });
+    };
+    /*end auto-complete of Concept*/
+    //get historical data
+    function getHistoricalData(conceptid) {
+        var historyByData = htmlDataStore.getObsByConceptId("",conceptid);
+        displayObs(historyByData);
+    }
+
+    function displayObs(historyByData){
+        historyByData = JSON.parse(historyByData);
+        $.each(historyByData, function (i,ob) {
+            $('#lot_number_1').val(ob.valueText);
+
+        });
+
+    }
+    function getLot1Observations(lotnum){
+        if(lotnum !=""){
+            document.setupAutoCompleteConcept("lot_number_1");
+        }
+    }
+    function getLot2Observations(lotnum){
+        if(lotnum !=""){
+            document.setupAutoCompleteConcept("lot_number_2");
+        }
+    }
 </script>
 
 
