@@ -19,7 +19,9 @@
 </head>
 <body class="col-md-8 col-md-offset-2">
 <div id="result"></div>
-<form id="hts_linkage_and_referral_form" name="hts_linkage_and_referral_form">
+<div id="custom_validation" style="display: none" class="error"><h3>You cannot save this form for clients tested negative! </h3>
+</div>
+<form id="ht_contact_listing_form" name="ht_contact_listing_form">
 
     <h2 class="text-center">Contact Listing Form v1.0</h2>
 
@@ -63,6 +65,18 @@
                    readonly="readonly" value="">
         </div>
     </div>
+    <div class="section">
+        <div class="form-group">
+            <label for="encounter.encounter_datetime">Encounter Date <span class="required">*</span></label>
+            <input class="form-control nonFutureDate past-date datepicker" readonly="readonly"
+                   id="encounter.encounter_datetime" name="encounter.encounter_datetime" type="text"
+                   required="required">
+        </div>
+    </div>
+    <div id="tested_negative_warning" class="error">
+        Please don't fill this form for negative clients <br/>
+        Please discard all changes.
+    </div>
 
     <div class="section">
         <div class="form-group">
@@ -94,16 +108,13 @@
                    type="text" required="required" disabled="disabled">
         </div>
         <div class="form-group">
-            <label for="encounter.encounter_datetime">Encounter Date: <span class="required">*</span></label>
-            <input class="form-control nonFutureDate past-date datepicker" readonly="readonly"
-                   id="encounter.encounter_datetime"
-                   name="encounter.encounter_datetime" type="text" required="required">
-        </div>
-        <div class="form-group">
             <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
                    type="hidden" required="required">
         </div>
     </div>
+
+    <div id="show_for_tested_positive">
+
     <div class="section">
         <h4>Consent</h4>
         <div class="form-group">
@@ -702,10 +713,12 @@
                     <!--<label class="date_alert" style="color: red;display:none">Please note that the linkage date cannot be in the future</label>-->
                 </div>
             </div>
-        </div>
+           </div>
+         </div>
+         </div>
+      </div>
+
     </div>
-     </div>
-  </div>
 </form>
 </body>
 
@@ -715,9 +728,20 @@
         var dateFormat = "dd-mm-yy";
         var currentDate = $.datepicker.formatDate(dateFormat, new Date());
         var encounterDatetime = $('#encounter\\.encounter_datetime');
-        if ($(encounterDatetime).val() == "") {
-            $(encounterDatetime).val(currentDate);
-        }
+//        if ($(encounterDatetime).val() == "") {
+//            $(encounterDatetime).val(currentDate);
+//        }
+
+        $('#show_for_tested_positive').hide();
+        $('#tested_negative_warning').hide();
+        // setup on change for encounter date
+        $('#encounter\\.encounter_datetime').change(function () {
+            var conceptid = 159427;    // Concept for final_results
+            var patientuuid = $('#patient\\.uuid').val();
+            var testStatus = htmlDataStore.getObsByConceptId(patientuuid,conceptid);
+            document.setupValidationForEligibility(testStatus);
+
+        });
         //Provide informed consent to provide consent
         $('.client_consent_informed').hide();
         $('.patient_consent').change(function () {
@@ -956,14 +980,42 @@
             }
         });
 
-
-
         document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
-
         document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
 
     });
-</script>
+    // End on Ready
+    /* Validation for eligibility for listing contacts  ==> Must have been tested Positive */
+    document.setupValidationForEligibility = function(testStatus) {
+//       $('#show_for_tested_positive').show();
+        $('#tested_negative_warning').show();
+        $('#custom_validation').show();
+        testStatus = JSON.parse(testStatus);
+        $.each(testStatus, function (i,ob) {
+
+           if (ob.valueCoded == 'POSITIVE') {
+                    $('#show_for_tested_positive').show();
+                    $('#tested_negative_warning').hide();
+                    $('#custom_validation').hide();
+
+                    $('#encounter\\.provider_id_select').attr("readonly", false);
+                    $('#encounter\\.location_id').attr("readonly", false);
+
+          }else {
+               $('#show_for_tested_positive').hide();
+
+               $('.encounter\\.provider_id_select').val("");
+               $('#encounter\\.provider_id_select').val("");
+               $('#encounter\\.provider_id_select').attr("readonly", true);
+               $('#encounter\\.location_id').val("");
+               $('#encounter\\.location_id').attr("readonly", true);
+
+                }
+        });
+
+    };
+
+  </script>
 
 
 </html>
