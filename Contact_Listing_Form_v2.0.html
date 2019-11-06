@@ -19,11 +19,13 @@
 </head>
 <body class="col-md-8 col-md-offset-2">
 <div id="result"></div>
-<div id="custom_validation" style="display: none" class="error"><h3>You cannot save this form for clients tested negative! </h3>
+<div id="custom_validation" style="display: none" class="error">This form is applicable for clients <br/>
+                                                                      who have tested HIV <br/>
+                                                                            positive!
 </div>
 <form id="ht_contact_listing_form" name="ht_contact_listing_form">
 
-    <h2 class="text-center">Contact Listing Form v1.0</h2>
+    <h2 class="text-center">Contact Listing Form v2.0</h2>
 
     <div class="section">
         <h3>Demographics</h3>
@@ -73,9 +75,10 @@
                    required="required">
         </div>
     </div>
-    <div id="tested_negative_warning" class="error">
-        Please don't fill this form for negative clients <br/>
-        Please discard all changes.
+    <div id="under_18_warning" class="error">
+             Please don't fill this form for clients <br/>
+                who have not tested HIV positive.<br/>
+                Please discard all changes.
     </div>
 
     <div class="section">
@@ -113,7 +116,7 @@
         </div>
     </div>
 
-    <div id="show_for_tested_positive">
+    <div id="show_for_over18_months">
 
     <div class="section">
         <h4>Consent</h4>
@@ -719,6 +722,7 @@
       </div>
 
     </div>
+
 </form>
 </body>
 
@@ -732,14 +736,22 @@
 //            $(encounterDatetime).val(currentDate);
 //        }
 
-        $('#show_for_tested_positive').hide();
-        $('#tested_negative_warning').hide();
+        $('#show_for_over18_months').hide();
+        $('#under_18_warning').hide();
+        $('#custom_validation').hide();
         // setup on change for encounter date
         $('#encounter\\.encounter_datetime').change(function () {
+            //Get age in month for =>18 months validation
+            var encDay = $('#encounter\\.encounter_datetime').val().split("-");
+            var from = $('#patient\\.birth_date').val().split("-");
+            var birthDay = new Date(from[2], from[1] - 1, from[0]);
+            var encDate = new Date(encDay[2], encDay[1] - 1, encDay[0]);
+            var ageInM = monthDiff(birthDay, encDate);
+            //Get latest hiv status positive validation
             var conceptid = 159427;    // Concept for final_results
             var patientuuid = $('#patient\\.uuid').val();
             var testStatus = htmlDataStore.getObsByConceptId(patientuuid,conceptid);
-            document.setupValidationForEligibility(testStatus);
+            document.setupValidationForEligibility(testStatus,ageInM);
 
         });
         //Provide informed consent to provide consent
@@ -985,35 +997,47 @@
 
     });
     // End on Ready
-    /* Validation for eligibility for listing contacts  ==> Must have been tested Positive */
-    document.setupValidationForEligibility = function(testStatus) {
-//       $('#show_for_tested_positive').show();
-        $('#tested_negative_warning').show();
-        $('#custom_validation').show();
+    /* Validation for eligibility for adding referral details and >=18 months  ==> Must have been tested Positive and over 18 months old */
+    document.setupValidationForEligibility = function(testStatus,ageInM) {
+
         testStatus = JSON.parse(testStatus);
-        $.each(testStatus, function (i,ob) {
+        if(testStatus != "") {
+            $.each(testStatus, function (i, ob) {
 
-           if (ob.valueCoded == 'POSITIVE') {
-                    $('#show_for_tested_positive').show();
-                    $('#tested_negative_warning').hide();
+                if (ageInM >= 18 && ob.valueCoded.id == 703) {
+                    $('#show_for_over18_months').show();
                     $('#custom_validation').hide();
-
+                    $('#under_18_warning').hide();
                     $('#encounter\\.provider_id_select').attr("readonly", false);
                     $('#encounter\\.location_id').attr("readonly", false);
 
-          }else {
-               $('#show_for_tested_positive').hide();
-
-               $('.encounter\\.provider_id_select').val("");
-               $('#encounter\\.provider_id_select').val("");
-               $('#encounter\\.provider_id_select').attr("readonly", true);
-               $('#encounter\\.location_id').val("");
-               $('#encounter\\.location_id').attr("readonly", true);
-
+                } else {
+                    $('#show_for_over18_months').hide();
+                    $('#custom_validation').show();
+                    $('#under_18_warning').show();
+                    $('.encounter\\.provider_id_select').val("");
+                    $('#encounter\\.provider_id_select').val("");
+                    $('#encounter\\.provider_id_select').attr("readonly", true);
+                    $('#encounter\\.location_id').val("");
+                    $('#encounter\\.location_id').attr("readonly", true);
                 }
-        });
+            });
+        }else{
+            $('#show_for_over18_months').hide();
+            $('#custom_validation').show();
+            $('#under_18_warning').show();
+            $('.encounter\\.provider_id_select').val("");
+            $('#encounter\\.provider_id_select').val("");
+            $('#encounter\\.provider_id_select').attr("readonly", true);
+            $('#encounter\\.location_id').val("");
+            $('#encounter\\.location_id').attr("readonly", true);
+        }
 
     };
+    function monthDiff(dateFrom, dateTo) {
+        return dateTo.getMonth() - dateFrom.getMonth() +
+            (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
+    }
 
   </script>
 
